@@ -1,0 +1,26 @@
+.tickets {
+  background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+  width: auto;
+}
+
+.profile-stats a:hover {
+  text-decoration: underline !important;
+  color: #0000EE !important;
+}
+
+.order-text {
+  font-weight: 500;
+}
+
+.order-btn {
+  padding: 10px 20px !important;
+}
+
+.order-btn a {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.order-btn:hover {
+  background-color: #f9f6fa;
+}

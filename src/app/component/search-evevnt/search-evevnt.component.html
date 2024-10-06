@@ -1,0 +1,267 @@
+<div class="container p-4">
+  <h3 class="mb-4" style="color: #4b4d63;">Events In Egypt</h3>
+  <div class="line m-auto mb-5"></div>
+
+  <div class="row">
+    <div class="d-none d-md-block col-md-2">
+      <h5 class="mb-3" style="color: rgb(2, 2, 56);">Filters</h5>
+      <!-- <form [formGroup]="filtersGroup"> -->
+<form>
+        <!-- Category Section -->
+        <div class="col-md-6">
+          <h6 style="color: rgb(2, 2, 56);">Category</h6>
+          <div class="form-check mt-2">
+            <input mdbInput class="form-check-input" type="radio" name="category" id="arrayRadio1" value="business"
+              formControlName="category" />
+            <label class="form-check-label" for="arrayRadio1">Business</label>
+          </div>
+          <div class="form-check">
+            <input mdbInput class="form-check-input" type="radio" name="category" id="arrayRadio2" value="food"
+              formControlName="category" />
+            <label class="form-check-label" for="arrayRadio2">Food & Drink</label>
+          </div>
+          <div class="form-check">
+            <input mdbInput class="form-check-input" type="radio" name="category" id="arrayRadio3" value="health"
+              formControlName="category" />
+            <label class="form-check-label" for="arrayRadio3">Health</label>
+          </div>
+          <div class="form-check">
+            <input mdbInput class="form-check-input" type="radio" name="category" id="arrayRadio4" value="music"
+              formControlName="category" />
+            <label class="form-check-label" for="arrayRadio4">Music</label>
+          </div>
+        </div>
+
+        <!-- Date Section -->
+        <div class="col-md-6">
+          <h6 class="mt-3" style="color: rgb(2, 2, 56);">Date</h6>
+          <div class="form-check mt-2">
+            <input mdbInput class="form-check-input" type="radio" name="date" id="arrayRadio5" value="today"
+              formControlName="date" />
+            <label class="form-check-label" for="arrayRadio5">Today</label>
+          </div>
+          <div class="form-check">
+            <input mdbInput class="form-check-input" type="radio" name="date" id="arrayRadio6" value="tomorrow"
+              formControlName="date" />
+            <label class="form-check-label" for="arrayRadio6">Tomorrow</label>
+          </div>
+          <div class="form-check">
+            <input mdbInput class="form-check-input" type="radio" name="date" id="arrayRadio7" value="weekend"
+              formControlName="date" />
+            <label class="form-check-label" for="arrayRadio7">This weekend</label>
+          </div>
+          <div class="form-check">
+            <input mdbInput class="form-check-input" type="radio" name="date" id="arrayRadio8" value="pick"
+              formControlName="date" />
+            <label class="form-check-label" for="arrayRadio8">Pick a date...</label>
+          </div>
+        </div>
+
+        <!-- Price Section -->
+        <div class="col-md-6">
+          <h6 class="mt-3" style="color: rgb(2, 2, 56);">Price</h6>
+          <div class="form-check mt-2">
+            <input mdbInput class="form-check-input" type="radio" name="price" id="arrayRadio9" value="free"
+              formControlName="price" />
+            <label class="form-check-label" for="arrayRadio9">Free</label>
+          </div>
+          <div class="form-check">
+            <input mdbInput class="form-check-input" type="radio" name="price" id="arrayRadio10" value="paid"
+              formControlName="price" />
+            <label class="form-check-label" for="arrayRadio10">Paid</label>
+          </div>
+        </div>
+
+        <!-- Clear Filters Button -->
+        <button (click)="clearFilters()" type="button" class="btn btn-danger mt-3">
+          Clear all filters
+        </button>
+
+      </form>
+
+    </div>
+
+    <div class="col-sm-12 col-md-6">
+      <div class="card event-card">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="../../../assets/images/https___cdn.evbuc.com_images_846815099_85600736879_1_original.jfif"
+              class="card-img" alt="Event Image" height="100%">
+          </div>
+
+          <!-- Content section -->
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Bat Movie Benefit at the Lark Theater</h5>
+              <p class="card-text">Tomorrow • 6:30 PM</p>
+              <p class="card-text">Lark Theater</p>
+              <p class="card-text"><strong> Check ticket price on event </strong></p>
+              <a href="#" class="text">Promoted</a>
+              <button class="btn btn-outline-secondary mx-2">Share</button>
+              <button class="btn btn-outline-secondary">like</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card event-card">
+        <div class="row no-gutters">
+
+          <div class="col-md-4">
+            <img src="../../../assets/images/https___cdn.evbuc.com_images_858538979_563478348933_1_original.jfif"
+              class="card-img" alt="Event Image" height="100%">
+          </div>
+
+          <!-- Content section -->
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Kites in the Sky - World Mental Health Day</h5>
+              <p class="card-text">Thursday, October 10 · 2:30</p>
+              <p class="card-text">Rodeo Beach</p>
+              <p class="card-text"><strong> From 30$ </strong>
+                <span class="discount-badge">
+                  <i class="fas fa-tag"></i>
+                  $5.00 off select tickets
+                </span>
+              </p>
+              <a href="#" class="text">Promoted</a>
+              <button class="btn btn-outline-secondary mx-2">Share</button>
+              <button class="btn btn-outline-secondary">like</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card event-card">
+        <div class="row no-gutters">
+
+          <div class="col-md-4">
+            <img src="../../../assets/images/https___cdn.evbuc.com_images_752316119_290108908841_1_original.jfif"
+              class="card-img" alt="Event Image" height="100%">
+
+          </div>
+
+          <!-- Content section -->
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Egypt Journey: An 8 days tour vacation from Cairo with locals</h5>
+              <p class="card-text">Sunday, October 13 · 7 - 10pm</p>
+              <p class="card-text">Tahrir Square Hostel</p>
+              <p class="card-text"><strong> From €1,300 </strong>
+                <span class="discount-badge">
+                  <i class="fas fa-tag"></i>
+                  $10.00 off
+                </span>
+              </p>
+              <a href="#" class="text">Promoted</a>
+              <button class="btn btn-outline-secondary mx-2">Share</button>
+              <button class="btn btn-outline-secondary">like</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-md-block col-md-4">
+      <div>
+        <iframe width="100%" height="880" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=24.700195312500004%2C22.228090416784486%2C37.265625%2C31.728167146023935&layer=mapnik">
+          style="border: 1px solid black"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- trends section -->
+  <div class="trends container">
+    <div class="row">
+      <div class="col-12 col-lg-8  ">
+        <h3>Trends in Egypt <i class="fa-solid fa-arrow-trend-up"></i></h3>
+      </div>
+      <div class="col-lg-4 ">
+        <a href="#" class="d-none d-lg-block text-decoration-none text-dark me-2 text-center">Explore more trends <i
+            class="fa-solid fa-chevron-right"></i></a>
+      </div>
+    </div>
+    <div class="container mt-4 ">
+      <div class="row trend-items">
+        <div class="col-lg-3 col-12"><a href="#" class="text-decoration-none">1. Pharaohs Festival</a></div>
+        <div class="col-lg-3 col-12"><a href="#" class="text-decoration-none">2. Great Egyptian Marthon</a></div>
+        <div class="col-lg-3 col-12"><a href="#" class="text-decoration-none">3. International Book Fair</a></div>
+        <div class="col-lg-3 col-12"><a href="#" class="text-decoration-none">4. Egypt Energy</a></div>
+
+        <div class="col-lg-3 col-12"><a href="#" class="text-decoration-none">5. Food Festival</a></div>
+        <div class="col-lg-3 col-12"><a href="#" class="text-decoration-none">6. Job Fair</a></div>
+        <div class="col-lg-3 col-12"><a href="#" class="text-decoration-none">7. Pharmaconex 2024</a></div>
+        <div class="col-lg-3 col-12"><a href="#" class="text-decoration-none">8. International conference 2024</a></div>
+
+        <div class="col-lg-3 col-12"><a href="#" class="text-decoration-none">9. Medical Conferencs</a></div>
+        <div class="col-lg-3 col-12"><a href="#" class="text-decoration-none">10. Eco-Egypt Innovation Fair</a></div>
+        <div class="col-lg-3 col-12"><a href="#" class="text-decoration-none">11. October events</a></div>
+        <div class="col-lg-3 col-12"> <a href="#" class="text-decoration-none">12. Mountain View North Coast</a></div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- questions section -->
+  <div class="container my-5">
+    <h4 class="mb-4 fw-bold">Frequently asked questions about Egypt</h4>
+    <div class="accordion" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            What are the best events to attend?
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body bg-light m-4">
+            <strong>According to Eventbrite, the best events are:</strong>
+            <ul>
+              <li><a href="#" class="text-decoration-none">Copy of PADI Member Forum 2024 - Dahab</a></li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Which events are currently trending in Egypt
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body bg-light m-4">
+            <strong>The trending searches this month in Egypt are:</strong>
+            <ul>
+              <li><a href="#" class="text-decoration-none">Global DPI Summit</a></li>
+              <li><a href="#" class="text-decoration-none">Luxor Half Marathon 2024</a></li>
+              <li><a href="#" class="text-decoration-none">International Conference on Environment and Natural
+                  Science</a></li>
+              <li><a href="#" class="text-decoration-none">Abu Simbel Sun Festival</a></li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Which events are coming up?
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body bg-light m-4">
+            <strong>Discover the best events happening soon – you don’t want to miss them:</strong>
+            <ul>
+              <li><a href="#" class="text-decoration-none">Copy of PADI Member Forum 2024 - Dahab</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
