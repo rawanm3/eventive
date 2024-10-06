@@ -17,8 +17,8 @@ const routes: Routes = [
   {path:'tickets',component:TicketsComponent},
   {path:'**',component:NotFoundComponent},
   {path:'create-an-event',component:CreateAnEventComponent},
-  {path:'login',component:LoginComponent},
-  {path:'signup',component:SignupComponent}
+  {path:'signup',component:SignupComponent},
+  {path: 'loginPage' ,component :LoginComponent}
 ];
 
 @NgModule({

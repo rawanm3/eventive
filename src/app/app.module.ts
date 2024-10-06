@@ -10,7 +10,7 @@ import { FooterComponent } from './component/footer/footer.component';
 import { CarouselComponent } from './component/carousel/carousel.component';
 import { DestenationsComponent } from './component/destenations/destenations.component';
 import { CapacityComponent } from './component/capacity/capacity.component';
-import { EventsComponent } from './component/events/events.component';
+
 import { LikeComponent } from './component/like/like.component';
 import { TicketsComponent } from './component/tickets/tickets.component';
 import { PopularCitiesComponent } from './component/popular-cities/popular-cities.component';
@@ -19,6 +19,9 @@ import { CreateAnEventComponent } from './component/create-an-event/create-an-ev
 import { SearchEvevntComponent } from './component/search-evevnt/search-evevnt.component';
 import { NotFoundComponent } from './component/not-found/not-found.component';
 import { HomeComponent } from './component/home/home.component';
+import { EventsComponent } from './component/events/events.component';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { LoginPageComponent } from './component/login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ import { HomeComponent } from './component/home/home.component';
     CreateAnEventComponent,
     SearchEvevntComponent,
     NotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    DashboardComponent,
+    LoginPageComponent
+    
   ],
   imports: [
     BrowserModule,
