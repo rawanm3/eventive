@@ -1,0 +1,34 @@
+<div class="container">
+  <h2>Where is it located?</h2>
+  <div class="btn-group">
+    <button class="btn btn-primary">Venue</button>
+    <button class="btn btn-secondary">Online event</button>
+    <button class="btn btn-secondary">To be announced</button>
+  </div>
+  <input type="text" placeholder="Location*">
+
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115049.17971572465!2d32.72950728178906!3d25.69492442396893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x144915cf52cd95cd%3A0xe0f5dd2b8b1c0e96!2z2KfZhNij2YLYtdix2Iwg2YXYr9mK2YbYqSDYp9mE2KPZgti12LHYjCDZhdix2YPYsiDYp9mE2KPZgti12LHYjCDZhdit2KfZgdi42Kkg2KfZhNij2YLYtdix!5e0!3m2!1sar!2seg!4v1727856822714!5m2!1sar!2seg"
+    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <h2>How much do you want to charge for tickets?</h2>
+  <p>Our tool can only generate one General Admission ticket for now. You can edit and add more ticket types later.</p>
+  <div class="price-input">
+    <input id="price" type="number" value="0.00" step="0.01">
+  </div>
+  <div class="free-tickets">
+    <label class="switch">
+      <input type="checkbox" id="check">
+      <span class="slider"></span>
+    </label>
+    My tickets are free
+  </div>
+
+  <h2>What's the capacity for your event?</h2>
+  <p>Event capacity is the total number of tickets you're willing to sell.</p>
+  <input type="number" placeholder="Total capacity*">
+
+  <div class="footer">
+    <button class="btn btn-exit">Exit</button>
+    <button class="btn btn-create">Create event</button>
+  </div>
