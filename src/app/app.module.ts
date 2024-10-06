@@ -17,8 +17,11 @@ import { PopularCitiesComponent } from './component/popular-cities/popular-citie
 import { LocationComponent } from './component/location/location.component';
 import { CreateAnEventComponent } from './component/create-an-event/create-an-event.component';
 import { SearchEvevntComponent } from './component/search-evevnt/search-evevnt.component';
+import { NotFoundComponent } from './component/not-found/not-found.component';
+import { HomeComponent } from './component/home/home.component';
 import { EventsComponent } from './component/events/events.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { LoginPageComponent } from './component/login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,10 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
     LocationComponent,
     CreateAnEventComponent,
     SearchEvevntComponent,
+    NotFoundComponent,
+    HomeComponent,
     DashboardComponent,
+    LoginPageComponent
     
   ],
   imports: [

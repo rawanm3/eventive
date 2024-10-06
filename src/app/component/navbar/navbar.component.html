@@ -22,7 +22,7 @@
   <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light border-0" id="navbar"> -->
   <nav class="navbar navbar-expand-lg d-grid p-2" id="navbar">
     <div class="div1">
-      <a class="navbar-brand" id="title" href="#">Eventive</a>
+      <a class="navbar-brand" id="title" routerLink="/home">Eventive</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -32,7 +32,7 @@
       <form class="form-inline" id="search-bg">
         <input class="form-control mr-sm-2" type="search" placeholder="Search events" id="search-bar"
           aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" id="search-btn" type="submit">
+        <button class="btn btn-outline-success my-2 my-sm-0" id="search-btn" type="submit" routerLink="/search-event">
           <img width="20" height="20" src="https://img.icons8.com/material-outlined/24/FFFFFF/search--v1.png"
             alt="search--v1" />
         </button>
@@ -40,18 +40,18 @@
     </div>
     <div class="div4">
       <ul class="navbar-nav d-flex justify-content-around">
-        <li class="nav-item active">
+        <li class="nav-item ">
           <img width="20" height="20" src="https://img.icons8.com/windows/20/8f8f8f/plus.png" alt="plus" />
-          <a class="nav-link" href="#">Create an event</a>
+          <a class="nav-link" routerLink="/create-an-event">Create an event</a>
         </li>
         <li class="nav-item">
           <img width="20" height="20" src="https://img.icons8.com/material-outlined/20/8f8f8f/love-circled.png"
             alt="love-circled" />
-          <a class="nav-link" href="#">Likes</a>
+          <a class="nav-link" routerLink="/like">Likes</a>
         </li>
         <li class="nav-item">
           <img width="20" height="20" src="https://img.icons8.com/ios/20/8f8f8f/ticket--v1.png" alt="ticket--v1" />
-          <a class="nav-link" href="#">Tickets</a>
+          <a class="nav-link" routerLink="/tickets">Tickets</a>
         </li>
       </ul>
     </div>
@@ -64,24 +64,30 @@
           <img width="20" height="20" src="https://img.icons8.com/ios-filled/20/737373/expand-arrow--v1.png"
             alt="expand-arrow--v1" />
         </div>
-        <div id="myDropdown" style="display: flex;justify-content: end;" class="dropdown-content">
+        <div id="myDropdown" class="dropdown-content">
           <a href="#home">manage my events</a>
           <a href="#home">tickets</a>
           <a href="#about">likes</a>
           <a href="#contact">logout</a>
         </div>
       </div> -->
-      <div mdbDropdown class="dropdown">
-        <a class="btn btn-primary dropdown-toggle" role="button" id="dropdownMenuLink" mdbDropdownToggle
-          aria-expanded="false">
-          Dropdown link
-        </a>
-        <ul mdbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-        </ul>
+      <div class="dropdown d-flex flex-row-reverse">
+        <div class="dd">
+          <i class="fa-regular fa-user me-2" style="font-size: 20px;"></i>
+          <button (click)="toggleDropdown()" class="dropbtn">
+            eventbrite&#64;gmail.com
+          </button>
+          <img width="20" height="20" src="https://img.icons8.com/ios-filled/20/737373/expand-arrow--v1.png"
+            alt="expand-arrow--v1" />
+        </div>
+        <div id="myDropdown" [ngClass]="{'show': isDropdownOpen}" class="dropdown-content">
+          <a routerLink="/tickets">tickets</a>
+          <a routerLink="/like">liked</a>
+          <a routerLink="/loginPage">log out</a>
+          <a routerLink="/signup">sign up</a>
+        </div>
       </div>
+
     </div>
 
   </nav>
