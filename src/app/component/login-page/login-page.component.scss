@@ -19,7 +19,19 @@
 .imges {
   background-image: url("/eventive gh/eventive/src/assets/images/alexandre-pellaes-6vajp0pscx0-unsplash-1-1.jpg");
 }
-
+h3{
+  color: #d1410c;
+}
+.back-home-link {
+  overflow: hidden;
+  color: #D1410C;
+  width: 110px;
+  margin-bottom: 0;
+  font-weight: 700;
+  letter-spacing: .25px;
+  text-rendering: optimizeLegibility;
+  transform: translate(0.347, 0);
+}
 .righteous-regular {
   font-family: "Righteous", system-ui;
   font-weight: 400;

@@ -1,0 +1,379 @@
+<div class="container-fluid mb-4">
+    <div class="row">
+      <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+        <div class="position-sticky sidebar-sticky">
+          <div class="logo-wrap text-center">
+            <a href="" class="back-home-link" transform="translate(0.347)"
+            style="color: #f84e10; font-size: 28px;">Eventive</a>
+          </div>
+          <ul class="nav flex-column mt-4">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">
+                <span class="material-symbols-outlined"> home </span> Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span class="material-symbols-outlined"> draft</span>  Orders </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span class="material-symbols-outlined"> shopping_cart </span> Products </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="icon"><i class="fa-regular fa-user"></i></i><span>  Customers</span></a>
+            </li>
+            <li>
+                <a class="nav-link" href="#">
+                    <i class="icon"><i class="fa-solid fa-chart-column"></i></i><span>  Analytics</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="icon"><i class="fa-regular fa-message"></i></i><span> Feedback </span></a>
+            </li>
+          </ul>
+          <ul class="nav flex-column mb-2">
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="icon"><i class="fa-regular fa-file-lines"></i></i><span>   Current month </span> </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="icon"><i class="fa-regular fa-file-lines"></i></i><span> Last quarter </span> 
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <nav class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-md-3 bg-white shadow-sm">
+        <div class="row">
+          <button class="btn btn-link" id="sidebar-toggle">
+            <i class="icon"><i class="fa-solid fa-bars"></i></i>
+          </button>
+          <div class="col-md-4 ps-md-0 ps-4">
+            <form role="search">
+              <div class="search-group">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                </svg>
+                <input type="search" class="form-control" placeholder="Search..." aria-label="Search" />
+              </div>
+            </form>
+            <!-- ./form -->
+          </div>
+          <!-- ./col -->
+          <div class="col-md-8">
+  
+            <div class="dropdown text-end dropdown-usrn">
+              <a href="#" class="link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> list </a>
+              <ul class="dropdown-menu text-small">
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li><a class="dropdown-item" href="#">Sign out</a></li>
+              </ul>
+            </div>
+            <!-- ./dropdown -->
+          </div>
+          <!-- ./col -->
+        </div>
+        <!-- ./row -->
+      </nav>
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <h1 class="h2 my-4">Dashboard</h1>
+        <div class="row g-3 row-cols-1 row-cols-sm-2 row-cols-md-4 row-stats">
+          <div class="col">
+            <a href="#" class="h-primary-outline">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-activity" viewBox="0 0 15 15">
+                        <path fill-rule="evenodd" d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2Z" />
+                      </svg>
+                    </div>
+                    <div class="col-md-10">
+                      <h3 class="h5">Total visitors</h3>
+                      <p>Last 24 Hours</p>
+                      <p class="m-0 text-muted"> 2,524</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <!-- link -->
+          </div>
+          <!-- ./col -->
+          <div class="col">
+            <a href="#" class="h-primary-outline">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-activity" viewBox="0 0 15 15">
+                            <path fill-rule="evenodd" d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2Z" />
+                          </svg>
+                    </div>
+                    <div class="col-md-10">
+                      <h3 class="h5">Total visitors</h3>
+                      <p> Last 02 Day</p>
+                      <p class="m-0 text-muted"> 5,624 </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <!-- link -->
+          </div>
+          <!-- ./col -->
+          <div class="col">
+            <a href="#" class="h-primary-outline">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-activity" viewBox="0 0 15 15">
+                            <path fill-rule="evenodd" d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2Z" />
+                          </svg>
+                    </div>
+                    <div class="col-md-10">
+                      <h3 class="h5">Total visitors</h3>
+                      <p>Last one Week</p>
+                      <p class="m-0 text-muted">10,024 </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <!-- link -->
+          </div>
+          <!-- ./col -->
+          <div class="col">
+            <a href="#" class="h-primary-outline">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-activity" viewBox="0 0 15 15">
+                            <path fill-rule="evenodd" d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2Z" />
+                          </svg>
+                    </div>
+                    <div class="col-md-10">
+                      <h3 class="h5">Total visitors</h3>
+                      <p> Last two weeks</p>
+                      <p class="m-0 text-muted">20,555 </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <!-- link -->
+          </div>
+          <div class="col">
+            <a href="#" class="h-primary-outline">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-activity" viewBox="0 0 15 15">
+                            <path fill-rule="evenodd" d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2Z" />
+                          </svg>
+                    </div>
+                    <div class="col-md-10">
+                      <h3 class="h5">Total visitors</h3>
+                      <p>Last Month</p>
+                      <p class="m-0 text-muted">25,500</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <!-- link -->
+          </div>
+          <div class="col">
+            <a href="#" class="h-primary-outline">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-activity" viewBox="0 0 15 15">
+                            <path fill-rule="evenodd" d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2Z" />
+                          </svg>
+                    </div>
+                    <div class="col-md-10">
+                      <h3 class="h5">Total visitors</h3>
+                      <p>Last Two Month</p>
+                      <p class="m-0 text-muted">43,550</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <!-- link -->
+          </div>
+          <div class="col">
+            <a href="#" class="h-primary-outline">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-activity" viewBox="0 0 15 15">
+                            <path fill-rule="evenodd" d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2Z" />
+                          </svg>
+                    </div>
+                    <div class="col-md-10">
+                      <h3 class="h5">Total visitors</h3>
+                      <p>First quarter</p>
+                      <p class="m-0 text-muted">57,500</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <!-- link -->
+          </div>
+          <div class="col">
+            <a href="#" class="h-primary-outline">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-activity" viewBox="0 0 15 15">
+                            <path fill-rule="evenodd" d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2Z" />
+                          </svg>
+                    </div>
+                    <div class="col-md-10">
+                      <h3 class="h5">Total visitors</h3>
+                      <p>Two quarter</p>
+                      <p class="m-0 text-muted">67,500</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <!-- link -->
+          </div>
+          <!-- ./col -->
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="card shadow-sm mb-2-sm">
+              <div class="card-body p-3 text-center">
+                <h3 class="h4"><span class="material-symbols-outlined">shopping_cart</span>Offline Events</h3>
+               <h4><p class="text-muted">
+                    17% </p></h4>
+                <a href="#" class="btn btn-primary py-3 px-5">
+                  Offline curve
+                </a>
+              </div>
+              <div class="card-body p-3 text-center">
+              <h3 class="h4 text-center"><span class="material-symbols-outlined">shopping_cart</span>Online Events</h3>
+              <h4 class="text-center "><p class="text-muted">
+                   21.3% </p></h4>
+               <a href="#" class="btn btn-primary py-3 px-5">
+                 Online curve
+               </a>
+            </div>
+         </div>
+            <!-- ./card -->
+          </div>
+          <!-- ./col -->
+          <div class="col-12 col-sm-6 col-md-9">
+            <div class="card shadow-sm">
+              <div class="card-body p-3">
+                <h2 class="my-0 h3">Recent Events</h2>
+                <div class="table-responsive mt-4 mb-2">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">Event Name</th>
+                        <th scope="col">Product Number</th>
+                        <th scope="col">Payment</th>
+                        <th scope="col">online </th>
+                        <th scope="col">offline</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr> 
+                        <td>Giza event </td>
+                        <td>1,001</td>
+                        <td>Due</td>
+                        <td>low</td>
+                        <td>high</td>
+                      </tr>
+                      <tr>
+                        <td>Cairo event</td>
+                        <td>1,002</td>
+                        <td>Due</td>
+                        <td>high</td>
+                        <td>high</td>
+                      </tr>
+                      <tr>
+                        <td>Alexandria event</td>
+                        <td>1.003</td>
+                        <td>Due</td>
+                        <td>high</td>
+                        <td>high</td>
+                      </tr>
+                      <tr>
+                        <td>New Alamein event</td>
+                        <td>1.004</td>
+                        <td>Due</td>
+                        <td>high</td>
+                        <td>high</td>
+                      </tr>
+                      <tr>
+                        <td>Luxor</td>
+                        <td>1.005</td>
+                        <td>Due</td>
+                        <td>low</td>
+                        <td>high</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- ./table-responsive -->
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination mb-2">
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                      </a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">1</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">2</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">3</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+                <!-- ./pagination -->
+              </div>
+              <!-- ./card-body -->
+            </div>
+            <!-- ./card -->
+          </div>
+          <!-- ./col -->
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="card shadow-sm mb-2-sm">
+              
+                </div>
+            </div>
+        </div>
+        <!-- ./row -->
+      </main>
+    </div>
+    <!-- ./row -->
+  </div>
+  <!-- ./container-fluid -->
+
+
