@@ -1,138 +1,91 @@
 <app-navbar></app-navbar>
-<div class="container-fluid h-100 d-flex flex-column">
 
-  <div class="row flex-grow-1">
+<div class="container-wrapper">
+  <div class="form-container ">
+      <div class="event-content">
+          <form [formGroup]="createEventForm" (ngSubmit)="onSubmit()">
 
-    <!-- <div class="col-lg-4 d-none d-lg-flex align-items-start justify-content-start">
-      <div class="back-home">
-        <a routerLink="/home" class="back-home-link m-3" transform="translate(0.347)"
-          style="color: #D1410C; font-size: 34px;">Eventive</a>
+              <div *ngIf="currentStep === 1" class="form-step active">
+                  <div class="center-content mb-4">
+                      <h1 class="part-one">Create your event with US</h1>
+                      <p>Answer a few questions about your event and your details of it and We will use internal data to build an event page.We hope you have a wonderful experience with us</p>
+                  </div>
+                  <div class="d-flex justify-content-end"> 
+                      <button type="button" class="btn btn-primary" (click)="nextStep()">Next</button>
+                  </div>
+              </div>
+
+              <div *ngIf="currentStep === 2" class="form-step">
+                  <h2>What's the name of your event?</h2>
+                  <P class="paragraph">
+                      This will be your event's title. Your title will be used to help create your event's summary, description, category, and tags , so be specific! </P>
+                  <div class="form-group mb-4">
+                      <input type="text" formControlName="eventName" class="form-control" placeholder="Event title" required>
+                      <div *ngIf="createEventForm.get('eventName')?.invalid && createEventForm.get('eventName')?.touched" class="text-danger">
+                          Event title is required.
+                      </div>
+                  </div>
+                  <h2>Upload Event Image</h2>
+                  <br>
+                  <input type="file" id="imageUpload" accept="image/*" (change)="onFileSelect($event)">
+                  <div *ngIf="!imageSelected && currentStep === 2" class="text-danger">Image is required.</div>
+                  
+                  <div class="d-flex justify-content-end">
+                  <button type="button" class="btn btn-secondary mt-4" (click)="prevStep()">Back</button>
+                  <button type="button" class="btn btn-primary mt-4" [disabled]="!imageSelected" (click)="nextStep()">Next</button>
+                  </div>
+              </div>
+
+              <div *ngIf="currentStep === 3" class="form-step">
+                  <h2>When does your event start and end?</h2>
+                  <div class="date-time-container row mb-4">
+                      <div class="col-md-6 col-12 mb-2">
+                          <label>Date</label>
+                          <input type="date" formControlName="eventDate" class="form-control">
+                          <div *ngIf="createEventForm.get('eventDate')?.invalid && createEventForm.get('eventDate')?.touched" class="text-danger" required> 
+                              Event date is required.
+                          </div>
+                      </div>
+                      <div class="col-md-3 col-6 mb-2">
+                          <label>Start Time</label>
+                          <input type="time" formControlName="startTime" class="form-control">
+                          <div *ngIf="createEventForm.get('startTime')?.invalid && createEventForm.get('startTime')?.touched" class="text-danger" required>
+                              Start time is required.
+                          </div>
+                      </div>
+                      <div class="col-md-3 col-6 mb-2">
+                          <label>End Time</label>
+                          <input type="time" formControlName="endTime" class="form-control">
+                          <div *ngIf="createEventForm.get('endTime')?.invalid && createEventForm.get('endTime')?.touched" class="text-danger" required>
+                              End time is required.
+                          </div>
+                      </div>
+                  </div>
+                  <button type="button" class="btn btn-secondary mt-4" (click)="prevStep()">Back</button>
+                  <button type="button" class="btn btn-primary mt-4" (click)="nextStep()">Next</button>
+              </div>
+              <div *ngIf="currentStep === 4" class="form-step">
+                  <h2>About</h2>
+                  <p>What do you want to put in the event description?</p>
+                  <textarea id="eventDescription" class="form-control mb-4" placeholder="Destination" required></textarea>
+
+                  <div class="d-flex justify-content-between mt-4">
+                      <button type="button" class="btn btn-secondary" (click)="prevStep()">Back</button>
+                      <button type="button" class="btn btn-primary" (click)="nextStep()">Next</button>
+                  </div>
+              </div>
+
+           
+              <div *ngIf="currentStep === 5" class="form-step">
+                  <h2>Where is it located?</h2>
+                  <input type="text" formControlName="location" class="form-control mb-3" placeholder="Location*" required>
+                  <div class="footer d-flex justify-content-end mt-4">
+                      <button type="button" class="btn btn-secondary" (click)="prevStep()">Back</button>
+                      <button type="submit" class="btn btn-primary">Create Event</button>
+                  </div>
+              </div>
+
+          </form>
       </div>
-    </div> -->
-
-    <div class=" col-lg-4 col-md-10 col-12 mx-auto">
-      <div class="create-event">
-        <div class="event-content">
-          <form name="create-event-form" action="" novalidate>
-
-            <div class="center-content m-auto">
-              <h1 class="part-one">Create your event with us</h1>
-              <P class="paragraph">
-                <span>Answer a few questions about your event and your details of it and We will use internal data to
-                  build an event page.We hope you have a wonderful experience with us.</span>
-              </P>
-            </div>
-
-            <div class="mb-4">
-              <div style="margin-bottom: 8px;">
-                <h2 class="part-two">What's the name of your event?</h2>
-              </div>
-              <P class="paragraph">
-                <span>This will be your event's title. Your title will be used to help create your event's summary,
-                  description, category, and tags , so be specific!</span>
-              </P>
-              
-                  <label id="label-event-title" class="floating-label" for="auto-create-form-title" class="title-event">
-                    Event title<span class="required">*</span> </label>
-                  <input type="text" name="title" id="auto-create-form-title" class="text-feild" required >
-            </div>
-
-            <div class="mb-4">
-              <div style="margin-bottom: 8px;">
-                <h2 class="part-three">When does your event start and end?</h2>
-              </div>
-              <div class="date-time-container row">
-                <div class="date-box col-12 col-md-6 mb-2">
-                  <fieldset class="box">
-                    <legend>Date</legend>
-                    <input type="date" name="event-date" id="event-date" class="date-field" value="2024-09-11">
-                  </fieldset>
-                </div>
-                <div class="time-box col-6 mb-2">
-                  <fieldset class="box">
-                    <legend>Start time</legend>
-                    <select id="start-time" class="time-field" value="10:00">
-                      <option value="10:00 AM">10:00 AM</option>
-                      <option value="10:30 AM">10:30 AM</option>
-                      <option value="11:00 AM">11:00 AM</option>
-                      <option value="11:30 AM">11:30 AM</option>
-                      <option value="12:00 PM">12:00 PM</option>
-                      <option value="12:30 PM">12:30 PM</option>
-                      <option value="01:00 PM">1:00 PM</option>
-                      <option value="01:30 PM">1:30 PM</option>
-                      <option value="02:00 PM">2:00 PM</option>
-                    </select>
-                  </fieldset>
-                </div>
-                <div class="time-box me-2 mb-2">
-                  <fieldset class="box">
-                    <legend>End time</legend>
-                    <select id="end-time" class="time-field" value="10:00">
-                      <option value="12:00 PM">12:00 PM</option>
-                      <option value="12:30 PM">12:30 PM</option>
-                      <option value="01:00 PM">1:00 PM</option>
-                      <option value="01:30 PM">1:30 PM</option>
-                      <option value="02:00 PM">2:00 PM</option>
-                      <option value="02:30 PM">2:30 PM</option>
-                      <option value="03:00 PM">3:00 PM</option>
-                      <option value="03:30 PM">3:30 PM</option>
-                      <option value="04:00 PM">4:00 PM</option>
-                    </select>
-                  </fieldset>
-                </div>
-              </div>
-            </div>
-            <div class="Location-container ">
-              <h2>Where is it located?</h2>
-              <div class="btn-group">
-                <button class="btn btn-primary">Venue</button>
-                <button class="btn btn-secondary">Online event</button>
-                <button class="btn btn-secondary">To be announced</button>
-              </div>
-              <input type="text" placeholder="Location*">
-
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115049.17971572465!2d32.72950728178906!3d25.69492442396893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x144915cf52cd95cd%3A0xe0f5dd2b8b1c0e96!2z2KfZhNij2YLYtdix2Iwg2YXYr9mK2YbYqSDYp9mE2KPZgti12LHYjCDZhdix2YPYsiDYp9mE2KPZgti12LHYjCDZhdit2KfZgdi42Kkg2KfZhNij2YLYtdix!5e0!3m2!1sar!2seg!4v1727856822714!5m2!1sar!2seg"
-                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
-              <h2>How much do you want to charge for tickets?</h2>
-              <p>Our tool can only generate one General Admission ticket for now. You can edit and add more ticket types
-                later.</p>
-              <div class="price-input">
-                <input id="price" type="number" value="0.00" step="0.01">
-              </div>
-              <div class="free-tickets">
-                <label class="switch">
-                  <input type="checkbox" id="check">
-                  <span class="slider"></span>
-                </label>
-                My tickets are free
-              </div>
-<!-- 
-              <h2>What's the capacity for your event?</h2>
-              <p>Event capacity is the total number of tickets you're willing to sell.</p>
-              <input type="number" placeholder="Total capacity*"> -->
-<!-- 
-              <div class="footer">
-                <button class="btn btn-exit">Exit</button>
-                <button class="btn btn-create">Create event</button>
-              </div> -->
-              <div class="input-container mb-4">
-                <label for="capacity" class="part-two capacity-for-event">What's the capacity for your event?</label>
-                <p class="paragraph">Event capacity is the total number of tickets you're willing to sell.</p>
-                <div class="input-wrapper">
-                  <label for="capacity">Total capacity <span class="required">*</span></label>
-                  <input type="number" class="capacity" placeholder="0" min="0" required>
-                </div>
-              </div>
-              <div class="footer-strap d-flex justify-content-end mt-auto">
-                <button class="button-26 me-2" type="button">Exit</button>
-                <button class="button-25" type="submit">Create Event</button>
-              </div>
-              <form name="create-event-form" action="" novalidate>
-                <!-- Your form content here -->
-              </form>
-            </div>
-            <div class="col-lg-4 d-none d-lg-block">
-            </div>
-
+  </div>
+</div>

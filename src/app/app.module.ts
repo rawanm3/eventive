@@ -10,7 +10,6 @@ import { FooterComponent } from './component/footer/footer.component';
 import { CarouselComponent } from './component/carousel/carousel.component';
 import { DestenationsComponent } from './component/destenations/destenations.component';
 import { CapacityComponent } from './component/capacity/capacity.component';
-
 import { LikeComponent } from './component/like/like.component';
 import { TicketsComponent } from './component/tickets/tickets.component';
 import { PopularCitiesComponent } from './component/popular-cities/popular-cities.component';
@@ -22,6 +21,7 @@ import { HomeComponent } from './component/home/home.component';
 import { EventsComponent } from './component/events/events.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { LoginPageComponent } from './component/login-page/login-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -43,12 +43,14 @@ import { LoginPageComponent } from './component/login-page/login-page.component'
     NotFoundComponent,
     HomeComponent,
     DashboardComponent,
-    LoginPageComponent
+    LoginPageComponent,
+   
     
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+     ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
