@@ -1,4 +1,4 @@
-#dead {
+#dead img{
   /* fallback for old browsers 
   background: #fccb90;
 
@@ -7,18 +7,17 @@
 
   /W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ 
   background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);*/
-  background-image: url("/assets/images/alexandre-pellaes-6vajp0pscx0-unsplash-1-1.jpg");
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
+  // background-image: src("/src/assets/alexandre-pellaes-6vajp0pscx0-unsplash-1-1.jpg");
+  // background-size: cover;
+  // background-position: center;
+  height:100vh;
   /* Ensure the div has height */
-  width: 50%;
+  width: 100%;
 
 }
 
-.imges {
-  background-image: url("/eventive gh/eventive/src/assets/images/alexandre-pellaes-6vajp0pscx0-unsplash-1-1.jpg");
-}
+
+
 h3{
   color: #d1410c;
 }
@@ -56,9 +55,7 @@ h3{
 
 
 @media (min-width: 768px) {
-  .gradient-form {
-    height: 100vh !important;
-  }
+
 }
 
 @media (min-width: 769px) {
