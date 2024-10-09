@@ -128,7 +128,7 @@ form {
   font-weight: 400;
   line-height: 16px;
   margin-top: 8px;
-  position: relative;
+  // position: relative;
   text-rendering: optimizelegibility;
 }
 
@@ -195,6 +195,7 @@ form {
   top: 17px;
   font-size: 16px;
   color: #999;
+  border: inset;
   pointer-events: none;
   transition: 0.2s ease all;
 }

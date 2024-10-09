@@ -1,102 +1,57 @@
-body,
-html {
-  margin: 0;
-  padding: 0;
-  height: auto;
+#dead img {
+  /* fallback for old browsers 
+  background: #fccb90;
+
+  Chrome 10-25, Safari 5.1-6 
+  background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+
+  /W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ 
+  background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);*/
+  // background-image: url("/assets/images/alexandre-pellaes-6vajp0pscx0-unsplash-1-1.jpg");
+  // background-size: cover;
+  // background-position: center;
+  height: 150vh;
+  /* Ensure the div has height */
+  width: 100%;
+
 }
 
-.container {
-  display: flex;
-  height: auto;
+
+.righteous-regular {
+  font-family: "Righteous", system-ui;
+  font-weight: 400;
+  font-style: normal;
 }
 
-@media (max-width: 768px) {
-  .form-container {
-    padding: 2rem;
+#btn {
+  width: 100%;
+  background-color: #d1410c;
+  border: 0;
+}
+
+#title {
+  font-family: "Righteous", system-ui;
+  font-weight: 300;
+  color: #f85215;
+}
+
+.text-white {
+  background-color: transparent;
+}
+
+
+@media (min-width: 768px) {
+  .gradient-form {
+    height: 100vh !important;
   }
 }
 
-.form-container {
-  flex: 1;
-  padding: 4rem;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 700px;
-}
-
-input,
-button {
-  width: 100%;
-  border: 3px solid #ccc;
-  border-radius: 15px;
-  font-size: 70px;
-}
-
-button {
-  background-color: #ff5722;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-button:hover {
-  color: #e64a19;
-  background-color: #e64a19;
-}
-
-/* Background Image styling*/
-/* .background-image {
-    flex: 2;
-    background: no-repeat center center;
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
-    justify-content: center;
-    object-fit: contain;
-    overflow: hidden;
-    max-width: 100%;
-    height: auto;
-
-} */
-
-@media (max-width: 768px) {
-  .background-image {
-    display: none;
+@media (min-width: 769px) {
+  .gradient-custom-2 {
+    border-top-right-radius: .3rem;
+    border-bottom-right-radius: .3rem;
   }
 }
-
-/* @media (min-width: 768px) {
-    .signup-container {
-        margin-top: 100px;
-        width: 100px;
-    }
-} */
-
-/* Customize form container */
-
-
-.container h1 {
-  font-size: 50px;
-  font-weight: bold;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  color: #121212;
-}
-
-.container :placeholder-shown {
-  font-size: 40px;
-}
-
-.btn-continue {
-  background-color: #ff5700;
-  color: white;
-  width: 100%;
-  margin-top: 20px;
-  font-size: 30px;
-}
-
 .or-divider {
   text-align: center;
   margin: 20px 0;
@@ -126,7 +81,7 @@ button:hover {
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 10px;
-  font-size: 30px;
+  font-size: 20px;
 }
 
 .btn-google {
@@ -145,33 +100,4 @@ button:hover {
 
 .login-link:hover {
   color: #1877f2;
-}
-
-.logo-container {
-  text-align: left;
-  padding-top: 20px;
-  /* Adjust the space above */
-  padding-bottom: 20px;
-  /* Adjust the space below */
-}
-
-.logo-container img {
-  max-width: 200px;
-  /* Adjust the width of the image */
-}
-
-.title {
-  padding-top: 20px;
-  padding-bottom: 40px;
-  margin-right: 20px;
-  font-size: 2.5rem;
-  color: #FF5B37;
-  font-weight: bold;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  letter-spacing: -0.5px;
-  display: flex;
-}
-
-span {
-  font-size: 1.5rem;
 }

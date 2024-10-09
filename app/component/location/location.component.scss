@@ -1,0 +1,209 @@
+body,
+html {
+  font-family: Neue Plak, -apple-system, blinkmacsystemfont, roboto, Helvetica Neue, helvetica, tahoma, arial, sans-serif;
+  background-color: #f8f8f8;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.btn-group {
+  display: flex;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  overflow: auto;
+
+}
+
+.btn-group:first-child {
+  border-bottom-left-radius: 8px;
+  border-top-left-radius: 8px;
+}
+
+.btn-group:last-child {
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.btn {
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-primary {
+  background-color: #4066E0;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.btn-secondary:hover {
+  transition: 0.2s;
+  background-color: #cfcfcf;
+
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+a {
+  color: #4066E0;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+img {
+  width: 100%;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.price-input {
+  position: relative;
+}
+
+.price-input::before {
+  content: '$';
+  position: absolute;
+  left: 10px;
+  top: 17px;
+  transform: translateY(-50%);
+  color: #00b100;
+  font-weight: bold
+}
+
+.price-input input {
+  padding-left: 25px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 20px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked+.slider {
+  background-color: #4066E0;
+}
+
+input:checked+.slider:before {
+  transform: translateX(20px);
+}
+
+.free-tickets {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #666;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.btn-exit {
+  background-color: transparent;
+  color: #666;
+  border: none;
+  margin-right: 10px;
+  width: 60px;
+
+}
+
+.btn-exit:hover {
+  background-color: rgba(131, 136, 138, 0.315);
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.btn-create {
+  background-color: #F05537;
+  color: white;
+  border-radius: 8px;
+}
+
+.btn-create:hover {
+  background-color: #cc3f23;
+  transition: 0.2s;
+
+}
+
+p {
+  font-size: 1rem;
+  color: #13002d;
+  margin: 5px 0;
+  line-height: 1.5rem;
+}
+
+h2 {
+  font-weight: bold;
+  color: #261b36;
+  font-size: 1.25rem;
+
+}
+
+iframe {
+  margin-bottom: 50px;
+  ;
+  margin-top: 25px;
+}
