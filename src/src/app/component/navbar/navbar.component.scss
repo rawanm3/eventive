@@ -1,0 +1,181 @@
+.righteous-regular {
+  font-weight: 400;
+  font-style: normal;
+}
+
+#title {
+
+  font-family: "Righteous", system-ui;
+  font-weight: 300;
+  color: #f05656;
+  font-size: 24px;
+
+  font-weight: 800;
+  color: #f05656;
+  font-size: 30px;
+}
+
+#navbar {
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.div1 {
+  grid-area: 1 / 1 / 2 / 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.div2 {
+  grid-area: 1 / 2 / 2 / 4;
+}
+
+.div2 form {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+
+}
+
+#search-bar {
+  background-color: transparent;
+  color: white;
+  border: 0;
+  padding: 0.6em;
+}
+
+#search-btn {
+  background-color: #f05656;
+  border: 0;
+  padding: 0.5em;
+  border-radius: 0 25px 25px 0;
+}
+
+#search-bg {
+  background-color: #f8f7fa;
+  border-radius: 25px;
+  border: 2px solid #a9a8b3;
+  height: 2.6em;
+  transition: 0.3s;
+}
+
+#search-bg:hover {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 10px 0px;
+}
+
+.div4 {
+  grid-area: 1 / 5 / 2 / 7;
+}
+
+.div4 ul {
+  flex-flow: row wrap;
+}
+
+.div4 ul li {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  padding: 0em;
+  font-weight: 600;
+}
+
+.div5 {
+  grid-area: 1 / 7 / 2 / 9;
+}
+
+.div5 ul {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  margin: 0;
+}
+
+.div5 ul li {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  gap: 0;
+  margin: 0;
+}
+
+.div3 {
+  grid-area: 1 / 4 / 2 / 5;
+}
+
+.dropbtn {
+  background-color: transparent;
+  color: #615f5f;
+  border: none;
+  padding: 0.2em;
+  font-size: 16px;
+}
+
+.dd {
+  color: #6b6b6e;
+  padding: 0;
+  cursor: pointer;
+  width: 100%;
+}
+
+.dd:hover,
+.dd:focus {
+  background-color: #fdfbfb;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f7f7f7;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  width: 15em;
+  color: black;
+  padding: 1em;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
+}
+
+@media screen and (max-width: 500px) {
+
+  .div2,
+  .div4,
+  .div5 {
+    display: none;
+  }
+
+  #title {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+
+  .div2,
+  .div4,
+  .div5 {
+    display: none;
+  }
+
+}

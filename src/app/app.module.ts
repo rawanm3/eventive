@@ -22,6 +22,7 @@ import { HomeComponent } from './component/home/home.component';
 import { EventsComponent } from './component/events/events.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { LoginPageComponent } from './component/login-page/login-page.component';
+import { RegisterComponent } from './component/register/register.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { LoginPageComponent } from './component/login-page/login-page.component'
     NotFoundComponent,
     HomeComponent,
     DashboardComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    RegisterComponent
     
   ],
   imports: [

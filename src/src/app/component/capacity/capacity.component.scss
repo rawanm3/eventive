@@ -1,0 +1,125 @@
+input-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.input-container label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.input-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.input-wrapper input[type="number"] {
+  width: 200px;
+  padding: 10px;
+  padding-left: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  text-align: left;
+  transition: border 0.3s ease;
+  /* Smoother transition */
+  /* -moz-appearance: textfield; */
+}
+
+/* Hide arrows in number input */
+.input-wrapper input[type="number"]::-webkit-outer-spin-button,
+.input-wrapper input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* On hover, border becomes thicker with smooth transition */
+.input-wrapper input[type="number"]:hover {
+  border: 2px solid #888;
+  transition: border 0.3s ease;
+  /* Smooth hover transition */
+}
+
+/* On focus/click, border becomes even thicker */
+.input-wrapper input[type="number"]:focus {
+  outline: none;
+  border: 3px solid #555;
+  transition: border 0.3s ease;
+  /* Smooth focus transition */
+}
+
+.input-wrapper label[for="capacity"] {
+  position: absolute;
+  top: -9px;
+  left: 15px;
+  background-color: #fff;
+  padding: 0 5px;
+  font-size: 14px;
+  color: #000000;
+  pointer-events: none;
+}
+
+.description {
+  color: #666;
+  margin-bottom: 25px;
+  font-size: 14px;
+}
+
+.footer-strap {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #f8f9fa;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  text-align: right;
+}
+
+.footer-strap button {
+
+  margin-left: 10px;
+}
+
+.button-26 {
+  appearance: button;
+  background-color: #ee8acd;
+  border: 1px solid #ee8acd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: Graphik, -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  line-height: 1.15;
+  overflow: visible;
+  padding: 12px 16px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transition: all 80ms ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+}
+
+.button-26:disabled {
+  opacity: .5;
+}
+
+.button-26:focus {
+  outline: 0;
+}
+
+.button-26:hover {
+  background-color: #ee8acd;
+  border-color: #ee8acd;
+  opacity: .5;
+}
+
+.button-26:active {
+  background-color: #ee8acd;
+  border-color: #ee8acd;
+}
