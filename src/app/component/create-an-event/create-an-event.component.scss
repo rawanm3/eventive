@@ -37,8 +37,12 @@
   color: #333;
 }
 
-/* Button styling */
 button.btn-primary {
+  background-color: #D1410C;
+  border-color: #D1410C;
+  color: #fff;
+}
+button.btn-secondary{
   background-color: #D1410C;
   border-color: #D1410C;
   color: #fff;
@@ -47,4 +51,28 @@ button.btn-primary {
 button[disabled] {
   opacity: 0.5;
   cursor: not-allowed;
+}
+.eventbe{
+  display: flex;
+  padding: 12px 22px;
+  background:white ;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.Online{
+  padding: 12px ;
+  background-color: #D1410C;
+  border-color: #D1410C;
+  color: white;
+  border: none;
+  border-radius: 25px;
+}
+.Offline{
+ padding: 12px ;
+ background-color: #D1410C;
+ border-color: #D1410C;
+ color: white;
+ border: none;
+ border-radius: 25px;
 }

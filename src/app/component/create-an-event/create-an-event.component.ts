@@ -26,7 +26,7 @@ export class CreateAnEventComponent {
 
   // Move to the next step
   nextStep() {
-    if (this.currentStep < 5) {
+    if (this.currentStep < 6) {
       this.currentStep++;
     }
   }
