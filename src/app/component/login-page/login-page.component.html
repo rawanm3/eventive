@@ -12,6 +12,7 @@
           <div class="">
             <!-- <h3 style="cursor: pointer; ;" id="title" routerLink="/home">eventive</h3> -->
             <h1 class="mt-1 mb-5 pb-1" style="font-size: 52px; font-weight:700;">Log in</h1>
+            {{registerForm.value | json}}
           </div>
           <!-- <div class="col-lg-4 d-none d-lg-flex align-items-start justify-content-start">
             <div class="back-home">
@@ -20,17 +21,16 @@
             </div>
           </div> -->
 
-          <form>
-
-
+          <form #registerForm="ngForm">
+            
             <div data-mdb-input-init class="form-outline mb-4">
-              <input type="email" id="form2Example11" class="form-control"
-                placeholder="Phone number or email address" />
+                <input type="email" id="form2Example11" class="form-control"
+                placeholder="Phone number or email address" ngModel name="name" />
 
             </div>
 
             <div data-mdb-input-init class="form-outline mb-4">
-              <input type="password" id="form2Example22" class="form-control" placeholder="Password" />
+              <input type="password" id="form2Example22" class="form-control" placeholder="Password" ngModel name="password"/>
 
             </div>
 
