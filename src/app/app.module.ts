@@ -3,6 +3,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from '../enviroments/enviroments';
 import { BrowserModule } from '@angular/platform-browser'
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
@@ -24,8 +25,8 @@ import { EventsComponent } from './component/events/events.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { LoginPageComponent } from './component/login-page/login-page.component';
 import { RegisterComponent } from './component/register/register.component';
-
-
+import { PipesComponent } from './component/pipes/pipes.component';
+import { EventPageComponent } from './component/event-page/event-page.component';
 
 @NgModule({
 
@@ -49,17 +50,18 @@ import { RegisterComponent } from './component/register/register.component';
     HomeComponent,
     DashboardComponent,
     LoginPageComponent,
-    RegisterComponent
-   
-    
+    RegisterComponent,
+    PipesComponent,
+    EventPageComponent, 
   ],
   imports: [
     BrowserModule,
+    FormsModule, 
+    AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebase),
     // AngularFireAuthModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
