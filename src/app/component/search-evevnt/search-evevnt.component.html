@@ -83,20 +83,29 @@
     </div>
 
     <div class="col-sm-12 col-md-9">
+    <div class="col-sm-12 col-md-6" *ngFor="let event of filteredEvents" >
       <div class="card event-card">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F820031459%2F111235949977%2F1%2Foriginal.20240803-221609?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C9000%2C4500&s=c347cab736dd7a2e596e12f410298337"
+            <!-- <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F820031459%2F111235949977%2F1%2Foriginal.20240803-221609?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C9000%2C4500&s=c347cab736dd7a2e596e12f410298337"
               class="card-img" alt="Event Image" height="100%">
+               -->
+               <img [src]="event.imageUrl" class="card-img" alt="Event Image" height="100%">
+
           </div>
 
           <!-- Content section -->
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title">Bat Movie Benefit at the Lark Theater</h5>
-              <p class="card-text">Tomorrow • 6:30 PM</p>
-              <p class="card-text">Lark Theater</p>
-              <p class="card-text"><strong> Check ticket price on event </strong></p>
+              <h5 class="card-title">{{ event.title }}</h5>
+              <p class="card-text">{{ event.date }}</p>
+              <p class="card-text">{{ event.location }}</p>
+              <p class="card-text"><strong>{{ event.price }}</strong>
+                <span *ngIf="event.discount" class="discount-badge">
+                  <i class="fas fa-tag"></i>
+                  {{ event.discount }} off
+                </span>
+              </p>
               <a href="#" class="text">Promoted</a>
               <button class="btn btn-outline-secondary mx-2">Share</button>
               <button class="btn btn-outline-secondary">like</button>
@@ -105,7 +114,8 @@
           </div>
         </div>
       </div>
-      <div class="card event-card">
+    </div>
+      <!-- <div class="card event-card">
         <div class="row no-gutters">
 
           <div class="col-md-4">
@@ -113,13 +123,13 @@
               class="card-img" alt="Event Image" height="100%">
           </div>
 
-          <!-- Content section -->
+          
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title">Kites in the Sky - World Mental Health Day</h5>
-              <p class="card-text">Thursday, October 10 · 2:30</p>
-              <p class="card-text">Rodeo Beach</p>
-              <p class="card-text"><strong> From 30$ </strong>
+              <h5 class="card-title">{{ event.title }}</h5>
+              <p class="card-text">{{ event.date }}</p>
+              <p class="card-text">{{ event.location }}</p>
+              <p class="card-text"><strong>{{ event.price }}</strong>
                 <span class="discount-badge">
                   <i class="fas fa-tag"></i>
                   $5.00 off select tickets
@@ -142,13 +152,13 @@
 
           </div>
 
-          <!-- Content section -->
+          
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title">Egypt Journey: An 8 days tour vacation from Cairo with locals</h5>
-              <p class="card-text">Sunday, October 13 · 7 - 10pm</p>
-              <p class="card-text">Tahrir Square Hostel</p>
-              <p class="card-text"><strong> From €1,300 </strong>
+              <h5 class="card-title">{{ event.title }}</h5>
+              <p class="card-text">{{ event.date }}</p>
+              <p class="card-text">{{ event.location }}</p>
+              <p class="card-text"><strong>{{ event.price }}</strong>
                 <span class="discount-badge">
                   <i class="fas fa-tag"></i>
                   $10.00 off
@@ -162,8 +172,13 @@
           </div>
         </div>
       </div>
+<<<<<<< HEAD
     </div>
     <!-- <div class="d-none d-md-block col-md-4">
+=======
+    </div> -->
+    <div class="d-none d-md-block col-md-4">
+>>>>>>> d3067899acf51546cdd897fe6449987af40bb405
       <div>
         <iframe width="100%" height="880" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
           src="https://www.openstreetmap.org/export/embed.html?bbox=24.700195312500004%2C22.228090416784486%2C37.265625%2C31.728167146023935&layer=mapnik">
