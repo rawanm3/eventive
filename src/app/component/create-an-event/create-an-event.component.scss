@@ -5,8 +5,23 @@
   align-items: center;
   min-height: 100vh;
   width: 100%;
-  background-color: #ffffff;
+  background-color:#D1410C;
   padding: 20px;
+}
+.righteous-regular {
+  font-weight: 400;
+  font-style: normal;
+}
+
+#title {
+
+  font-family: "Righteous", system-ui;
+  font-weight: 300;
+  color: white;
+  font-size: 24px;
+
+  font-weight: 800;
+  font-size: 30px;
 }
 .form-container {
   background: #fff;

@@ -21,22 +21,31 @@
             </div>
           </div> -->
 
-          <form #registerForm="ngForm">
+          <form #registerForm="ngForm" novalidate >
             
             <div data-mdb-input-init class="form-outline mb-4">
                 <input type="email" id="form2Example11" class="form-control"
-                placeholder="Phone number or email address" ngModel name="name" />
-
+                placeholder="Phone number or email address"name="name" [(ngModel)]="userModel.name" #name="ngModel"
+                 required
+              [class.is-invalid]="name.invalid && name.touched"
+                 />
+              <small *ngIf="name.invalid && name.touched" class="text-danger">name is required</small>
             </div>
 
             <div data-mdb-input-init class="form-outline mb-4">
-              <input type="password" id="form2Example22" class="form-control" placeholder="Password" ngModel name="password"/>
-
+              <input type="password" id="form2Example22" class="form-control" placeholder="Password"  name="password" 
+              [(ngModel)]="userModel.password" 
+              required
+              #password="ngModel"
+              required
+              [class.is-invalid]="password.invalid && password.touched"
+              />
+            <small *ngIf="password.invalid && password.touched" class="text-danger">password is required</small>
             </div>
 
             <div class="text-center pt-1 mb-5 pb-1">
               <button data-mdb-button-init data-mdb-ripple-init id="btn"
-                class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">Log
+                class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button" >Log
                 in</button>
               <div>
                 <a class="text-muted" href="#!">Forgot password?</a>
