@@ -22,7 +22,9 @@ import { EventsComponent } from './component/events/events.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { LoginPageComponent } from './component/login-page/login-page.component';
 import { RegisterComponent } from './component/register/register.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { PipesComponent } from './component/pipes/pipes.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
 
@@ -46,15 +48,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     DashboardComponent,
     LoginPageComponent,
-    RegisterComponent
-   
-    
+    RegisterComponent,
+    PipesComponent, 
   ],
   imports: [
     BrowserModule,
+    FormsModule, 
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    // AngularFireAuthModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

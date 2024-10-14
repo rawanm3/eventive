@@ -15,11 +15,11 @@ const routes: Routes = [
   {path:'search-event',component:SearchEvevntComponent},
   {path:'like',component:LikeComponent},
   {path:'tickets',component:TicketsComponent},
-    {path:'create-an-event',component:CreateAnEventComponent},
+  {path:'create-an-event',component:CreateAnEventComponent},
   {path:'signup',component:SignupComponent},
   {path: 'loginPage' ,component :LoginComponent},
-  {path:'**',component:NotFoundComponent}
-]
+  { path: '**', component: NotFoundComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
