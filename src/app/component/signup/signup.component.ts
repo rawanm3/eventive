@@ -16,17 +16,19 @@ userModel=new USERModel(
   ''
 );
 constructor(private userService :UserService){}
-onSubmit(){
-  this.userService.addUser(this.userModel).subscribe({
-    next:(data)=> console.log(data),
-    error: (error) => console.log(error),
+ngOnInit(){}
+signUp(form: any){
+// this.userService.addUser(this.userModel).subscribe({
+//   next:(data)=> console.log(data),
+// });
+console.log(form)
+}
+// onSubmit(form){
+//   // this.userService.addUser(this.userModel).subscribe({
+//   //   next:(data)=> console.log(data),
+//   //   error: (error) => console.log(error),
     
-  });}
-//  onSubmit() {
-//     this.userService.addUser(this.userModel).then(() => {
-//       console.log('User added successfully');
-//     }).catch((error: any) => {
-//       console.error('Error adding user: ', error);
-//     });
-//   }
+//   // });
+  
+// }
 }

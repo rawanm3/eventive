@@ -18,16 +18,17 @@ userModel=new USERModel(
   '',
   ''
 );
-
+ngOnInit(){}
 // email:string='';
 // password :string='';
 // constructor(private auth : AuthService){}
 
-// login(){
-//   if(this.email == ''){
-//     alert('please enter email ');
-//     return;
-//   }
+login(form: any){
+  // if(this.email == ''){
+  //   alert('please enter email ');
+  //   return;
+  console.log(form)
+  }
 //   if(this.password == ''){
 //     alert('please enter password ');
 //     return;
@@ -37,7 +38,7 @@ userModel=new USERModel(
 //   this.password='';
 // }
 ////////////////////////////////////////////
-constructor(private userService :UserService){}
+// constructor(private userService :UserService){}
 // onSubmit(){
 //   this.userService.addUser(this.userModel).subscribe({
 //     next:(data: any)=> console.log(data),

@@ -9,14 +9,19 @@
     <div class="row g-0">
       <div class="col-lg-6">
         <div class="card-body p-md-5 mx-md-4">
+<!-- 
+          <div class="">
+             <h3 id="title">eventive</h3> 
+            <h1 class="mt-1 mb-5 pb-1" style="font-size: 52px; font-weight:700;">Sign Up</h1>
+            {{registerPage.value | json}}
+          </div> -->
 
+          <form #registerPage="ngForm" novalidate (ngSubmit)="signUp(registerPage)">
           <div class="">
             <!-- <h3 id="title">eventive</h3> -->
             <h1 class="mt-1 mb-5 pb-1" style="font-size: 52px; font-weight:700;">Sign Up</h1>
-            {{registerForm.value | json}}
+            <!-- {{registerPage.value | json}} -->
           </div>
-
-          <form #registerForm="ngForm" novalidate (ngSubmit)="onSubmit()">
 
             <div class="form-outline mb-4">
               <input type="text" id="name" class="form-control" placeholder="First Name"
@@ -78,7 +83,7 @@
             </div>
 
             <div class="text-center pt-1 mb-5 pb-1">
-              <button data-mdb-button-init data-mdb-ripple-init id="btn" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit" [disabled]="registerForm.invalid">Sign Up</button>
+              <button data-mdb-button-init data-mdb-ripple-init id="btn" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit" [disabled]="registerPage.invalid">Sign Up</button>
             </div>
 
             <div class="or-divider">or</div>
