@@ -1,6 +1,6 @@
 <div class="container-wrapper">
     <div class="back-home" style="position: absolute; top: 20px; left: 20px;">
-        <a href="/" class="back-home-link" style="color: #D1410C; font-size: 28px;">Eventive</a>
+    <a class="navbar-brand" id="title" routerLink="/home">Eventive</a>
     </div>
     <div class="form-container">
         <div class="event-content">
@@ -12,7 +12,7 @@
                         <p>Answer a few questions about your event and your details of it and We will use internal data to build an event page.We hope you have a wonderful experience with us</p>
                     </div>
                     <div class="footer d-flex justify-content-end mt-4">
-                        <button type="button" class="btn btn-primary" (click)="nextStep()">Next</button>
+                        <button type="button" class="btn btn-primary" (click)="nextStep()" >Next</button>
                     </div>
                 </div>
 
@@ -32,7 +32,7 @@
                     <div *ngIf="!imageSelected && currentStep === 2" class="text-danger">Image is required.</div>
                     <div class="d-flex justify-content-between mt-4" required>
                         <button type="button" class="btn btn-secondary padding-20px" (click)="prevStep()">Back</button><br>
-                        <button type="button" class="btn btn-primary" (click)="nextStep()">Next</button>
+                        <button type="button" class="btn btn-primary" (click)="nextStep()" [disabled]="!imageSelected && currentStep === 2 ||createEventForm.get('eventName')?.invalid ">Next</button>
                     </div>
                 </div>
 
@@ -63,16 +63,17 @@
                     </div>
                      <div class="d-flex justify-content-between mt-4">
                         <button type="button" class="btn btn-secondary padding-20px" (click)="prevStep()">Back</button><br>
-                        <button type="button" class="btn btn-primary" (click)="nextStep()">Next</button>
+                        <button type="button" class="btn btn-primary" (click)="nextStep()"  [disabled]="createEventForm.get('endTime')?.invalid ||createEventForm.get('startTime')?.invalid ||createEventForm.get('eventDate')?.invalid ">Next</button>
                     </div>
                 </div>
                 <div *ngIf="currentStep === 4" class="form-step">
                     <h2>About</h2>
                     <p>What do you want to put in the event description?</p>
-                    <textarea id="eventDescription" class="form-control mb-4" placeholder="Destination" required></textarea>
+                    <textarea id="eventDescription" class="form-control mb-4" placeholder="Destination" formControlName="about" required></textarea>
+                    <div *ngIf="createEventForm.get('about')?.invalid" class="text-danger">description is required.</div>
                      <div class="d-flex justify-content-between mt-4">
                         <button type="button" class="btn btn-secondary padding-20px" (click)="prevStep()">Back</button><br>
-                        <button type="button" class="btn btn-primary" (click)="nextStep()">Next</button>
+                        <button type="button" class="btn btn-primary" (click)="nextStep()" [disabled]="createEventForm.get('about')?.invalid">Next</button>
                     </div>
                 </div> 
                 <div *ngIf="currentStep === 5" class="form-step">

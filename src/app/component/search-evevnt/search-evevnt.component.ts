@@ -155,6 +155,7 @@ events = [
 ];
 
 filteredEvents = this.events; // Initialize with all events
+event: any;
   // eventSearchService: any;
   // searchQuery: string;
 
