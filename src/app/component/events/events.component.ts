@@ -1,12 +1,24 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { EventService } from './../../services/event.service';
+import { AppEvent } from './app-event.model'; // Update import
+import { AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.scss']
 })
-export class EventsComponent implements AfterViewInit {
+// export class EventsComponent {
+//   events: AppEvent[] = []; // Array to hold events
+//     @Input() event!:  AppEvent;
 
+//   constructor(private eventService: EventService) {
+//     this.events = this.eventService.getEvents();
+//   }
+//   onLike() {
+//     this.eventService.likeEvent(this.event);
+//   }
+export class EventsComponent implements AfterViewInit {
   ngAfterViewInit() {
     const tabs = document.querySelectorAll('.tab');
     const eventCards = document.querySelectorAll('.event-card');

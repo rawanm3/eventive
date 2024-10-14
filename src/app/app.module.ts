@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from '../enviroments/enviroments';
+import { BrowserModule } from '@angular/platform-browser'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,9 +25,8 @@ import { EventsComponent } from './component/events/events.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { LoginPageComponent } from './component/login-page/login-page.component';
 import { RegisterComponent } from './component/register/register.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { PipesComponent } from './component/pipes/pipes.component';
-import { FormsModule } from '@angular/forms';
+import { EventPageComponent } from './component/event-page/event-page.component';
 
 @NgModule({
 
@@ -49,7 +51,8 @@ import { FormsModule } from '@angular/forms';
     DashboardComponent,
     LoginPageComponent,
     RegisterComponent,
-    PipesComponent, 
+    PipesComponent,
+    EventPageComponent, 
   ],
   imports: [
     BrowserModule,

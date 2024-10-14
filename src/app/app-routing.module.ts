@@ -8,6 +8,7 @@ import { CreateAnEventComponent } from './component/create-an-event/create-an-ev
 import { LoginComponent } from './component/login/login.component';
 import { SignupComponent } from './component/signup/signup.component';
 import { HomeComponent } from './component/home/home.component';
+import { EventPageComponent } from './component/event-page/event-page.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path:'create-an-event',component:CreateAnEventComponent},
   {path:'signup',component:SignupComponent},
   {path: 'loginPage' ,component :LoginComponent},
+  {path: 'eventPage' ,component :EventPageComponent},
   { path: '**', component: NotFoundComponent }
 ];
 
