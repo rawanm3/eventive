@@ -45,12 +45,12 @@ export class DashboardComponent {
       { name: 'Cairo event', date: '4/10/2024', tickets: 256, totalTickets: 250 },
       { name: 'Alexandria event', date: '4/10/2024', tickets: 211, totalTickets: 250 },
       { name: 'New Alamein event', date: '4/10/2024', tickets: 241, totalTickets: 300 },
-      { name: 'sharm alshakh event', date: '1/10/2024', tickets: 755, totalTickets: 1000 },
-      { name: 'New Alamein event', date: '1/10/2024', tickets: 200, totalTickets: 250 },
+      { name: 'sharm alshakh event', date: '5/9/2024', tickets: 755, totalTickets: 1000 },
+      { name: 'New Alamein event', date: '1/9/2024', tickets: 200, totalTickets: 250 },
       { name: 'Alghardaqa event', date: '1/10/2024', tickets: 320, totalTickets: 400 },
-      { name: 'cairo event', date: '1/10/2024', tickets: 321, totalTickets: 350 },
-      { name: 'Alexandria event', date: '1/10/2024', tickets: 68, totalTickets: 100 },
-      { name: 'Luxor event', date: '4/10/2024', tickets: 250, totalTickets: 250 },
+      { name: 'cairo event', date: '3/10/2024', tickets: 321, totalTickets: 350 },
+      { name: 'Alexandria event', date: '5/10/2024', tickets: 68, totalTickets: 100 },
+      { name: 'Luxor event', date: '8/10/2024', tickets: 250, totalTickets: 250 },
       { name: 'Sharm El Sheikh event', date: '4/10/2024', tickets: 120, totalTickets: 200 },
     ];
   
@@ -60,13 +60,13 @@ export class DashboardComponent {
       { name: 'Virtual Meetup', date: '3/10/2024', tickets: 200, totalTickets: 200 },
       { name: 'Online Workshop', date: '4/10/2024', tickets: 250, totalTickets: 300 },
       { name: 'New Alamein event', date: '1/10/2024', tickets: 200, totalTickets: 250 },  
-      { name: 'Alghardaqa event', date: '1/10/2024', tickets: 320, totalTickets: 400 },
-      { name: 'cairo event', date: '1/10/2024', tickets: 321, totalTickets: 350 },
-      { name: 'Alexandria event', date: '1/10/2024', tickets: 68, totalTickets: 100 },
-      { name: 'Giza event', date: '1/10/2024', tickets: 135, totalTickets: 300 },
+      { name: 'Alghardaqa event', date: '9/10/2024', tickets: 320, totalTickets: 400 },
+      { name: 'cairo event', date: '11/10/2024', tickets: 321, totalTickets: 350 },
+      { name: 'Alexandria event', date: '13/10/2024', tickets: 68, totalTickets: 100 },
+      { name: 'Giza event', date: '12/10/2024', tickets: 135, totalTickets: 300 },
       { name: 'New Alamein event', date: '4/10/2024', tickets: 241, totalTickets: 300 },
-      { name: 'sharm alshakh event', date: '1/10/2024', tickets: 755, totalTickets: 1000 },
-      { name: 'New Alamein event', date: '1/10/2024', tickets: 200, totalTickets: 250 },
+      { name: 'sharm alshakh event', date: '12/10/2024', tickets: 755, totalTickets: 1000 },
+      { name: 'New Alamein event', date: '13/10/2024', tickets: 200, totalTickets: 250 },
   
     ];
   
