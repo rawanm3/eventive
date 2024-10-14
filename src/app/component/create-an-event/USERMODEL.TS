@@ -13,6 +13,8 @@ export class UserModel {
         public startDateEvent : string,
         public timeInput :string,
         public endDateEvent : string,
+        public endTime : any,
+        public startTime : any,
         public eventAddress : string,
         public eventPrice : string,
         public eventCapacity : string,

@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class CreateAnEventComponent {
 
-  userModel = new UserModel('', '', '', '', '', '', '', '', '', '', false, true);
+  userModel = new UserModel('', '', '', '', '', '', '', '', '','','', '', false, true);
 
   createEventForm: FormGroup;
   currentStep = 1;
@@ -32,13 +32,15 @@ export class CreateAnEventComponent {
       dateEvent: ['', Validators.required],
       startDateEvent: ['', Validators.required],
       timeInput: ['', Validators.required],
+      startTime: ['', Validators.required],
+      endTime: ['', Validators.required],
       endDateEvent: ['', Validators.required],
       eventAddress: ['', Validators.required],
       eventPrice: ['', Validators.required],
       eventCapacity: ['', Validators.required],
       isOnClicked: ['', Validators.required],
       isOffClicked: ['', Validators.required],
-      eventImg: [null, Validators.required]
+      eventImg: [null, Validators.required],
     });
   }
 
