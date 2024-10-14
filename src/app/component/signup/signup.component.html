@@ -13,28 +13,29 @@
           <div class="">
             <!-- <h3 id="title">eventive</h3> -->
             <h1 class="mt-1 mb-5 pb-1" style="font-size: 52px; font-weight:700;">Sign Up</h1>
+            {{registerForm.value | json}}
           </div>
 
-          <form>
+          <form #registerForm="ngForm">
 
             <div class="form-outline mb-4">
-              <input type="text" id="name" class="form-control" placeholder="First Name" />
+              <input type="text" id="name" class="form-control" placeholder="First Name" ngModel name="name" />
             </div>
 
             <div class="form-outline mb-4">
-              <input type="text" id="name2" class="form-control" placeholder="Last Name" />
+              <input type="text" id="name2" class="form-control" placeholder="Last Name" ngModel name="name"/>
             </div>
 
             <div class="form-outline mb-4">
-              <input type="email" id="form2Example11" class="form-control" placeholder="Phone number or email address" />
+              <input type="email" id="form2Example11" class="form-control" placeholder="Phone number or email address"ngModel name="email" />
             </div>
 
             <div class="form-outline mb-4">
-              <input type="password" id="form2Example22" class="form-control" placeholder="Password" />
+              <input type="password" id="form2Example22" class="form-control" placeholder="Password" ngModel name="password"/>
             </div>
 
             <div class="form-outline mb-4">
-              <input type="password" id="form2Example222" class="form-control" placeholder="Repeat Password" />
+              <input type="password" id="form2Example222" class="form-control" placeholder="Repeat Password" ngModel name="password"/>
             </div>
 
             <div class="text-center pt-1 mb-5 pb-1">
