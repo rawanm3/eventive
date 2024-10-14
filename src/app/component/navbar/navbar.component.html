@@ -23,15 +23,39 @@
   <nav class="navbar navbar-expand-lg d-grid p-2" id="navbar">
     <div class="div1">
       <a class="navbar-brand" id="title" routerLink="/home">Eventive</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-      </button>
+      </button> -->
       
     </div>
+    <div class="div8">
+      <button id="brgrbtn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon">
+          <div class="dropdown d-flex flex-row-reverse">
+        <div class="dd">
+          <i class="fa-regular fa-user me-2" style="font-size: 20px;"></i>
+          <button (click)="toggleDropdown()" class="dropbtn">
+          <h6 style="color: #fdfbfb; background-color: #fdfbfb;">guest</h6>
+          </button>
+          <!-- <img width="20" height="20" src="https://img.icons8.com/ios-filled/20/737373/expand-arrow--v1.png"
+            alt="expand-arrow--v1" /> -->
+        </div>
+        <div id="myDropdown" [ngClass]="{'show': isDropdownOpen}" class="dropdown-content">
+          <a routerLink="/tickets">Tickets</a>
+          <a routerLink="/like">Liked</a>
+          <a routerLink="/loginPage">Log out</a>
+          <a routerLink="/signup">Sign up</a>
+        </div>
+      </div>
+        </span>
+      </button>
+    </div>
     <div class="div2">
+
       <form class="form-inline" id="search-bg">
-        <input class="form-control mr-sm-2" type="search" (input)="searchEvents($event)" placeholder="Search events" id="search-bar"
+        <input class="form-control mr-sm-2" type="search" placeholder="Search events" id="search-bar"
           aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" id="search-btn" type="submit" routerLink="/search-event">
           <img width="20" height="20" src="https://img.icons8.com/material-outlined/24/FFFFFF/search--v1.png"

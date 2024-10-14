@@ -14,17 +14,20 @@
   <!-- Events in Egypt Section -->
   <section class="events-section container p-4">
       <h2 class="mb-4 color-text#f05656">Events in Egypt</h2>
-      <div class="events-grid">
+      <div  *ngFor="let event of events" class="events-grid">
           <!-- Event Card 1 -->
-          <div class="event-card">
+          <div   *ngFor="let event of events" class="event-card">
               <img src="https://egyptresttours.com/wp-content/uploads/2023/09/cropped-28-pharaoh-week.jpg" alt="Event Image" width="100%">
               <div class="event-info">
                   <p class="event-status">Almost full</p>
-                  <h3>Skyfire Festival</h3>
+                  <h3>Skyfire Festival{{ event.title }}</h3>
                   <p>Tomorrow • 12:30 AM GMT+3</p>
                   <p>Free</p>
                   <p>Experience the city's biggest celebration of lights at the Skyfire Festival! • 804 followers</p>
                   <p class="promoted">Promoted</p>
+                <button class="btn btn-primary" (click)="onLike()" [disabled]="event.liked">
+                    {{ event.liked ? 'Liked' : 'Like' }}
+                </button>
               </div>
           </div>
           <!-- Event Card 2 -->
