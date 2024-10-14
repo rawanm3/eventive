@@ -22,7 +22,7 @@ import { EventsComponent } from './component/events/events.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { LoginPageComponent } from './component/login-page/login-page.component';
 import { RegisterComponent } from './component/register/register.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -46,13 +46,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     DashboardComponent,
     LoginPageComponent,
     RegisterComponent
-   
-    
   ],
   imports: [
     BrowserModule,
+    FormsModule, 
     AppRoutingModule,
-     ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
