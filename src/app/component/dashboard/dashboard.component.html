@@ -165,7 +165,7 @@
               <td>{{ event.date }}</td>
               <td>{{ event.tickets }}</td>
               <td>{{ event.totalTickets }}</td>
-              <td class="Exit">
+              <td class="Exit" style=" cursor: pointer;">
                 <i class="fa-solid fa-trash-can" (click)="deleteRow('offline', (offlineCurrentPage - 1) * itemsPerPage + i)"></i>
               </td>
             </tr>
@@ -216,7 +216,7 @@
               <td>{{ event.date }}</td>
               <td>{{ event.tickets }}</td>
               <td>{{ event.totalTickets }}</td>
-              <td class="Exit">
+              <td class="Exit" style=" cursor: pointer;">
                 <i class="fa-solid fa-trash-can" (click)="deleteRow('online', (onlineCurrentPage - 1) * itemsPerPage + i)"></i>
               </td>
             </tr>
