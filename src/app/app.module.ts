@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserModule } from '@angular/platform-browser'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
@@ -23,6 +22,9 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { LoginPageComponent } from './component/login-page/login-page.component';
 import { RegisterComponent } from './component/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from '../enviroments/enviroments';
+
 
 @NgModule({
 
@@ -52,9 +54,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    // AngularFireAuthModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,13 +2,13 @@
 .filter-tabs {
   /* background-color: white; */
   padding: 10px;
-  color: #f05656;
+  color: #f85215;
   /* box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); */
   text-align: center;
 }
 
 h2 {
-  color: #f05656;
+  color: #f85215;
 }
 .tabs {
   list-style: none;
@@ -27,7 +27,7 @@ h2 {
 
 .tab-item:hover,
 .tab-item.active {
-  background-color: #f05656;
+  background-color:#f85215;
   color: white;
 }
 
@@ -80,7 +80,7 @@ h2 {
 }
 
 .event-status {
-  color: #ff5000;
+  color: #f85215;
   font-weight: bold;
   margin-bottom: 10px;
 }
