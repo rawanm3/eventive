@@ -135,6 +135,7 @@ events = [
     location: 'Lark Theater',
     price: 'Check ticket price',
     discount: null,
+    category: 'Business',
     imageUrl: 'https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F820031459%2F111235949977%2F1%2Foriginal.20240803-221609?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C9000%2C4500&s=c347cab736dd7a2e596e12f410298337'
   },
   {
@@ -142,21 +143,23 @@ events = [
     date: 'Thursday, October 10 · 2:30', 
     location: 'Rodeo Beach', 
     price: 'From 30$',
-    discount: "$5.00 off select tickets",  // No discount for this event
+    discount: "$5.00 off select tickets",
+    category: 'Health',
     imageUrl: "https://static.wixstatic.com/media/1b1025_4d5b5f2602144136bd130e00fd19d0dc~mv2.png/v1/fill/w_458,h_458,fp_0.50_0.50,q_85,usm_0.66_1.00_0.01,enc_auto/1b1025_4d5b5f2602144136bd130e00fd19d0dc~mv2.png"
   },
   {
     title: 'Egypt Journey: An 8 days tour vacation from Cairo',
      date: 'October 20 · 9:00 AM', 
-     location: 'Cairo, Egypt', price: 'From 1500$' ,
+     location: 'Cairo, Egypt',
+     price: 'From 1500$' ,
     discount: '$10.00 off',
+    category: 'camping',
     imageUrl: 'https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F864927379%2F2358842013293%2F1%2Foriginal.20241002-170711?crop=focalpoint&fit=crop&w=940&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.496212121212&fp-y=0.0359922178988&s=cb29cc16c60289ffd58d9c6a2f1167a3'
   }
 ];
 
-filteredEvents = this.events; // Initialize with all events
-  // eventSearchService: any;
-  // searchQuery: string;
+filteredEvents = this.events; 
+  
 
 ngOnInit(): void {
   this.eventSearchService.currentSearchTerm.subscribe((searchTerm) => {
@@ -166,30 +169,33 @@ ngOnInit(): void {
         event.title.toLowerCase().includes(searchTerm.toLowerCase())
       );
     } else {
-      // If no search term, show all events
-      this.filteredEvents = this.events;
+    
+      // this.filteredEvents = this.events;
+      this.applyFilters();
     }
+  });
+  this.filtersGroup.valueChanges.subscribe(() => {
+    this.applyFilters();
+  });
+}
+applyFilters(): void {
+  const { category, date, price } = this.filtersGroup.value;
+
+  this.filteredEvents = this.events.filter(event => {
+    const categoryMatches = !category || event.category?.toLowerCase() === category.toLowerCase();
+    
+    const dateMatches = !date || event.date.toLowerCase().includes(date.toLowerCase());
+    
+    const priceMatches = !price || 
+      (price === 'free' ? Number(event.price.replace(/[^0-9.-]+/g, "")) === 0 : Number(event.price.replace(/[^0-9.-]+/g, "")) > 0);
+
+    return categoryMatches && dateMatches && priceMatches;
   });
 }
 
 
-// Method to filter events based on search input
-// searchEvents(searchTerm: string) {
-//   if (searchTerm) {
-//     this.filteredEvents = this.events.filter(event =>
-//       event.title.toLowerCase().includes(searchTerm.toLowerCase())
-//     );
-//   } else {
-//     this.filteredEvents = this.events; // Show all events if no search term is provided
-//   }
-// }
-// events: any[] = [
-//   { title: 'Bat Movie Benefit at the Lark Theater', date: 'Tomorrow • 6:30 PM', location: 'Lark Theater', price: 'Check ticket price' },
-//   { title: 'Kites in the Sky - World Mental Health Day', date: 'Thursday, October 10 · 2:30', location: 'Rodeo Beach', price: 'From 30$' },
-//   { title: 'Egypt Journey: An 8 days tour vacation from Cairo', date: 'October 20 • 9:00 AM', location: 'Cairo, Egypt', price: 'From 1500$' }
-// ];
-// filteredEvents: any[] = [];
-// searchQuery: string = '';
+
+
   constructor(private fb: FormBuilder,private route:ActivatedRoute,private eventSearchService: EventSearchService) {
     this.filtersGroup = this.fb.group({
       category: [''],
@@ -197,28 +203,9 @@ ngOnInit(): void {
       price: ['']
     });
   }
-  // ngOnInit(): void {
-  //   // Get the search query from the URL parameters
-  //   this.route.queryParams.subscribe(params => {
-  //     this.searchQuery = params['q'] || '';
-  //     this.filterEvents();
-  //   });
-  // }
-
-  // filterEvents(): void {
-  //   // Ensure that you're only filtering based on the search query, not replacing names
-  //   if (this.searchQuery.trim()) {
-  //     this.filteredEvents = this.events.filter(event =>
-  //       event.title.toLowerCase().includes(this.searchQuery.toLowerCase())
-  //     );
-  //   } else {
-  //     this.filteredEvents = [...this.events]; // If no search query, show all events
-  //   }
-  // }
-  
+ 
   clearFilters(): void {
     this.filtersGroup.reset();  // Reset the form, clearing all selected filters
-    // this.searchQuery = '';  // Reset the search query
     this.filteredEvents = [...this.events]; // Reset to show all events
   }
   

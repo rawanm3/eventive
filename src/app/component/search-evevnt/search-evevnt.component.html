@@ -7,7 +7,7 @@
     <div class="d-none d-md-block col-md-2">
       <h5 class="mb-3" style="color: rgb(2, 2, 56);">Filters</h5>
       <!-- <form [formGroup]="filtersGroup"> -->
-<form>
+<form [formGroup]="filtersGroup">
         <!-- Category Section -->
         <div class="col-md-6">
           <h6 style="color: rgb(2, 2, 56);">Category</h6>
@@ -27,10 +27,15 @@
             <label class="form-check-label" for="arrayRadio3">Health</label>
           </div>
           <div class="form-check">
-            <input mdbInput class="form-check-input" type="radio" name="category" id="arrayRadio4" value="music"
+            <input mdbInput class="form-check-input" type="radio" name="category" id="arrayRadio4" value="camping"
               formControlName="category" />
-            <label class="form-check-label" for="arrayRadio4">Music</label>
+            <label class="form-check-label" for="arrayRadio4">Camping</label>
           </div>
+          <!-- <div class="form-check">
+            <input mdbInput class="form-check-input" type="radio" name="category" id="arrayRadio5" value="Camping"
+              formControlName="category" />
+            <label class="form-check-label" for="arrayRadio4">Camping</label>
+          </div> -->
         </div>
 
         <!-- Date Section -->
