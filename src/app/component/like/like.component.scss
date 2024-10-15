@@ -66,20 +66,81 @@ h1 {
   font-size: 1rem;
   color: #5a5a5a;
 }
+.main-text:hover { 
+  
+}
+.sub-text:hover { 
+  
+}
 
 /* Icon container styling */
 .icon-container {
-  width: 100px;
-  height: 100px;
+  width: 400px;
+  height: 400px;
   background-color: rgb(230, 230, 234);
   border-radius: 50%;
-  /* Makes the container circular */
-  display: flex;
+  display:flex; 
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 40px;
+  /* Makes the container circular */
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  // margin-bottom: 40px;
+
 
 }
+.icon-container:hover {
+  animation-name:heart;
+animation-duration: 5s;
+transition-timing-function: ease-out;
+transition: 1s; 
+animation-fill-mode: forwards;
+;
+animation-play-state: running;
+
+} 
+.icon-container:hover .main-text { 
+  color:white; 
+  transition: 1s;
+  font-size: 1em;
+}
+.icon-container:hover .sub-text { 
+  color:white; 
+  transition: 1s;
+  font-size: 1em;
+}
+@keyframes heart {
+  from { 
+    width: 400px;
+  height: 400px;
+  background-color: rgb(230, 230, 234);
+  border-radius: 50%;
+  display:flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  }
+  to { 
+    width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  display:flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  --c: red;
+  background:
+   /* 1 */ radial-gradient(circle at 60% 65%,var(--c) 64%,#0000 65%) top left/50% 50%,
+   /* 2 */ radial-gradient(circle at 40% 65%,var(--c) 64%,#0000 65%) top right/50% 50%,
+   /* 3 */ conic-gradient(from -45deg at 50% 85.5%,var(--c) 90deg,#0000 0) bottom/100% 50%;
+  background-repeat: no-repeat;
+  transition: 1s;
+
+  }
+}
+
 
 /* Icon image styling */
 .icon-container img {

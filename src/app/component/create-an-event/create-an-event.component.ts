@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserModel } from './USERMODEL'; 
+import { USERMODEL } from './USERMODEL'; 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class CreateAnEventComponent {
 
-  userModel = new UserModel('', '', '', '', '', '', '', '', '','','', '', false, true);
+  userModel = new USERMODEL('', '', '', '', '', '', '', '', '','','', '', false, true);
 
   createEventForm: FormGroup;
   currentStep = 1;

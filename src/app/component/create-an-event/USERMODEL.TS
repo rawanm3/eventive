@@ -1,5 +1,5 @@
 
-export class UserModel {
+export class USERMODEL {
     selectedOption: any;
     selectedTime: any;
     selectedEndTime: any;
