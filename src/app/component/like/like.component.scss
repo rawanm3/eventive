@@ -93,9 +93,9 @@ h1 {
 }
 .icon-container:hover {
   animation-name:heart;
-animation-duration: 5s;
+animation-duration: 3s;
 transition-timing-function: ease-out;
-transition: 1s; 
+transition: 0.5s; 
 animation-fill-mode: forwards;
 ;
 animation-play-state: running;
