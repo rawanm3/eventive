@@ -21,7 +21,7 @@
             </div>
           </div> -->
 
-          <form #registerForm="ngForm" novalidate  (ngSubmit)="login(registerForm)" >
+          <form #registerForm="ngForm" novalidate  (ngSubmit)="(registerForm)" >
             <!-- <div class="">
                <h3 style="cursor: pointer; ;" id="title" routerLink="/home">eventive</h3>
               <h1 class="mt-1 mb-5 pb-1" style="font-size: 52px; font-weight:700;">Log in</h1>
@@ -29,11 +29,11 @@
             </div> -->
             <div data-mdb-input-init class="form-outline mb-4">
                 <input type="email" id="form2Example11" class="form-control"
-                placeholder="Phone number or email address"name="name" [(ngModel)]="userModel.name" #name="ngModel"
+                placeholder="Phone number or email address"email="email" [(ngModel)]="userModel.email" #email="ngModel"
                  required
-              [class.is-invalid]="name.invalid && name.touched"
+              [class.is-invalid]="email.invalid && email.touched"
                  />
-              <small *ngIf="name.invalid && name.touched" class="text-danger">Email address  is required</small>
+              <small *ngIf="email.invalid && email.touched" class="text-danger">Email address  is required</small>
             </div>
 
             <div data-mdb-input-init class="form-outline mb-4">
