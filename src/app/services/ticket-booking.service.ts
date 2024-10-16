@@ -27,7 +27,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, from } from 'rxjs';
-import { ticketBooking } from '../../interface/ticketBooking'; // تأكد من مسار الواجهة
+import { ticketBooking } from '../../interface/ticketBooking'; 
 
 @Injectable({
   providedIn: 'root'
@@ -38,7 +38,7 @@ export class TicketBookingService {
 
   // Method to book a ticket
   bookTicket(bookingData: ticketBooking): Observable<void> {
-    const bookingsCollection = this.firestore.collection('bookings'); // تعريف المجموعة هنا
+    const bookingsCollection = this.firestore.collection('bookings'); 
     const id = this.firestore.createId();
     return from(
       bookingsCollection.doc(id).set({
