@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from '../enviroments/enviroments';
-import { BrowserModule } from '@angular/platform-browser'
+import { BrowserModule } from '@angular/platform-browser';
+import { withInterceptorsFromDi, provideHttpClient } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +27,7 @@ import { LoginPageComponent } from './component/login-page/login-page.component'
 import { RegisterComponent } from './component/register/register.component';
 import { PipesComponent } from './component/pipes/pipes.component';
 import { EventPageComponent } from './component/event-page/event-page.component';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 @NgModule({
 
@@ -60,10 +61,12 @@ import { EventPageComponent } from './component/event-page/event-page.component'
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    // AngularFireAuthModule,
+     AngularFireAuthModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [
+    provideHttpClient(withInterceptorsFromDi())
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

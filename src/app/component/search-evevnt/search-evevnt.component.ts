@@ -117,7 +117,7 @@ import { Component,OnInit } from '@angular/core';
 import { FormGroup, } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { EventSearchService } from '../../event-search.service'; // import the service
+import { EventSearchService } from '../../services/event-search.service'; // import the service
 
 
 @Component({

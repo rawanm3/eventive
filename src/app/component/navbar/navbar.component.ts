@@ -1,6 +1,6 @@
 import { Component, HostListener,OnInit} from '@angular/core';
 import { Router } from '@angular/router';
-import { EventSearchService } from '../../event-search.service'; // import the service
+import { EventSearchService } from '../../services/event-search.service'; // import the service
 
 @Component({
   selector: 'app-navbar',
