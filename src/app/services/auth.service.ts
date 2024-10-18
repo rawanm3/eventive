@@ -6,38 +6,16 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-
-  constructor(private fireauth: AngularFireAuth,private router :Router) { }
-  login(email : string, password:string){
-    this.fireauth.signInWithEmailAndPassword(email,password).then( ()=>{
-      localStorage.setItem('token','true');
-      this.router.navigate(['dashboard']);
-    }, err =>{
-      alert(err.message);
-      this.router.navigate(['/login']);
-    }
-
-    )
-  }
-  register(email:string, password:string){
-    this.fireauth.signInWithEmailAndPassword(email,password).then( ()=>{
-     alert('registeration successful');
-     this.router.navigate(['/signup'])
-    },err =>{
-      alert(err.message);
-      this.router.navigate(['/register'])
-    }
-  )
+  loggedIn:boolean =false;
+  constructor(){}
+  
+  login(){
+    this.loggedIn=true;
   }
   logout(){
-    this.fireauth.signOut().then( ()=>{
-      localStorage.removeItem('token');
-      this.router.navigate(['/login']);
-    },err => {
-      alert(err.message);
-    }
-
-
-    )
+    this.loggedIn=false;
+  }
+  isAuthenticated(){
+    return this.loggedIn;
   }
 }

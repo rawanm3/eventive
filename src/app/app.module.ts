@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AngularFireModule } from '@angular/fire/compat';
-import { environment } from '../enviroments/enviroments';
-import { BrowserModule } from '@angular/platform-browser'
-
+import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
@@ -27,9 +24,14 @@ import { LoginPageComponent } from './component/login-page/login-page.component'
 import { RegisterComponent } from './component/register/register.component';
 import { PipesComponent } from './component/pipes/pipes.component';
 import { EventPageComponent } from './component/event-page/event-page.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { environment } from '../enviroments/enviroments';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { UsersComponent } from './component/users/users.component';
+
 
 @NgModule({
-
   declarations: [
     AppComponent,
     LoginComponent,
@@ -52,18 +54,20 @@ import { EventPageComponent } from './component/event-page/event-page.component'
     LoginPageComponent,
     RegisterComponent,
     PipesComponent,
-    EventPageComponent, 
+    EventPageComponent,
+    UsersComponent, 
   ],
   imports: [
-    BrowserModule,
+   BrowserModule,
     FormsModule, 
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule,
-    // AngularFireAuthModule,
-    AppRoutingModule,
+     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    ],
+  providers: [
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

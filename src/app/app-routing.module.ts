@@ -9,6 +9,8 @@ import { LoginComponent } from './component/login/login.component';
 import { SignupComponent } from './component/signup/signup.component';
 import { HomeComponent } from './component/home/home.component';
 import { EventPageComponent } from './component/event-page/event-page.component';
+// import { AuthGuard } from './auth/auth/auth.guard';
+import { UsersComponent } from './component/users/users.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},

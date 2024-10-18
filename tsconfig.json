@@ -23,7 +23,11 @@
       "ES2022",
       "dom"
     ]
-  },
+  } ,
+   "include": [
+    "src/**/*.ts",
+    "src/rxfire.d.ts" // Include your custom types if necessary
+  ],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
