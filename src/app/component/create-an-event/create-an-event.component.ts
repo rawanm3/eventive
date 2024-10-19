@@ -72,15 +72,15 @@ export class CreateAnEventComponent {
   }
 
   onSubmit() {
-    if (this.createEventForm.valid) {
-      const formData = new FormData();
-      for (const key in this.createEventForm.controls) {
-        formData.append(key, this.createEventForm.controls[key].value);
-      }
-      console.log('Form Data:', formData);
-    } else {
-      console.log('Form is invalid');
-    }
+    // if (this.createEventForm.valid) {
+    //   const formData = new FormData();
+    //   for (const key in this.createEventForm.controls) {
+    //     formData.append(key, this.createEventForm.controls[key].value);
+    //   }
+    //   console.log('Form Data:', formData);
+    // } else {
+    //   console.log('Form is invalid');
+    // }
   }
   
 }
