@@ -9,6 +9,7 @@ import { LoginComponent } from './component/login/login.component';
 import { SignupComponent } from './component/signup/signup.component';
 import { HomeComponent } from './component/home/home.component';
 import { EventPageComponent } from './component/event-page/event-page.component';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path:'signup',component:SignupComponent},
   {path: 'loginPage' ,component :LoginComponent},
   {path: 'eventPage' ,component :EventPageComponent},
+  {path: 'dashboard' ,component :DashboardComponent},
   { path: '**', component: NotFoundComponent }
 ];
 

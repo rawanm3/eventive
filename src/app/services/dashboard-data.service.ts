@@ -1,29 +1,23 @@
 import { Injectable } from '@angular/core';
 import { itDashboard } from '../../interface/itDashboard';
 import { HttpClient } from '@angular/common/http';
-import { catchError, Observable, throwError } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class DashboardDataService {
  
-  private apiURL = '/data/offlineData.json'
-  private apiURL2 = '/data/onlineData.json'
+  private apiURL = 'https://eventive-55d33-default-rtdb.firebaseio.com/offlineData.json';
+  private apiURL2 = 'https://eventive-55d33-default-rtdb.firebaseio.com/onlineData.json';
+
   constructor(private http: HttpClient) { }
-  
-  getOffEvents():Observable<itDashboard[]> {
-    return this.http.get<itDashboard[]>(this.apiURL).pipe(
-      catchError((err)=>{
-        return throwError(()=>err.message || 'Internal server error')
-      })
-    )
-  }
-  getOnEvents() :Observable<itDashboard[]> {
-    return this.http.get<itDashboard[]>(this.apiURL2).pipe(
-      catchError((err)=>{
-        return throwError(()=>err.message || 'Internal server error')
-      })
-    )
-  }
+
+   addOnlineEvent(onEvents :itDashboard){
+ return this.http.post<any>(this.apiURL2,onEvents)
+ }
+  addOfflineEvent(offEvents :itDashboard){
+    return this.http.post<any>(this.apiURL,offEvents)
+    }
+
 }

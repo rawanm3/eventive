@@ -1,86 +1,111 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { createEventModel } from './createModel';
-
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { itCreateEvent } from '../../../interface/itCreateEvent';
+import { CreateEventService } from '../../services/create-event.service';
+ 
 @Component({
   selector: 'app-create-an-event',
   templateUrl: './create-an-event.component.html',
-  styleUrl: './create-an-event.component.scss'
+  styleUrls: ['./create-an-event.component.scss']
 })
-export class CreateAnEventComponent {
-
-  userModel = new createEventModel('', '', '', '', '', '', '', '', '','','', '', false, true);
-
-
-
-  createEventForm: FormGroup;
+export class CreateAnEventComponent implements OnInit {
+  createEventForm!: FormGroup;  // Using '!' to indicate the form will be initialized in 'ngOnInit'
   currentStep = 1;
-  imageSelected = false;
-  todayDate = new Date().toISOString().slice(0, 10);
-  timeInput: any;
-
-  timeOptions = [
-    { value: '09:00', label: '9:00 AM' },
-    { value: '09:30', label: '9:30 AM' },
-    { value: '21:00', label: '9:00 PM' },
-  ];
-
-
-  constructor(private fb: FormBuilder) {
+  todayDate: string;
+  itCreateEvent! :itCreateEvent
+ 
+  constructor(private fb: FormBuilder , private createEventService: CreateEventService) {
+    this.todayDate = new Date().toISOString().split('T')[0];
+  }
+ 
+  ngOnInit() {
     this.createEventForm = this.fb.group({
-      eventName: ['', Validators.required],
-      eventDate: ['', Validators.required],
-      about: ['', Validators.required],
-      dateEvent: ['', Validators.required],
-      startDateEvent: ['', Validators.required],
-      timeInput: ['', Validators.required],
+      eventName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
+      eventImg: ['', Validators.required],
+      about: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(500)]],
+      dateEvent: ['', [Validators.required, this.dateValidator]],
       startTime: ['', Validators.required],
       endTime: ['', Validators.required],
-      endDateEvent: ['', Validators.required],
       eventAddress: ['', Validators.required],
-      eventPrice: ['', Validators.required],
-      eventCapacity: ['', Validators.required],
-      isOnClicked: ['', Validators.required],
-      isOffClicked: ['', Validators.required],
-      eventImg: [null, Validators.required],
+      eventPrice: ['', [Validators.required, Validators.min(0), Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
+      eventCapacity: ['', [Validators.required, Validators.min(1), Validators.pattern(/^[0-9]+$/)]],
+      eventType: this.fb.group({
+        type: ['', Validators.required]
+      })
     });
   }
-
-  ngOnInit(): void {}
-
-  // Move to the next step
+ 
   nextStep() {
-    if (this.currentStep < 7) {
+    if (this.currentStep < 5) {
       this.currentStep++;
     }
   }
-
-
+ 
   prevStep() {
     if (this.currentStep > 1) {
       this.currentStep--;
     }
   }
+ 
+  dateValidator(control: AbstractControl): { [key: string]: any } | null {
+    const selectedDate = new Date(control.value);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+ 
+    if (selectedDate < today) {
+      return { 'dateValidator': true };
+    }
+    return null;
+  }
+ 
+  selectEventType(type: string) {
+    this.createEventForm.get('eventType.type')?.setValue(type);
+  }
+ 
+  @ViewChild('canvas', { static: false })
+  canvas!: ElementRef<HTMLCanvasElement>;
 
-  onFileSelect(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      this.createEventForm.patchValue({
-        image: event.target.files[0]
-      });
-      this.imageSelected = true;
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0];
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = new Image();
+        img.src = e.target?.result as string;
+        img.onload = () => {
+          const ctx = this.canvas.nativeElement.getContext('2d');
+          this.canvas.nativeElement.width = img.width;
+          this.canvas.nativeElement.height = img.height;
+          ctx?.drawImage(img, 0, 0);
+        };
+      };
+      reader.readAsDataURL(file);
     }
   }
-
+  // this.ticketsService.addTickets(this.ticketBooking).subscribe({
+  //   next :data => console.log(data),
+  //   error :err => console.log(err)
+  // })
   onSubmit() {
-    // if (this.createEventForm.valid) {
-    //   const formData = new FormData();
-    //   for (const key in this.createEventForm.controls) {
-    //     formData.append(key, this.createEventForm.controls[key].value);
-    //   }
-    //   console.log('Form Data:', formData);
-    // } else {
-    //   console.log('Form is invalid');
-    // }
+    if (this.createEventForm.valid) {
+      console.log(this.createEventForm.value);
+      // Here you would typically send the form data to your backend
+    } else {
+      // Mark all fields as touched to trigger validation messages
+      Object.keys(this.createEventForm.controls).forEach(key => {
+        const control = this.createEventForm.get(key);
+        control?.markAsTouched();
+      });
+    }
+    this.createEventService.uploadCreatingOnEvent(this.itCreateEvent).subscribe({
+      next: data => {console.log(data);},
+      error: err => {console.log(err);}
+    })
+
+    this.createEventService.uploadCreatingOffEvent(this.itCreateEvent).subscribe({
+      next: data => {console.log(data);},
+      error: err => {console.log(err);}
+    })
   }
-  
 }
