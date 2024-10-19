@@ -1,10 +1,8 @@
 import { Component, HostListener,OnInit} from '@angular/core';
 import { Router } from '@angular/router';
-import { EventSearchService } from '../../event-search.service'; // import the service
-// import { UserAuthService } from '../../auth/auth/auth.service';
-import { User } from 'firebase/auth';
-import { Observable } from 'rxjs';
-import { AuthService } from '../../auth/auth/auth.service';
+
+import { AuthService } from '../../services/auth.service';
+import { EventSearchService } from '../../services/event-search.service'; // import the service
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +10,7 @@ templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent implements OnInit{
-logout() {
+getUser() {
 throw new Error('Method not implemented.');
 }
 
@@ -21,7 +19,10 @@ isDropdownOpen = false;
   filtered: any;
   files: any;
   SearchTag: any;
-
+  afAuth: any;
+ isActive(route: string): boolean {
+    return this.router.url === route; // Compare current URL with route
+  }
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
@@ -35,7 +36,7 @@ isDropdownOpen = false;
   }
   searchQuery: string = '';
 
-  constructor(private router: Router , private eventSearchService:EventSearchService) {}
+  constructor(private router: Router,private authService: AuthService , private eventSearchService:EventSearchService) {}
   ngOnInit(): void {
   }
 
@@ -46,9 +47,31 @@ isDropdownOpen = false;
     // Pass the search term to the service
     this.eventSearchService.updateSearchTerm(searchTerm);
   }
-  isLoggedIn: boolean = false;
+  // isLoggedIn: boolean = false;
   userName: string = '';
-  
+
+//  constructor(private authService: AuthService, private router: Router) {}
+
+  // constructor(private authService: AuthService, private router: Router) {}
+
+  // async logout() {
+  //   await this.authService.logout();
+  //   this.router.navigate(['/login']);
+  // }
+
+  logout() {
+    this.authService.logout(); 
+    this.router.navigate(['/login']);// Call the logout method from the auth service
+  }
+
+  get isLoggedIn() {
+    return this.authService.isLoggedIn();
+  }
+
+  get userEmail() {
+    return this.authService.user?.email; // Get user email if logged in
+  }
+}
   // constructor(
   //   private router: Router,
   //   private eventSearchService: EventSearchService,
@@ -161,5 +184,5 @@ isDropdownOpen = false;
   //   this.authService.logout(); // Ensure this method is defined in your AuthService
   //    this.router.navigate(['/home']);
   // }
-}
+
 

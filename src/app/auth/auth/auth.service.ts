@@ -6,6 +6,13 @@ import { Observable, from } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+  logout() {
+    throw new Error('Method not implemented.');
+  }
+  user: any;
+  isLoggedIn() {
+    throw new Error('Method not implemented.');
+  }
   login(email: string, password: string) {
     throw new Error('Method not implemented.');
   }

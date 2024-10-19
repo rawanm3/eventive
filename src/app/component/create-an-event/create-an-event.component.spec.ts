@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { USERMODEL } from './USERMODEL';
 import { CreateAnEventComponent } from './create-an-event.component';
 
 describe('CreateAnEventComponent', () => {

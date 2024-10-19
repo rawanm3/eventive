@@ -1,84 +1,79 @@
-import { Component } from '@angular/core';
-import { UserModel } from './USERMODEL'; 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+ 
 @Component({
   selector: 'app-create-an-event',
   templateUrl: './create-an-event.component.html',
-  styleUrl: './create-an-event.component.scss'
+  styleUrls: ['./create-an-event.component.scss']
 })
-export class CreateAnEventComponent {
-
-  userModel = new UserModel('', '', '', '', '', '', '', '', '','','', '', false, true);
-
-  createEventForm: FormGroup;
+export class CreateAnEventComponent implements OnInit {
+  createEventForm!: FormGroup;
   currentStep = 1;
-  imageSelected = false;
-  todayDate = new Date().toISOString().slice(0, 10);
-  timeInput: any;
-
-  timeOptions = [
-    { value: '09:00', label: '9:00 AM' },
-    { value: '09:30', label: '9:30 AM' },
-    { value: '21:00', label: '9:00 PM' },
-  ];
-
-
+  todayDate: string;
+ 
   constructor(private fb: FormBuilder) {
+    this.todayDate = new Date().toISOString().split('T')[0];
+  }
+ 
+  ngOnInit() {
     this.createEventForm = this.fb.group({
-      eventName: ['', Validators.required],
-      eventDate: ['', Validators.required],
-      about: ['', Validators.required],
-      dateEvent: ['', Validators.required],
-      startDateEvent: ['', Validators.required],
-      timeInput: ['', Validators.required],
+      eventName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
+      eventImg: ['', Validators.required],
+      about: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(500)]],
+      dateEvent: ['', [Validators.required, this.dateValidator]],
       startTime: ['', Validators.required],
       endTime: ['', Validators.required],
-      endDateEvent: ['', Validators.required],
       eventAddress: ['', Validators.required],
-      eventPrice: ['', Validators.required],
-      eventCapacity: ['', Validators.required],
-      isOnClicked: ['', Validators.required],
-      isOffClicked: ['', Validators.required],
-      eventImg: [null, Validators.required],
+      eventPrice: ['', [Validators.required, Validators.min(0), Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
+      eventCapacity: ['', [Validators.required, Validators.min(1), Validators.pattern(/^[0-9]+$/)]],
+      eventType: this.fb.group({
+        type: ['', Validators.required]
+      })
     });
   }
-
-  ngOnInit(): void {}
-
-  // Move to the next step
+ 
   nextStep() {
-    if (this.currentStep < 7) {
+    if (this.currentStep < 5) {
       this.currentStep++;
     }
   }
-
-
+ 
   prevStep() {
     if (this.currentStep > 1) {
       this.currentStep--;
     }
   }
-
-  onFileSelect(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      this.createEventForm.patchValue({
-        image: event.target.files[0]
-      });
-      this.imageSelected = true;
+ 
+  dateValidator(control: AbstractControl): { [key: string]: any } | null {
+    const selectedDate = new Date(control.value);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+ 
+    if (selectedDate < today) {
+      return { 'dateValidator': true };
     }
+    return null;
   }
-
+ 
+  selectEventType(type: string) {
+    this.createEventForm.get('eventType.type')?.setValue(type);
+  }
+ 
+  onFileSelected(event: Event) {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    this.createEventForm.patchValue({ eventImg: file });
+    this.createEventForm.get('eventImg')?.updateValueAndValidity();
+  }
+ 
   onSubmit() {
     if (this.createEventForm.valid) {
-      const formData = new FormData();
-      for (const key in this.createEventForm.controls) {
-        formData.append(key, this.createEventForm.controls[key].value);
-      }
-      console.log('Form Data:', formData);
+      console.log(this.createEventForm.value);
+      // Here you would typically send the form data to your backend
     } else {
-      console.log('Form is invalid');
+      Object.keys(this.createEventForm.controls).forEach(key => {
+        const control = this.createEventForm.get(key);
+        control?.markAsTouched();
+      });
     }
   }
-  
 }

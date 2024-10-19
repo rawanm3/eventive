@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { EventService } from '../../services/event.service';
-import { AppEvent } from '../../component/events/app-event.model'; // Ensure correct import
+import { AppEvent } from '../../interfaces/event.model'; // Ensure correct import
 
 
 @Component({

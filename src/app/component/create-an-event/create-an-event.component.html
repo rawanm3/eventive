@@ -1,260 +1,155 @@
 <app-navbar></app-navbar>
+
 <div class="container-wrapper">
     <div class="form-container">
+
         <div class="event-content">
-            <form [formGroup]="createEventForm" (ngSubmit)="onSubmit()"  #creation="ngForm" novalidate>
-             <!-- Step 1: Introduction -->
-                <div *ngIf="currentStep === 1" class="form-step active">
-                    <div class="center-content mb-4">
-                        <h1 class="part-one">Create your event with US</h1>
-                        <h5>Answer a few questions about your event and your details of it and We will use internal data to build an event page.We hope you have a wonderful experience with us</h5>
-                    </div>
-                    <div class="footer d-flex justify-content-end mt-4">
-                        <button type="button" class="btn btn-primary" (click)="nextStep()" >Next</button>
-                    </div>
-                </div>
-                   <!-- Event Details -->
-               <div *ngIf="currentStep === 2" class="form-step">
+            <form [formGroup]="createEventForm" (ngSubmit)="onSubmit()" novalidate>
+                <div *ngIf="currentStep === 1" class="form-step">
                     <h2>What's the name of your event?</h2>
-                    <h5 class="paragraph">
-                        This will be your event's title. Your title will be used to help create your event's summary, description, category, and tags , so be specific! </h5>
                     <div class="form-group mb-4">
                         <label for="eventName">Event Name:</label>
-                        <input
-                            [(ngModel)]="userModel.eventName"
-                            name="eventName"
-                            #eventName="ngModel"
-                            type="text"
-                            id="eventName"
-                            class="form-control"
-                            required
-                            [class.is-invalid]="eventName.invalid && eventName.touched">
-                        <div *ngIf="createEventForm.get('eventName')?.invalid " class="text-danger">Event name is required.</div>
+                        <input formControlName="eventName" type="text" id="eventName" class="form-control"
+                            [class.is-invalid]="createEventForm.get('eventName')?.invalid && createEventForm.get('eventName')?.touched">
+                        <div *ngIf="createEventForm.get('eventName')?.invalid && createEventForm.get('eventName')?.touched"
+                            class="text-danger">
+                            <small *ngIf="createEventForm.get('eventName')?.errors?.['required']">Event name is
+                                required.</small>
+                            <small *ngIf="createEventForm.get('eventName')?.errors?.['minlength']">Event name must be at
+                                least 3 characters long.</small>
+                            <small *ngIf="createEventForm.get('eventName')?.errors?.['maxlength']">Event name cannot
+                                exceed 100 characters.</small>
+                        </div>
                     </div>
-                    <div>
-                        <h2>Upload Event Image</h2>
-                    <!-- <label for="imageUpload">Upload Event Image</label> -->
-                    <input
-                        [(ngModel)]="userModel.eventImg"
-                        name="eventImg"
-                        #eventImg="ngModel"
-                        type="file"
-                        id="imageUpload"
-                        accept="image/*"
-                        required
-                        [class.is-invalid]="eventImg.invalid && eventImg.touched">
-                    <div *ngIf="createEventForm.get('eventName')?.invalid " class="text-danger">Event photo is required.</div>
-                </div><br>
-                <div class="mb-3">
-                    <h2>Description:</h2>
-                    <!-- <label for="eventDescription">Description:</label> -->
-                    <textarea
-                        [(ngModel)]="userModel.about"
-                        name="about"
-                        #about="ngModel"
-                        id="eventDescription"
-                        placeholder="Enter event description"
-                        class="form-control"
-                        required
-                        pattern=".{0,200}"
-                        [class.is-invalid]="about.invalid && about.touched"></textarea>
-                    <div *ngIf="createEventForm.get('about')?.invalid" class="text-danger">description is required.</div>
+                    <div class="d-flex justify-content-end mt-4">
+                        <button type="button" class="btn btn-primary" (click)="nextStep()"
+                            [disabled]="createEventForm.get('eventName')?.invalid">Next</button>
                     </div>
-                    <div class="d-flex justify-content-between mt-4" required>
-                        <button type="button" class="btn btn-secondary padding-20px" (click)="prevStep()">Back</button><br>
-                        <button type="button" class="btn btn-primary" (click)="nextStep()" >Next</button>
-                    </div>
-                    
                 </div>
-                           <!-- Step 3: Date of the event-->
+
+                <div *ngIf="currentStep === 2" class="form-step">
+                    <h2>Upload Event Image</h2>
+                    <input formControlName="eventImg" type="file" (change)="onFileSelected($event)" accept="image/*"
+                        class="form-control"
+                        [class.is-invalid]="createEventForm.get('eventImg')?.invalid && createEventForm.get('eventImg')?.touched">
+                    <div *ngIf="createEventForm.get('eventImg')?.invalid && createEventForm.get('eventImg')?.touched"
+                        class="text-danger">
+                        <small>Event photo is required.</small>
+                    </div>
+
+                    <h2>Description:</h2>
+                    <textarea formControlName="about" placeholder="Enter event description" class="form-control"
+                        [class.is-invalid]="createEventForm.get('about')?.invalid && createEventForm.get('about')?.touched"></textarea>
+                    <div *ngIf="createEventForm.get('about')?.invalid && createEventForm.get('about')?.touched"
+                        class="text-danger">
+                        <small *ngIf="createEventForm.get('about')?.errors?.['required']">Description is
+                            required.</small>
+                        <small *ngIf="createEventForm.get('about')?.errors?.['minlength']">Description must be at least
+                            10 characters long.</small>
+                        <small *ngIf="createEventForm.get('about')?.errors?.['maxlength']">Description cannot exceed 500
+                            characters.</small>
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <button type="button" class="btn btn-secondary" (click)="prevStep()">Back</button>
+                        <button type="button" class="btn btn-primary" (click)="nextStep()"
+                            [disabled]="createEventForm.get('eventImg')?.invalid || createEventForm.get('about')?.invalid">Next</button>
+                    </div>
+                </div>
+
+
                 <div *ngIf="currentStep === 3" class="form-step">
                     <h2>When is the date of your event?</h2>
-                    <div class="mb-3" id="step3">
-                    <label for="eventDate">Event date</label>
-                    <input
-                        [(ngModel)]="userModel.dateEvent"
-                        name="dateEvent"
-                        #dateEvent="ngModel"
-                        type="date"
-                        id="eventDate"
-                        class="form-control"
-                        required
-                        pattern="(?:19|20)\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])"
-                        [min]="todayDate"
-                        [class.is-invalid]="dateEvent.invalid && dateEvent.touched">
-                    <div *ngIf="dateEvent.errors && dateEvent.touched">
-                        <small *ngIf="dateEvent.errors['pattern'] || dateEvent.errors['min']"class="text-danger">The event date must be in the  future </small>
-                        <small *ngIf="dateEvent.errors['required']" class="text-danger">Event date is required</small>
-                        </div>
-                        <div *ngIf="createEventForm.get('dateEvent')?.invalid" class="text-danger">The event date must be in the future</div>
-
+                    <input formControlName="dateEvent" type="date" [min]="todayDate" class="form-control"
+                        [class.is-invalid]="createEventForm.get('dateEvent')?.invalid && createEventForm.get('dateEvent')?.touched">
+                    <div *ngIf="createEventForm.get('dateEvent')?.invalid && createEventForm.get('dateEvent')?.touched"
+                        class="text-danger">
+                        <small *ngIf="createEventForm.get('dateEvent')?.errors?.['required']">Event date is
+                            required.</small>
+                        <small *ngIf="createEventForm.get('dateEvent')?.errors?.['dateValidator']">The event date must
+                            be in the future.</small>
                     </div>
-                        <div class="mb-3">
-                        <label for="timeOptions">Event start time</label>
-                        <input
-                            list="timeOptions"
-                            id="timeInput"
-                            name="startTime"
-                            [(ngModel)]="userModel.selectedTime"
-                            class="form-control"
-                            placeholder="Type to see options"
-                            required />
-                        <datalist id="timeOptions">
-                            <option value="9:00 AM">
-                            <option value="9:30 AM">
-                            <option value="10:00 AM">
-                            <option value="10:30 AM">
-                            <option value="11:00 AM">
-                            <option value="11:30 AM">
-                            <option value="12:00 PM">
-                            <option value="12:30 PM">
-                            <option value="01:00 PM">
-                            <option value="01:30 PM">
-                            <option value="02:00 PM">
-                            <option value="02:30 PM">
-                            <option value="03:00 PM">
-                            <option value="03:30 PM">
-                            <option value="04:00 PM">
-                            <option value="04:30 PM">
-                            <option value="05:00 PM">
-                            <option  value="05:30 PM">
-                            <option value="06:00 PM">
-                            <option value="7:00 PM">
-                            <option value="7:30 PM">
-                            <option value="8:00 PM">
-                            <option value="8:30 PM">
-                            <option value="9:00 PM">
-                            <option value="9:30 PM">
-                            <option value="10:00 PM">
-                            <option value="10:30 PM">
-                            <option value="11:00 PM">                                     
-                            </datalist>
-                            <small *ngIf="!userModel.selectedTime && timeInput.touched" class="text-danger">Start time is required</small>
-                            <div *ngIf="createEventForm.get('timeInput')?.invalid" class="text-danger">Start time is required</div>
-                        </div> 
-                        <div class="mb-3">
-                        <label for="timeOptions">Event End time</label>
-                        <input
-                            list="timeOptions"
-                            id="timeInput"
-                            name="endTime"
-                            [(ngModel)]="userModel.selectedTime"
-                            class="form-control"
-                            placeholder="Type to see options"
-                            required />
-                        <datalist id="timeOptions">
-                            <option value="12:00 PM">
-                                <option value="12:30 PM">
-                                <option value="1:00 PM">
-                                <option value="1:30 PM">
-                                <option value="2:00 PM">
-                                <option value="2:30 PM">
-                                <option value="3:00 PM">
-                                <option value="3:30 PM">
-                                <option value="4:00 PM">
-                                <option value="4:30 PM">
-                                <option value="5:00 PM">
-                                <option value="5:30 PM">
-                                <option value="6:00 PM">
-                                <option value="6:30 PM">
-                                <option value="7:00 PM">
-                                <option value="7:30 PM">
-                                <option value="8:00 PM">
-                                <option value="8:30 PM">
-                                <option value="9:00 PM">
-                                <option value="9:30 PM">
-                                <option value="10:00 PM">
-                                <option value="10:30 PM">
-                                <option value="11:00 PM">                                    
-                            </datalist>
-                            <small *ngIf="!userModel.selectedTime && timeInput.touched" class="text-danger">End time is required</small>
-                        </div>
-                     <div class="d-flex justify-content-between mt-4">
-                        <button type="button" class="btn btn-secondary padding-20px" (click)="prevStep()">Back</button><br>
-                        <button type="button" class="btn btn-primary" (click)="nextStep()"  [disabled]="createEventForm.get('endTime')?.invalid ||createEventForm.get('startTime')?.invalid ||createEventForm.get('eventDate')?.invalid ">Next</button>
-                    </div>
-                </div> 
-                     <!-- the location  -->
-                <div *ngIf="currentStep === 4" class="form-step">
-                    <div class="mb-3" id="step4">
-                    <label for="eventLocation">Address:</label>
-                    <input
-                        [(ngModel)]="userModel.eventAddress"
-                        name="eventAddress"
-                        #eventAddress="ngModel"
-                        type="text"
-                        id="eventLocation"
-                        placeholder="Enter event location"
-                        class="form-control"
-                        required
-                        [class.is-invalid]="eventAddress.invalid && eventAddress.touched">
-                    <small
-                        *ngIf="eventAddress.invalid && eventAddress.touched"class="text-danger">Event address is required</small>
-                        <div *ngIf="createEventForm.get('eventAddress')?.invalid" class="text-danger">Event address is required.</div>
 
-                </div>
-                <div class="form-step" id="step4">
-                <h2>What the price of your ticket</h2>
-                <label for="price">Ticket Price:</label>
-                <input
-                    [(ngModel)]="userModel.eventPrice"
-                    name="eventPrice"
-                    #eventPrice="ngModel"
-                    type="number"
-                    id="price"
-                    class="form-control"
-                    placeholder="0.00"
-                    step="0.01"
-                    required
-                    [class.is-invalid]="eventPrice.invalid && eventPrice.touched">
-                <small
-                    *ngIf="eventPrice.invalid && eventPrice.touched"class="text-danger">Event price is required</small>
-                    <div *ngIf="createEventForm.get('eventPrice')?.invalid" class="text-danger">Event price is required.</div>
-            </div><br><br>
-            <div class="form-step">
-            <label for="capacity">Event Capacity:</label>
-            <input
-                [(ngModel)]="userModel.eventCapacity"
-                name="eventCapacity"
-                #eventCapacity="ngModel"
-                type="number"
-                id="capacity"
-                class="form-control"
-                placeholder="Total capacity"
-                required
-                [class.is-invalid]="eventCapacity.invalid && eventCapacity.touched">
-            <small
-                *ngIf="eventCapacity.invalid && eventCapacity.touched"class="text-danger">Event capacity is required</small>
-                <div *ngIf="createEventForm.get('eventCapacity')?.invalid" class="text-danger">Event capacity is required.</div>
-
-            </div>
-                     <div class="d-flex justify-content-between mt-4">
-                        <button type="button" class="btn btn-secondary padding-20px" (click)="prevStep()">Back</button><br>
-                        <button type="button" class="btn btn-primary" (click)="nextStep()" [disabled]="createEventForm.get('about')?.invalid">Next</button>
+                    <h2>Start Time:</h2>
+                    <input formControlName="startTime" type="time" class="form-control"
+                        [class.is-invalid]="createEventForm.get('startTime')?.invalid && createEventForm.get('startTime')?.touched">
+                    <div *ngIf="createEventForm.get('startTime')?.invalid && createEventForm.get('startTime')?.touched"
+                        class="text-danger">
+                        <small>Start time is required.</small>
                     </div>
-                </div> 
-                <div *ngIf="currentStep === 5" class="form-step">
-         
-                    <div class="d-flex justify-content-center">
-                    <h2>What do you want the event to be?</h2></div>
-                    <div class="eventbe" required>
-                    <button class="Online"
-                    [(ngModel)]="userModel.isOnClicked"
-                    name="onClicked"
-                    #isOnClicked="ngModel"
-                    >Online event </button>
-                    <button class="Offline"
-                    [(ngModel)]="userModel.isOffClicked"
-                    name="offClicked"
-                    #isOffClicked="ngModel"
-                    >Offline event </button></div>
+
+                    <h2>End Time:</h2>
+                    <input formControlName="endTime" type="time" class="form-control"
+                        [class.is-invalid]="createEventForm.get('endTime')?.invalid && createEventForm.get('endTime')?.touched">
+                    <div *ngIf="createEventForm.get('endTime')?.invalid && createEventForm.get('endTime')?.touched"
+                        class="text-danger">
+                        <small>End time is required.</small>
+                    </div>
+
+                    <h2>Event Capacity:</h2>
+                    <input formControlName="eventCapacity" type="number" class="form-control"
+                        [class.is-invalid]="createEventForm.get('eventCapacity')?.invalid && createEventForm.get('eventCapacity')?.touched">
+                    <div *ngIf="createEventForm.get('eventCapacity')?.invalid && createEventForm.get('eventCapacity')?.touched"
+                        class="text-danger">
+                        <small>Event capacity is required and must be a positive number.</small>
+                    </div>
+
                     <div class="d-flex justify-content-between mt-4">
-                        <button type="button" class="btn btn-secondary padding-20px" (click)="prevStep()">Back</button><br>
-                        <button type="button" class="btn btn-primary" routerLink="/eventPage" (click)="nextStep()">Create Event</button>
+                        <button type="button" class="btn btn-secondary" (click)="prevStep()">Back</button>
+                        <button type="button" class="btn btn-primary" (click)="nextStep()"
+                            [disabled]="createEventForm.get('dateEvent')?.invalid || createEventForm.get('startTime')?.invalid || createEventForm.get('endTime')?.invalid || createEventForm.get('eventCapacity')?.invalid">
+                            Next
+                        </button>
+                    </div>
+                </div>
+
+
+                <div *ngIf="currentStep === 4" class="form-step">
+                    <h2>Event Location</h2>
+                    <input formControlName="eventAddress" type="text" placeholder="Enter event location"
+                        class="form-control"
+                        [class.is-invalid]="createEventForm.get('eventAddress')?.invalid && createEventForm.get('eventAddress')?.touched">
+                    <div *ngIf="createEventForm.get('eventAddress')?.invalid && createEventForm.get('eventAddress')?.touched"
+                        class="text-danger">
+                        <small>Event address is required.</small>
+                    </div>
+
+                    <h2>Ticket Price</h2>
+                    <input formControlName="eventPrice" type="number" placeholder="0.00" class="form-control"
+                        [class.is-invalid]="createEventForm.get('eventPrice')?.invalid && createEventForm.get('eventPrice')?.touched">
+                    <div *ngIf="createEventForm.get('eventPrice')?.invalid && createEventForm.get('eventPrice')?.touched"
+                        class="text-danger">
+                        <small>Event price is required.</small>
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <button type="button" class="btn btn-secondary" (click)="prevStep()">Back</button>
+                        <button type="button" class="btn btn-primary" (click)="nextStep()"
+                            [disabled]="createEventForm.get('eventAddress')?.invalid || createEventForm.get('eventPrice')?.invalid">Next</button>
+                    </div>
+                </div>
+
+                <div *ngIf="currentStep === 5" class="form-step">
+                    <h2>Choose Event Type</h2>
+                    <button type="button" class="btn btn-outline-primary" (click)="selectEventType('online')"
+                        [class.selected]="createEventForm.get('eventType.type')?.value === 'online'">Online</button>
+                    <button type="button" class="btn btn-outline-primary" (click)="selectEventType('offline')"
+                        [class.selected]="createEventForm.get('eventType.type')?.value === 'offline'">Offline</button>
+
+                    <div class="d-flex justify-content-between mt-4"
+                        *ngIf="createEventForm.get('eventType.type')?.value">
+                        <button type="button" class="btn btn-secondary" (click)="prevStep()">Back</button>
+                        <button type="submit" class="btn btn-primary"
+                            [disabled]="createEventForm.invalid">Submit</button>
+
                     </div>
                 </div>
             </form>
         </div>
     </div>
+<video autoplay muted loop id="vidcrt">
+    <source src="https://videos.pexels.com/video-files/2941128/2941128-uhd_2732_1440_24fps.mp4">
+</video>
 </div>
 <app-footer></app-footer>
+

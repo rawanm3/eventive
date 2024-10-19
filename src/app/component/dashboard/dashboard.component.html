@@ -1,4 +1,5 @@
 <!-- dashboard.component.html -->
+ <app-navbar></app-navbar>
 <div class="container-fluid mb-4">
   <div class="row">
 
@@ -160,11 +161,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let event of offlinePaginatedEvents; let i = index">
-              <td>{{ event.name }}</td>
-              <td>{{ event.date }}</td>
-              <td>{{ event.tickets }}</td>
-              <td>{{ event.totalTickets }}</td>
+            <tr *ngFor="let Event of offlinePaginatedEvents; let i = index">
+              <td>{{ Event.name }}</td>
+              <td>{{ Event.date | date }}</td>
+              <td>{{ Event.tickets }}</td>
+              <td>{{ Event.totalTickets }}</td>
               <td class="Exit" style=" cursor: pointer;">
                 <i class="fa-solid fa-trash-can" (click)="deleteRow('offline', (offlineCurrentPage - 1) * itemsPerPage + i)"></i>
               </td>
@@ -213,7 +214,7 @@
           <tbody>
             <tr *ngFor="let event of onlinePaginatedEvents; let i = index">
               <td>{{ event.name }}</td>
-              <td>{{ event.date }}</td>
+              <td>{{ event.date |date }}</td>
               <td>{{ event.tickets }}</td>
               <td>{{ event.totalTickets }}</td>
               <td class="Exit" style=" cursor: pointer;">
@@ -245,7 +246,15 @@
     </div>
   </div>
 </div>
+<div class="row">
+  <div class="col-md-6 offset-3">
+  <div class="text-danger bg-white text-center">
+    {{errMsg}}
+  </div>
+  </div>
+</div>
   </main>
 </div>
 <!-- </div> -->
 <!-- ./container-fluid -->
+ <app-footer></app-footer>

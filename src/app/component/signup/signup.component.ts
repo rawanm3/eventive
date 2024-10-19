@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { NgForm } from '@angular/forms';
+import firebase from 'firebase/compat/app';
+import { User } from 'firebase/auth';
 
 
 @Component({
@@ -80,6 +82,9 @@ userModal=new USERModal(
     email: '',
     password: '',
   };
+user: any;
+  auth: any;
+  error: any;
 
   constructor(private afAuth: AngularFireAuth, private router: Router) {}
 
@@ -92,6 +97,7 @@ userModal=new USERModal(
       this.userModal.password
     );
     console.log('User registered:', userCredential);
+    
     this.router.navigate(['/login']);
   } catch (error: unknown) {
     // Type guard to ensure error is of type FirebaseError
@@ -104,6 +110,22 @@ userModal=new USERModal(
     }
   }
 }
+googleSignUp() {
+  const provider = new firebase.auth.GoogleAuthProvider();
+
+  this.afAuth.signInWithPopup(provider)
+    .then((result: any) => {
+      console.log('Google Sign-Up successful', result);
+      // Handle successful sign-up, e.g., save user info
+        
+        this.router.navigate(['/login']);
+    })
+    .catch((error: { message: any; }) => {
+      console.error('Google Sign-Up error:', error);
+      this.error = error.message; // Show error message
+    });
+}
+
 
 }
 

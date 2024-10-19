@@ -26,9 +26,9 @@ import { PipesComponent } from './component/pipes/pipes.component';
 import { EventPageComponent } from './component/event-page/event-page.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-import { environment } from '../enviroments/enviroments';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { UsersComponent } from './component/users/users.component';
+import {environment} from '../enviroments/enviroments';
 
 
 @NgModule({
@@ -68,6 +68,11 @@ import { UsersComponent } from './component/users/users.component';
     ],
   providers: [
   ],
+  //   FormsModule,
+  //    AngularFireAuthModule,
+  //   AppRoutingModule,
+  // ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

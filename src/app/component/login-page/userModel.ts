@@ -5,5 +5,8 @@ export class USERModel{
     public email : string,
     public password : string,
     public RepeatPassword : string
+
+
+    
   ){}
 }

@@ -9,16 +9,27 @@
       <div class="col-lg-6">
         <div class="card-body p-md-5 mx-md-4">
 
-          <div class="">
+          <!-- <div class="">
             <h1 class="mt-1 mb-5 pb-1" style="font-size: 52px; font-weight:700;">Log in</h1>
-          </div>
+          </div> -->
 
-          <form #loginForm="ngForm" novalidate (ngSubmit)="signIn()">
+          <!-- <form #loginForm="ngForm" novalidate (ngSubmit)="signIn()">
             <div data-mdb-input-init class="form-outline mb-4">
               <input type="email" id="form2Example11" class="form-control" placeholder="Phone number or email address"
                 name="email" [(ngModel)]="user.email" #emailModel="ngModel" required
                 [class.is-invalid]="emailModel.invalid && emailModel.touched" />
-              <small *ngIf="emailModel.invalid && emailModel.touched" class="text-danger">Email is required</small>
+              <small *ngIf="emailModel.invalid && emailModel.touched" class="text-danger">Email is required</small> -->
+          <form #registerForm="ngForm" novalidate  (ngSubmit)="signIn()" >
+            <div class="">
+              <h1 class="mt-1 mb-5 pb-1" style="font-size: 52px; font-weight:700;">Log in</h1>
+            </div>
+            <div data-mdb-input-init class="form-outline mb-4">
+                <input type="email" id="form2Example11" class="form-control" name="email"
+                placeholder="email address" email="email" [(ngModel)]="user.email" #email="ngModel"
+                 required
+              [class.is-invalid]="email.invalid && email.touched"
+                 />
+              <small *ngIf="email.invalid && email.touched" class="text-danger">Email address  is required</small>
             </div>
 
             <div data-mdb-input-init class="form-outline mb-4">
@@ -30,13 +41,9 @@
             </div>
 
             <div class="text-center pt-1 mb-5 pb-1">
-              <button data-mdb-button-init data-mdb-ripple-init id="btn"
-                class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" [disabled]="loginForm.invalid" type="submit">
+              <button data-mdb-button-init data-mdb-ripple-init id="btn" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" [disabled]="registerForm.invalid" type="submit">
                 Log in
               </button>
-              <div>
-                <a class="text-muted" href="#!">Forgot password?</a>
-              </div>
             </div>
 
             <div class="d-flex align-items-center justify-content-center pb-4">
@@ -46,10 +53,18 @@
                 Create new
               </button>
             </div>
-
+            <!-- <button class="btn btn-google">
+              <img src="https://cdn-icons-png.flaticon.com/512/300/300221.png" width="30" alt="Google icon" (click)="googleSignIn()"> Sign in with Google
+            </button> -->
+            <div #loginTemplate>
+              <button class=" btn btn-google  border-success" (click)="googleSignIn()">
+                <img src="https://cdn-icons-png.flaticon.com/512/300/300221.png" width="30" alt="Google icon" >
+                Sign in with Google
+              </button>
+              <div *ngIf="error" class="text-danger">{{ error }}</div>
+            </div>
           </form>
-
-        </div>
+         </div>
       </div>
       <div class="col-lg-6 gradient-custom-2" id="dead">
         <img
@@ -60,3 +75,14 @@
   </div>
 </section>
 <app-footer></app-footer>
+<!-- 
+      <div class="col-lg-6  gradient-custom-2" id="dead">
+         <div class="text-white px-3 py-4 p-md-5 mx-md-4">d-flex align-items-center
+        </div> 
+        <img src="https://media.licdn.com/dms/image/C4D12AQHbZcwEIPAiJw/article-cover_image-shrink_720_1280/0/1552242735605?e=2147483647&v=beta&t=OdrzR2Hebx8NGuiJsisfTnRA5AQRnZ-T2UPDjjDfUD0" style="border-radius: 15px;  height:550px;">
+      </div>
+    </div>
+  </div> -->
+  
+
+
