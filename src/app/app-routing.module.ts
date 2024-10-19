@@ -10,14 +10,18 @@ import { SignupComponent } from './component/signup/signup.component';
 import { HomeComponent } from './component/home/home.component';
 import { EventPageComponent } from './component/event-page/event-page.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
+// import { AuthGuard } from './auth/auth/auth.guard';
+import { UsersComponent } from './component/users/users.component';
+
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'home',component:HomeComponent},
   {path:'search-event',component:SearchEvevntComponent},
   {path:'like',component:LikeComponent},
-  {path:'tickets',component:TicketsComponent},
+  {path:'tickets',component:TicketsComponent,},
   {path:'create-an-event',component:CreateAnEventComponent},
+  {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
   {path: 'loginPage' ,component :LoginComponent},
   {path: 'eventPage' ,component :EventPageComponent},

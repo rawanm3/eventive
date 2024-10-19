@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AngularFireModule } from '@angular/fire/compat';
-import { BrowserModule } from '@angular/platform-browser'
-
+import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
@@ -26,11 +24,14 @@ import { LoginPageComponent } from './component/login-page/login-page.component'
 import { RegisterComponent } from './component/register/register.component';
 import { PipesComponent } from './component/pipes/pipes.component';
 import { EventPageComponent } from './component/event-page/event-page.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { UsersComponent } from './component/users/users.component';
+import {environment} from '../enviroments/enviroments';
+
 
 @NgModule({
-
   declarations: [
     AppComponent,
     LoginComponent,
@@ -53,20 +54,25 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
     LoginPageComponent,
     RegisterComponent,
     PipesComponent,
-    EventPageComponent, 
+    EventPageComponent,
+    UsersComponent, 
   ],
   imports: [
-    BrowserModule,
+   BrowserModule,
     FormsModule, 
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule,
-     AngularFireAuthModule,
-    AppRoutingModule,
-  ],
+     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    ],
   providers: [
-    provideHttpClient(withInterceptorsFromDi())
   ],
+  //   FormsModule,
+  //    AngularFireAuthModule,
+  //   AppRoutingModule,
+  // ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

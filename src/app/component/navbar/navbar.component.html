@@ -20,9 +20,9 @@
 
 <body>
   <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light border-0" id="navbar"> -->
-  <nav class="navbar navbar-expand-lg d-grid p-2" id="navbar">
+  <nav class="navbar navbar-expand-lg d-grid sticky-top" id="navbar">
     <div class="div1">
-      <a class="navbar-brand" id="title" routerLink="/home">Eventive</a>
+      <a class="navbar-brand  d-flex justify-content-center" id="title" routerLink="/home">eventive</a>
       <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -35,25 +35,31 @@
         <span class="navbar-toggler-icon">
           <div class="dropdown d-flex flex-row-reverse">
         <div class="dd">
-          <i class="fa-regular fa-user me-2" style="font-size: 20px;"></i>
-          <button (click)="toggleDropdown()" class="dropbtn">
-          <h6 style="color: #fdfbfb; background-color: #fdfbfb;">guest</h6>
-          </button>
-          <!-- <img width="20" height="20" src="https://img.icons8.com/ios-filled/20/737373/expand-arrow--v1.png"
-            alt="expand-arrow--v1" /> -->
+          <button class="fa-regular fa-user me-2" style="font-size: 25px;background-color: transparent;border: 0;color:#615f5f;" (click)="toggleDropdown()" ></button>
+          <!-- <button (click)="toggleDropdown()" class="dropbtn">
+          <h6 style="color: transparent; background-color:transparent">guest</h6>
+          </button> -->
+  
         </div>
         <div id="myDropdown" [ngClass]="{'show': isDropdownOpen}" class="dropdown-content">
+          <a *ngIf="isLoggedIn">{{ userEmail }}</a>
           <a routerLink="/tickets">Tickets</a>
           <a routerLink="/like">Liked</a>
+
           <a routerLink="/loginPage">Log out</a>
           <a routerLink="/signup">Sign up</a>
           <a routerLink="/dashboard">Dashboard</a>
+          <a routerLink="/create-an-event">create event</a>
+            <a *ngIf="!isLoggedIn" routerLink="/signup">sign up</a>
+            <a *ngIf="!isLoggedIn" routerLink="/login">login</a>
+            <a *ngIf="isLoggedIn" (click)="logout()">Logout</a>
+
         </div>
       </div>
         </span>
       </button>
     </div>
-    <div class="div2">
+    <div class="div2 ">
 
       <form class="form-inline" id="search-bg">
         <input class="form-control mr-sm-2" type="search" placeholder="Search events" id="search-bar"
@@ -67,32 +73,38 @@
     <div class="div4">
       <ul class="navbar-nav d-flex justify-content-around">
         <li class="nav-item ">
-          <img width="20" height="20" src="https://img.icons8.com/windows/20/8f8f8f/plus.png" alt="plus" />
-          <a class="nav-link" routerLink="/create-an-event">Create an event</a>
+          <!-- <img width="15" height="15" src="https://img.icons8.com/windows/20/8f8f8f/plus.png" alt="plus" /> -->
+          <a class="nav-link" routerLink="/create-an-event" routerLinkActive="active">Create event</a>
         </li>
         <li class="nav-item">
-          <img width="20" height="20" src="https://img.icons8.com/material-outlined/20/8f8f8f/love-circled.png"
-            alt="love-circled" />
-          <a class="nav-link" routerLink="/like">likes</a>
+          <!-- <img width="15" height="15" src="https://img.icons8.com/material-outlined/20/8f8f8f/love-circled.png"
+            alt="love-circled" /> -->
+          <a class="nav-link" routerLink="/like"  routerLinkActive="active">likes</a>
         </li>
         <li class="nav-item">
-          <img width="20" height="20" src="https://img.icons8.com/ios/20/8f8f8f/ticket--v1.png" alt="ticket--v1" />
-          <a class="nav-link" routerLink="/tickets">Tickets</a>
+          <!-- <img width="15" height="15" src="https://img.icons8.com/ios/20/8f8f8f/ticket--v1.png" alt="ticket--v1" /> -->
+          <a class="nav-link" routerLink="/tickets"  routerLinkActive="active">Tickets</a>
         </li>
       </ul>
     </div>
     <div class="div5">
-      <ul class="navbar-nav d-flex justify-content-around ">
-        <div>
-        <li class="nav-item">
+      
+        <ul>
+          <li *ngIf="!isLoggedIn"><a routerLink="/signup"  routerLinkActive="active">Register</a></li>
+          <li *ngIf="!isLoggedIn"><a routerLink="/login"  routerLinkActive="active">Login</a></li>
+          <li *ngIf="isLoggedIn">{{ userEmail }}</li>
+          <li *ngIf="isLoggedIn" >logout
+        <img width="17"(click)="logout()" style="cursor: pointer;" height="17" src="https://img.icons8.com/ios-filled/17/686666/logout-rounded.png" alt="logout-rounded" /></li>
+        </ul>
+        
+        <!-- <li class="nav-item">
           <img width ="20" height="20" src="https://img.icons8.com/ios-filled/50/000000/login-rounded-right.png" alt="sign in"/>
           <a class="nav-link" routerLink="/loginPage">Sign In</a>
-        </li>
+        </li> -->
         <!-- <li class="nav-item">
           <img width ="20" height="20" src="https://img.icons8.com/los-filled/50/e0000e/add-user-male.png" alt="sign up"/>
           <a class="nav-link" routerLink="/signup" >Sign Up</a>
         </li> -->
-      </div>
       
       <!-- <div class="dropdown">
         <div class="dd">
@@ -108,12 +120,11 @@
           <a href="#about">likes</a>
           <a href="#contact">logout</a>
         </div>
-      </div> -->
-      <div class="dropdown d-flex flex-row-reverse">
+      </div>  -->
+       <!-- <div class="dropdown d-flex flex-row-reverse">
         <div class="dd">
           <i class="fa-regular fa-user me-2" style="font-size: 20px;"></i>
           <button (click)="toggleDropdown()" class="dropbtn">
-            <!-- eventbrite&#64;gmail.com -->
              Guest
           </button>
           <img width="20" height="20" src="https://img.icons8.com/ios-filled/20/737373/expand-arrow--v1.png"
@@ -126,8 +137,8 @@
           <a routerLink="/signup">Sign up</a>
           <a routerLink="/dashboard">Dashboard</a>
         </div>
-      </div>
-    </ul>
+      </div> -->
+    
     </div>
 
   </nav>

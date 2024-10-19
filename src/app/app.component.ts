@@ -1,11 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from './auth/auth/auth.service';
+import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import firebase from 'firebase/compat/app';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'eventive-project';
   //  products: Product[] = [];
   // filteredProducts: Product[] = [];
@@ -23,4 +28,20 @@ export class AppComponent {
   //     );
   //   });
   // }
+user: firebase.User | null = null;
+
+  constructor(private auth: AngularFireAuth) {}
+
+  ngOnInit() {
+    // Check local storage for user
+    const userData = localStorage.getItem('user');
+    if (userData) {
+      this.user = JSON.parse(userData);
+    }
+
+    // Subscribe to auth state
+    this.auth.authState.subscribe(user => {
+      this.user = user;
+    });
+  }
 }

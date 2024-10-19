@@ -1,7 +1,12 @@
+
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { itCreateEvent } from '../../../interface/itCreateEvent';
 import { CreateEventService } from '../../services/create-event.service';
+
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+
  
 @Component({
   selector: 'app-create-an-event',
@@ -15,9 +20,7 @@ export class CreateAnEventComponent implements OnInit {
   itCreateEvent! :itCreateEvent
  
   constructor(private fb: FormBuilder , private createEventService: CreateEventService) {
-    this.todayDate = new Date().toISOString().split('T')[0];
-  }
- 
+
   ngOnInit() {
     this.createEventForm = this.fb.group({
       eventName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
@@ -82,11 +85,22 @@ export class CreateAnEventComponent implements OnInit {
       };
       reader.readAsDataURL(file);
     }
+    return null;
   }
   // this.ticketsService.addTickets(this.ticketBooking).subscribe({
   //   next :data => console.log(data),
   //   error :err => console.log(err)
   // })
+  selectEventType(type: string) {
+    this.createEventForm.get('eventType.type')?.setValue(type);
+  }
+ 
+  onFileSelected(event: Event) {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    this.createEventForm.patchValue({ eventImg: file });
+    this.createEventForm.get('eventImg')?.updateValueAndValidity();
+  }
+ 
   onSubmit() {
     if (this.createEventForm.valid) {
       console.log(this.createEventForm.value);
@@ -109,3 +123,5 @@ export class CreateAnEventComponent implements OnInit {
     })
   }
 }
+}
+
