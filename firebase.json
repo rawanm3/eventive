@@ -1,1 +1,13 @@
-{}
+{
+    "hosting": {
+      "public": "dist/eventive-project",  
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  }
+  
