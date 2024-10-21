@@ -46,7 +46,6 @@ import {environment} from '../enviroments/enviroments';
     TicketsComponent,
     PopularCitiesComponent,
     LocationComponent,
-    CreateAnEventComponent,
     SearchEvevntComponent,
     NotFoundComponent,
     HomeComponent,
@@ -56,6 +55,7 @@ import {environment} from '../enviroments/enviroments';
     PipesComponent,
     EventPageComponent,
     UsersComponent, 
+    CreateAnEventComponent
   ],
   imports: [
    BrowserModule,

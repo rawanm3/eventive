@@ -1,12 +1,5 @@
-
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
-import { itCreateEvent } from '../../../interface/itCreateEvent';
-import { CreateEventService } from '../../services/create-event.service';
-
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
-
  
 @Component({
   selector: 'app-create-an-event',
@@ -14,13 +7,14 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
   styleUrls: ['./create-an-event.component.scss']
 })
 export class CreateAnEventComponent implements OnInit {
-  createEventForm!: FormGroup;  // Using '!' to indicate the form will be initialized in 'ngOnInit'
+  createEventForm!: FormGroup;
   currentStep = 1;
   todayDate: string;
-  itCreateEvent! :itCreateEvent
  
-  constructor(private fb: FormBuilder , private createEventService: CreateEventService) {
-
+  constructor(private fb: FormBuilder) {
+    this.todayDate = new Date().toISOString().split('T')[0];
+  }
+ 
   ngOnInit() {
     this.createEventForm = this.fb.group({
       eventName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
@@ -85,43 +79,19 @@ export class CreateAnEventComponent implements OnInit {
       };
       reader.readAsDataURL(file);
     }
-    return null;
   }
-  // this.ticketsService.addTickets(this.ticketBooking).subscribe({
-  //   next :data => console.log(data),
-  //   error :err => console.log(err)
-  // })
-  selectEventType(type: string) {
-    this.createEventForm.get('eventType.type')?.setValue(type);
-  }
- 
-  onFileSelected(event: Event) {
-    const file = (event.target as HTMLInputElement).files?.[0];
-    this.createEventForm.patchValue({ eventImg: file });
-    this.createEventForm.get('eventImg')?.updateValueAndValidity();
-  }
+  
  
   onSubmit() {
     if (this.createEventForm.valid) {
       console.log(this.createEventForm.value);
       // Here you would typically send the form data to your backend
     } else {
-      // Mark all fields as touched to trigger validation messages
       Object.keys(this.createEventForm.controls).forEach(key => {
         const control = this.createEventForm.get(key);
         control?.markAsTouched();
       });
     }
-    this.createEventService.uploadCreatingOnEvent(this.itCreateEvent).subscribe({
-      next: data => {console.log(data);},
-      error: err => {console.log(err);}
-    })
-
-    this.createEventService.uploadCreatingOffEvent(this.itCreateEvent).subscribe({
-      next: data => {console.log(data);},
-      error: err => {console.log(err);}
-    })
   }
 }
-}
-
+ 
