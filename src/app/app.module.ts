@@ -29,7 +29,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { UsersComponent } from './component/users/users.component';
 import {environment} from '../enviroments/enviroments';
-
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 @NgModule({
   declarations: [
@@ -65,8 +65,10 @@ import {environment} from '../enviroments/enviroments';
      AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    AngularFireStorageModule
     ],
   providers: [
+
   ],
   //   FormsModule,
   //    AngularFireAuthModule,

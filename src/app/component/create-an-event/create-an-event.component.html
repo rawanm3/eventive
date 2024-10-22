@@ -1,25 +1,19 @@
 <app-navbar></app-navbar>
+
 <div class="container-wrapper">
+
+
     <div class="form-container">
 
         <div class="event-content">
-            <form [formGroup]="createEventForm" (ngSubmit)="onSubmit()"  #creation="ngForm" novalidate>
-             <!-- Step 1: Introduction -->
-                <div *ngIf="currentStep === 1" class="form-step active">
-                    <div class="center-content mb-4">
-                        <h1 class="part-one">Create your event with US</h1>
-                        <h5>Answer a few questions about your event and your details of it and We will use internal data to build an event page.We hope you have a wonderful experience with us</h5>
-                    </div>
-                    <div class="footer d-flex justify-content-end mt-4">
-                        <button type="button" class="btn btn-primary" (click)="nextStep()" >Next</button>
-                    </div>
-                </div>
-                   <!-- Event Details -->
-               <div *ngIf="currentStep === 2" class="form-step">
+            <form [formGroup]="createEventForm" (ngSubmit)="onSubmit()" novalidate>
+                <div *ngIf="currentStep === 1" class="form-step">
                     <h2>What's the name of your event?</h2>
                     <div class="form-group mb-4">
                         <label for="eventName">Event Name:</label>
-                        <input formControlName="eventName" type="text" id="eventName" class="form-control"
+                        <input 
+                        formControlName="eventName"name="eventName"
+                        type="text" id="eventName" class="form-control"
                             [class.is-invalid]="createEventForm.get('eventName')?.invalid && createEventForm.get('eventName')?.touched">
                         <div *ngIf="createEventForm.get('eventName')?.invalid && createEventForm.get('eventName')?.touched"
                             class="text-danger">
@@ -35,29 +29,11 @@
                         <button type="button" class="btn btn-primary" (click)="nextStep()"
                             [disabled]="createEventForm.get('eventName')?.invalid">Next</button>
                     </div>
-                    <div>
-                        <h2>Upload Event Image</h2>
-                    <!-- <label for="imageUpload">Upload Event Image</label> -->
-                    <input
-                        [(ngModel)]="userModel.eventImg"
-                        name="eventImg"
-                        #eventImg="ngModel"
-                        type="file"
-                        id="imageUpload"
-                        accept="image/*"
-                        required
-                        [class.is-invalid]="eventImg.invalid && eventImg.touched">
-                    <div *ngIf="createEventForm.get('eventName')?.invalid " class="text-danger">Event photo is required.</div>
-                </div><br>
-                <div class="mb-3">
-                    <h2>Description:</h2>
-                    <!-- <label for="eventDescription">Description:</label> -->
-                    <textarea
-                        [(ngModel)]="userModel.about"
-                        name="about"
-                        #about="ngModel"
-                        id="eventDescription"
-                        placeholder="Enter event description"
+                </div>
+
+                <div *ngIf="currentStep === 2" class="form-step">
+                    <h2 for="eventImg">Upload Event Image</h2>
+                    <input formControlName="eventImg" type="file" (change)="onFileSelected($event)" accept="image/*" 
                         class="form-control"
                         [class.is-invalid]="createEventForm.get('eventImg')?.invalid && createEventForm.get('eventImg')?.touched">
                     <div *ngIf="createEventForm.get('eventImg')?.invalid && createEventForm.get('eventImg')?.touched"
@@ -84,7 +60,8 @@
                             [disabled]="createEventForm.get('eventImg')?.invalid || createEventForm.get('about')?.invalid">Next</button>
                     </div>
                 </div>
-                           <!-- Step 3: Date of the event-->
+
+
                 <div *ngIf="currentStep === 3" class="form-step">
                     <h2>When is the date of your event?</h2>
                     <input formControlName="dateEvent" type="date" [min]="todayDate" class="form-control"
@@ -128,8 +105,9 @@
                             Next
                         </button>
                     </div>
-                </div> 
-                     <!-- the location  -->
+                </div>
+
+
                 <div *ngIf="currentStep === 4" class="form-step">
                     <h2>Event Location</h2>
                     <input formControlName="eventAddress" type="text" placeholder="Enter event location"
@@ -166,14 +144,15 @@
                         *ngIf="createEventForm.get('eventType.type')?.value">
                         <button type="button" class="btn btn-secondary" (click)="prevStep()">Back</button>
                         <button type="submit" class="btn btn-primary"
-                            [disabled]="createEventForm.invalid">Submit</button>
+                            [disabled]="createEventForm.invalid"  >Submit</button>
+
                     </div>
                 </div>
             </form>
         </div>
     </div>
-<video autoplay muted loop id="vidcrt">
-    <source src="https://videos.pexels.com/video-files/2941128/2941128-uhd_2732_1440_24fps.mp4">
-</video>
+    <video autoplay muted loop id="vidcrt">
+        <source src="https://videos.pexels.com/video-files/2941128/2941128-uhd_2732_1440_24fps.mp4">
+    </video>
 </div>
 <app-footer></app-footer>

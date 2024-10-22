@@ -1,24 +1,150 @@
-/* Center content in the viewport */
+// /* Center content in the viewport */
+// .container-wrapper {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+// .righteous-regular {
+//   font-weight: 400;
+//   font-style: normal;
+// }
+ 
+// #title {
+ 
+//   font-family: "Righteous", system-ui;
+//   font-weight: 300;
+//   color: white;
+//   font-size: 24px;
+ 
+//   font-weight: 800;
+//   font-size: 30px;
+// }
+// .form-container {
+//   position: relative;
+//   background: rgba(255, 255, 255, 0.9);
+//   padding: 2rem;
+//   max-width: 700px;
+//   width: 90%;
+//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+//   border-radius: 8px;
+// }
+// /* "Home" link styling */
+// .back-home {
+//   position: absolute;
+//   top: 20px;
+//   left: 20px;
+// }
+
+// /* Styling for form container */
+// .create-event {
+//   background: #fff;
+//   padding: 2rem;
+//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+//   border-radius: 8px;
+// }
+ 
+// .form-step h2 {
+//   font-size: 24px;
+//   font-weight: bold;
+//   color: #333;
+// }
+ 
+// button.btn-primary {
+//   background-color: #D1410C;
+//   border-color: #D1410C;
+//   color: #fff;
+// }
+
+// button.btn-secondary {
+//   background-color: #D1410C;
+//   border-color: #D1410C;
+//   color: #fff;
+// }
+ 
+// button[disabled] {
+//   cursor: pointer;
+// }
+
+// .eventbe {
+//   display: flex;
+//   padding: 12px 22px;
+//   background: white;
+//   text-align: center;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+// .Online {
+//   padding: 12px;
+//   background-color: #D1410C;
+//   border-color: #D1410C;
+//   color: white;
+//   border: none;
+//   border-radius: 25px;
+// }
+
+// .Offline {
+//   padding: 12px;
+//   background-color: #D1410C;
+//   border-color: #D1410C;
+//   color: white;
+//   border: none;
+//   border-radius: 25px;
+// }
+
+// .input {
+//   display: flex;
+//   align-items: start;
+// }
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+app-navbar {
+  position: relative;
+  z-index: 1000;
+}
+
 .container-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .righteous-regular {
   font-weight: 400;
   font-style: normal;
 }
- 
+
 #title {
- 
+
   font-family: "Righteous", system-ui;
   font-weight: 300;
   color: white;
   font-size: 24px;
- 
+
   font-weight: 800;
   font-size: 30px;
 }
+
+#vidcrt {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+
+}
+
 .form-container {
   position: relative;
   background: rgba(255, 255, 255, 0.9);
@@ -27,28 +153,50 @@
   width: 90%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+  z-index: 2;
+
 }
-/* "Home" link styling */
+
+.form-control {
+  margin-bottom: 15px;
+}
+
+.evnt-content {
+  position: relative;
+  z-index: 3;
+}
+
+.form-step {
+  position: relative;
+  z-index: 4;
+}
+
+input,
+textarea,
+button {
+  position: relative;
+  z-index: 5;
+}
+
 .back-home {
   position: absolute;
   top: 20px;
   left: 20px;
 }
 
-/* Styling for form container */
 .create-event {
   background: #fff;
   padding: 2rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
- 
+
 .form-step h2 {
   font-size: 24px;
   font-weight: bold;
   color: #333;
 }
- 
+
 button.btn-primary {
   background-color: #D1410C;
   border-color: #D1410C;
@@ -60,7 +208,7 @@ button.btn-secondary {
   border-color: #D1410C;
   color: #fff;
 }
- 
+
 button[disabled] {
   cursor: pointer;
 }
