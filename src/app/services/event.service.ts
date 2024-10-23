@@ -6,8 +6,18 @@ import { AppEvent } from '../interfaces/event.model';
 })
 export class EventService {
  private events: AppEvent[] = [
-    { id: '1', name: 'Concert', description: 'Enjoy live music', date: '2024-01-01',liked:true },
-    { id: '2', name: 'Art Gallery', description: 'Explore beautiful art', date: '2024-01-02',liked:true },
+    {
+      id: '1', name: 'Concert', description: 'Enjoy live music', date: '2024-01-01', liked: true,
+      title: '',
+      price: 0,
+      host: ''
+    },
+    {
+      id: '2', name: 'Art Gallery', description: 'Explore beautiful art', date: '2024-01-02', liked: true,
+      title: '',
+      price: 0,
+      host: ''
+    },
     // More events...
   ];
 

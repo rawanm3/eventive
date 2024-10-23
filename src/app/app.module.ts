@@ -30,7 +30,6 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { UsersComponent } from './component/users/users.component';
 import {environment} from '../enviroments/enviroments';
 
-
 @NgModule({
   declarations: [
     AppComponent,
