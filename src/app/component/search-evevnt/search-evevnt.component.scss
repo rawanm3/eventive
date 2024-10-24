@@ -91,3 +91,22 @@
 .trend-items .col-12:hover::after {
   border-bottom: 2px solid #434242;
 }
+/* اللون البرتقالي عند التحديد */
+.btn-orange {
+  background-color: #D1410C;
+  color: white;
+}
+
+.btn-outline {
+  background-color: white;
+  color: #D1410C;
+  font-weight: 400;
+  font-size: medium;
+  border-color: #D1410C;
+}
+
+.btn-outline:hover {
+  background-color: #D1410C;
+  color: white;
+  border-color: #D1410C;
+}

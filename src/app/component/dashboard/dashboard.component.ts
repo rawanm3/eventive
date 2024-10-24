@@ -14,8 +14,7 @@ export class DashboardComponent implements OnInit {
   offEvents: itDashboard[] = [];
   errMsg: any;
 
-  onlineEventList :itCreateEvent[] = [];
-  id : string ='';
+  eventsList: itCreateEvent[] = [];  id : string ='';
   eventName : string ='';
   dateEvent : string ='';
   eventPrice: string ='';
@@ -27,15 +26,9 @@ export class DashboardComponent implements OnInit {
   constructor(private dashboardService: DashboardDataService) {}
 
 
-  loadEvents() {
-    this.dashboardService.addAllevents().subscribe((events) => {
-      this.offlinePageEvents = events.filter((event: { offline: any; }) => !event.offline); // Adjust according to your event structure
-      this.onlinePageEvents = events.filter((event: { online: any; }) => event.online); // Adjust according to your event structure
-    });
-  }
-
+  ngOnInit() {
   
-  ngOnInit(): void {}
+  }
 
  
 

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { AfterViewInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-events',
@@ -17,6 +18,11 @@ import { AfterViewInit } from '@angular/core';
 //     this.eventService.likeEvent(this.event);
 //   }
 export class EventsComponent implements AfterViewInit {
+  isLiked: boolean = false; // Initialize it to false
+toggleLike() {
+  this.isLiked = !this.isLiked;
+}
+ 
   ngAfterViewInit() {
     const tabs = document.querySelectorAll('.tab');
     const eventCards = document.querySelectorAll('.event-card');
@@ -46,7 +52,6 @@ export class EventsComponent implements AfterViewInit {
         });
       });
     });
-
     // Like button functionality
     likeButtons.forEach(button => {
       button.addEventListener('click', () => {
@@ -54,4 +59,24 @@ export class EventsComponent implements AfterViewInit {
       });
     });
   }
+  constructor(private router: Router) {}
+  goToPage1() {
+    this.router.navigate(['/page1']);
+  }
+  
+  goToPage2() {
+    this.router.navigate(['/page2']);
+}
+goToPage3() {
+  this.router.navigate(['/page3']);
+}
+goToPage4() {
+  this.router.navigate(['/page4']);
+}
+goToPage5() {
+  this.router.navigate(['/page5']);
+}
+goToPage6() {
+  this.router.navigate(['/page6']);
+}
 }

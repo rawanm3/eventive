@@ -31,6 +31,12 @@ import { FirestoreModule } from '@angular/fire/firestore';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore'; // Firestore (compat)
 import { UsersComponent } from './component/users/users.component';
 import {environment} from '../enviroments/enviroments';
+import { Page1Component } from './component/events/page1/page1.component';
+import { Page2Component } from './component/events/page2/page2.component';
+import { Page3Component } from './component/events/page3/page3.component';
+import { Page4Component } from './component/events/page4/page4.component';
+import { Page5Component } from './component/events/page5/page5.component';
+import { Page6Component } from './component/events/page6/page6.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +62,7 @@ import {environment} from '../enviroments/enviroments';
     PipesComponent,
     EventPageComponent,
     UsersComponent, 
-    CreateAnEventComponent
+    CreateAnEventComponent, Page1Component, Page2Component, Page3Component, Page4Component, Page5Component, Page6Component
   ],
   imports: [
    BrowserModule,

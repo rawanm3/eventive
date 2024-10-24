@@ -11,5 +11,5 @@ export interface ticketBooking {
     ticketPrice: number;
     totalPrice: number;
     bookingDate: Date;
-    ticketTypes: { name: string; price: number; }[]; // مصفوفة من الكائنات
+    ticketTypes: { name: string; price: number; }[]; 
 }

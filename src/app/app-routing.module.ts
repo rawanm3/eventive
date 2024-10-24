@@ -12,6 +12,12 @@ import { EventPageComponent } from './component/event-page/event-page.component'
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 // import { AuthGuard } from './auth/auth/auth.guard';
 import { UsersComponent } from './component/users/users.component';
+import { Page1Component } from './component/events/page1/page1.component';
+import { Page2Component } from './component/events/page2/page2.component';
+import { Page3Component } from './component/events/page3/page3.component';
+import { Page4Component } from './component/events/page4/page4.component';
+import { Page5Component } from './component/events/page5/page5.component';
+import { Page6Component } from './component/events/page6/page6.component';
 
 
 const routes: Routes = [
@@ -24,9 +30,15 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
   {path: 'loginPage' ,component :LoginComponent},
-  {path: 'eventPage' ,component :EventPageComponent},
   {path: 'dashboard' ,component :DashboardComponent},
-  { path: '**', component: NotFoundComponent }
+  {path: 'eventPage' ,component :EventPageComponent },
+  {path: 'page1' ,component :Page1Component},
+  {path: 'page2' ,component :Page2Component},
+  {path: 'page3' ,component :Page3Component},
+  {path: 'page4' ,component :Page4Component},
+  {path: 'page5' ,component :Page5Component},
+  {path: 'page6' ,component :Page6Component},
+  {path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
