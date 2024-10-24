@@ -97,15 +97,7 @@ eventData: CustomEvent = {
     selectEventType(type: string){
     this.createEventForm.get('eventType.type')?.setValue(type);
   }
-submitEvent() {
-this.eventService.createEvent(this.eventData).then((eventRef) => {
-console.log('Event created successfully!');
-const eventId = eventRef.key; // Firebase generated ID
-this.router.navigate(['/event-page', eventId]);
-}).catch(error => {
-console.error('Error creating event:', error);
-});
-}
+
   // Upload image function
   async uploadImage(file: File): Promise<string> {
     const filePath = `events/${file.name}`;
@@ -124,6 +116,24 @@ console.error('Error creating event:', error);
       console.log('No file selected');
     }
   }
+  submitEvent() {
+  if (!this.eventData) {
+    console.error('Event data is not defined');
+    return;
+  }
+
+  this.eventService.createEvent(this.eventData)
+    .then((eventRef) => {
+      console.log('Event created successfully!');
+      const eventId = eventRef.key; // Access the key from the eventRef
+      this.router.navigate(['/event-page', eventId]); // Navigate to the event page
+    })
+    .catch(error => {
+      console.error('Error creating event:', error);
+      alert('An error occurred while creating the event. Please try again.');
+    });
+}
+
 
   async onSubmit() {
     if (this.createEventForm.valid) {

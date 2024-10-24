@@ -23,10 +23,10 @@ export class EventsComponent implements OnInit {
   constructor(private eventService: EventService) {}
 
   ngOnInit() {
-    this.eventService.getEvents().subscribe(events => {
-      this.events = events;
-    });
+   
   }
+  
+ 
   // ngAfterViewInit() {
   //   const tabs = document.querySelectorAll('.tab');
   //   const eventCards = document.querySelectorAll('.event-card');

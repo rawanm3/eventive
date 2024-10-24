@@ -12,20 +12,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class EventPageComponent implements OnInit{
    events: any[] = []; // Define the events property
+  latestEvent: any;
+  event: any;
+
 
   constructor(private eventService: EventService) {}
 
   ngOnInit() {
-    this.loadEvents();
-  }
-
-  loadEvents() {
-    this.eventService.getEvents().subscribe(events => {
-      this.events = events; // Assign the retrieved events to the property
+    this.eventService.getLatestEvent().subscribe(event => {
+      this.latestEvent = event.length > 0 ? event[0] : null; // Get the first (and only) event
     });
   }
-  }
-// events: CustomEvent[] = []; 
+}// events: CustomEvent[] = []; 
 //   constructor(
 //     private route: ActivatedRoute,
 //     private eventService: EventService,

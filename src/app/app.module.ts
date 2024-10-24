@@ -30,6 +30,8 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { UsersComponent } from './component/users/users.component';
 import {environment} from '../enviroments/enviroments';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { PaymentComponent } from './component/payment/payment.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     PipesComponent,
     EventPageComponent,
     UsersComponent, 
-    CreateAnEventComponent
+    CreateAnEventComponent, PaymentComponent
   ],
   imports: [
    BrowserModule,
@@ -65,7 +67,8 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
      AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    HttpClientModule
     ],
   providers: [
 
