@@ -1,6 +1,5 @@
 
 export interface itCreateEvent{
-
     eventName : string,
     eventImg :string,
     about :number,

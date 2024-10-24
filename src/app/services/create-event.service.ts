@@ -1,23 +1,3 @@
-// import { Injectable } from '@angular/core';
-// import { itCreateEvent } from '../../interface/itCreateEvent';
-// import { HttpClient } from '@angular/common/http';
-
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class CreateEventService {
-
-   
-//   private onlineURL = 'https://eventive-55d33-default-rtdb.firebaseio.com//eventsData.json';
-//   private offlineURL = 'https://eventive-55d33-default-rtdb.firebaseio.com/onlineData.json';
-//   constructor(private http: HttpClient) { }
-
-//   uploadCreatingEvent(onlineData : itCreateEvent){ 
-//     this.http.post<any>(this.onlineURL,onlineData)
-//    }
-// }
-// export type {itCreateEvent };
-
 import { Injectable } from '@angular/core';
 import { itCreateEvent } from '../../interface/itCreateEvent';
 import { HttpClient } from '@angular/common/http';
@@ -40,3 +20,4 @@ export class CreateEventService {
     return this.http.post<any>(this.offlineURL, offlineData);
   }
 }
+export type {itCreateEvent };
