@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { itDashboard } from '../../interface/itDashboard';
-import { HttpClient } from '@angular/common/http';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { itCreateEvent } from '../../interface/itCreateEvent';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -8,16 +9,27 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DashboardDataService {
  
-  private apiURL = 'https://eventive-55d33-default-rtdb.firebaseio.com/offlineData.json';
-  private apiURL2 = 'https://eventive-55d33-default-rtdb.firebaseio.com/onlineData.json';
+  constructor(private evt : AngularFirestore) {}
 
-  constructor(private http: HttpClient) { }
+  // ADD EVENTS
+  addEvent(Eventive: itCreateEvent){
+    Eventive.id = this.evt.createId();
+    return this.evt.collection('/create-an-event').add(Event)
+  }
+  // ADD ALL EVENTS
+  addAllevents(): Observable<any>{
+    return this.evt.collection('/create-an-event').snapshotChanges();
+  }
 
-   addOnlineEvent(onEvents :itDashboard){
- return this.http.post<any>(this.apiURL2,onEvents)
- }
-  addOfflineEvent(offEvents :itDashboard){
-    return this.http.post<any>(this.apiURL,offEvents)
-    }
+  // DELETE EVENTS
+  deleteEvent(Eventive: itCreateEvent){
+    return this.evt.doc('/create-an-event/'+Eventive.id).delete();
+  }
+
+  // UPDATE EVENTS
+  updateEvent(Eventive: itCreateEvent){
+    this.deleteEvent(Eventive);
+    this.addEvent(Eventive);
+  }
 
 }

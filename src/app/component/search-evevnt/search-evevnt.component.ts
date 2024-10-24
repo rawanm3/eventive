@@ -1,214 +1,114 @@
-// import { Component, OnInit } from '@angular/core';
-// import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
-
-// interface Event {
-//   title: string;
-//   date: string;
-//   location: string;
-//   price: string;
-//   image: string;
-//   promoted?: boolean;
-//   discount?: string;
-// }
-
-// @Component({
-//   selector: 'app-search-events',
-//   templateUrl: './search-evevnt.component.html',
-//    styleUrl:'./search-evevnt.component.scss'
-// })
-// export class SearchEventsComponent implements OnInit {
-//   searchQuery: string = '';
-//   isDropdownOpen: boolean = false;
-//   filteredEvents: Event[] = [];
-//   allEvents: Event[] = [
-//     {
-//       title: 'Event 1',
-//       date: 'October 15, 2024',
-//       location: 'Cairo, Egypt',
-//       price: 'Free',
-//       image: 'https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F820031459%2F111235949977%2F1%2Foriginal.20240803-221609?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C9000%2C4500&s=c347cab736dd7a2e596e12f410298337',
-//       promoted: true
-//     },
-//     {
-//       title: 'Event 2',
-//       date: 'October 20, 2024',
-//       location: 'Alexandria, Egypt',
-//       price: '$20.00',
-//       image: 'https://static.wixstatic.com/media/1b1025_4d5b5f2602144136bd130e00fd19d0dc~mv2.png/v1/fill/w_458,h_458,fp_0.50_0.50,q_85,usm_0.66_1.00_0.01,enc_auto/1b1025_4d5b5f2602144136bd130e00fd19d0dc~mv2.png',
-//       promoted: true,
-//       discount: '$5.00 off select tickets'
-//     },
-//     {
-//       title: 'Event 3',
-//       date: 'November 1, 2024',
-//       location: 'Luxor, Egypt',
-//       price: '$30.00',
-//       image: 'https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F864927379%2F2358842013293%2F1%2Foriginal.20241002-170711?crop=focalpoint&fit=crop&w=940&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.496212121212&fp-y=0.0359922178988&s=cb29cc16c60289ffd58d9c6a2f1167a3',
-//       promoted: true,
-//       discount: '$10.00 off'
-//     }
-//   ];
-
-//   categories: string[] = ['Business', 'Food & Drink', 'Health', 'Music'];
-//   selectedCategories: string[] = [];
-//   selectedDate: string = '';
-//   selectedPrice: string = '';
-
-//   constructor() { }
-
-//   ngOnInit(): void {
-//     this.filteredEvents = this.allEvents;
-//   }
-
-//   toggleDropdown(): void {
-//     this.isDropdownOpen = !this.isDropdownOpen;
-//   }
-
-//   searchEvents(): void {
-//     this.filteredEvents = this.allEvents.filter(event =>
-//       event.title.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-//       event.location.toLowerCase().includes(this.searchQuery.toLowerCase())
-//     );
-//     this.applyFilters();
-//   }
-
-//   toggleCategory(category: string): void {
-//     const index = this.selectedCategories.indexOf(category);
-//     if (index > -1) {
-//       this.selectedCategories.splice(index, 1);
-//     } else {
-//       this.selectedCategories.push(category);
-//     }
-//     this.applyFilters();
-//   }
-
-//   setDate(date: string): void {
-//     this.selectedDate = date;
-//     this.applyFilters();
-//   }
-
-//   setPrice(price: string): void {
-//     this.selectedPrice = price;
-//     this.applyFilters();
-//   }
-
-//   clearFilters(): void {
-//     this.selectedCategories = [];
-//     this.selectedDate = '';
-//     this.selectedPrice = '';
-//     this.filteredEvents = this.allEvents;
-//   }
-
-//   private applyFilters(): void {
-//     this.filteredEvents = this.allEvents.filter(event => {
-//       const matchesSearch = event.title.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-//                             event.location.toLowerCase().includes(this.searchQuery.toLowerCase());
-//       const matchesCategory = this.selectedCategories.length === 0 || this.selectedCategories.some(cat => event.title.includes(cat));
-//       const matchesDate = !this.selectedDate || event.date.includes(this.selectedDate);
-//       const matchesPrice = !this.selectedPrice || 
-//                            (this.selectedPrice === 'Free' && event.price === 'Free') ||
-//                            (this.selectedPrice === 'Paid' && event.price !== 'Free');
-//       return matchesSearch && matchesCategory && matchesDate && matchesPrice;
-//     });
-//   }
-// }
-import { Component,OnInit } from '@angular/core';
-import { FormGroup, } from '@angular/forms';
-import { FormBuilder } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { EventSearchService } from '../../services/event-search.service'; // import the service
-
+interface Event {
+  title: string;
+  date: string;
+  location: string;
+  price: string;
+  imageUrl: string;
+  category: string;
+}
 
 @Component({
-  selector: 'app-search-evevnt',
+  selector: 'app-search-event',
   templateUrl: './search-evevnt.component.html',
-
-  styleUrl:'./search-evevnt.component.scss'
+  styleUrls: ['./search-evevnt.component.scss']
 })
 export class SearchEvevntComponent implements OnInit {
-  filtersGroup!: FormGroup;
-events = [
-  {
-    title: 'Bat Movie Benefit at the Lark Theater',
-    date: 'Tomorrow • 6:30 PM',
-    location: 'Lark Theater',
-    price: 'Check ticket price',
-    discount: null,
-    category: 'Business',
-    imageUrl: 'https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F820031459%2F111235949977%2F1%2Foriginal.20240803-221609?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C9000%2C4500&s=c347cab736dd7a2e596e12f410298337'
-  },
-  {
-   title:'Kites in the Sky - World Mental Health Day',
-    date: 'Thursday, October 10 · 2:30', 
-    location: 'Rodeo Beach', 
-    price: 'From 30$',
-    discount: "$5.00 off select tickets",
-    category: 'Health',
-    imageUrl: "https://static.wixstatic.com/media/1b1025_4d5b5f2602144136bd130e00fd19d0dc~mv2.png/v1/fill/w_458,h_458,fp_0.50_0.50,q_85,usm_0.66_1.00_0.01,enc_auto/1b1025_4d5b5f2602144136bd130e00fd19d0dc~mv2.png"
-  },
-  {
-    title: 'Egypt Journey: An 8 days tour vacation from Cairo',
-     date: 'October 20 · 9:00 AM', 
-     location: 'Cairo, Egypt',
-     price: 'From 1500$' ,
-    discount: '$10.00 off',
-    category: 'camping',
-    imageUrl: 'https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F864927379%2F2358842013293%2F1%2Foriginal.20241002-170711?crop=focalpoint&fit=crop&w=940&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.496212121212&fp-y=0.0359922178988&s=cb29cc16c60289ffd58d9c6a2f1167a3'
+  filtersGroup: FormGroup;
+  events: Event[] = [];
+  filteredEvents: Event[] = [];
+  categories = ['business', 'food', 'health', 'camping'];
+  dateOptions = ['today', 'tomorrow', 'weekend', 'pick'];
+  priceOptions = ['free', 'paid'];
+  selectedCategory: string = '';
+  selectedDate: string = '';
+  selectedPrice: string = '';
+
+  constructor(private fb: FormBuilder) {
+    this.filtersGroup = this.fb.group({});
   }
-];
 
-filteredEvents = this.events; 
-  
+  ngOnInit(): void {
+    this.loadEvents();
+    this.filteredEvents = this.events.slice(0, 6);
+  }
 
-ngOnInit(): void {
-  this.eventSearchService.currentSearchTerm.subscribe((searchTerm) => {
-    if (searchTerm) {
-      // Filter the events based on the search term
-      this.filteredEvents = this.events.filter((event) =>
-        event.title.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    } else {
-    
-      // this.filteredEvents = this.events;
-      this.applyFilters();
-    }
-  });
-  this.filtersGroup.valueChanges.subscribe(() => {
+
+  loadEvents() {
+    this.events = [
+      { title: 'Tech Innovators Summit', date: 'today', location: 'Cairo', price: 'Free', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3DNasCvfOLMIxJyQtbNq7EfLkWnMazHE9xw&s', category: 'business' },
+      { title: 'Global Food Expo', date: 'today', location: 'Cairo', price: 'paid', imageUrl: 'https://cdn.prod.website-files.com/61f29c609f84a86e418fbcfb/63ecdf6e6df724eab1f0e8ca_20230215T0132-25bece5c-5ab8-4c33-98c7-60ad2668054b.webp', category: 'business' },
+      { title: 'Fitness Fest', date: 'tomorrow', location: 'Cairo', price: 'Free', imageUrl: '../../../assets/card1.jpg', category: 'business' },
+      { title: 'Music Mania', date: 'tomorrow', location: 'Cairo', price: 'paid', imageUrl: '../../../assets/events.jpg', category: 'business' },
+      { title: 'Green Energy Conference', date: 'weekend', location: 'Cairo', price: 'Free', imageUrl: '../../../assets/events1.jpg', category: 'business' },
+      { title: 'Culinary Creations Fair', date: 'weekend', location: 'Cairo', price: 'paid', imageUrl: '../../../assets/events2.jpg', category: 'business' },
+      { title: 'Startup Showcase', date: 'pick', location: 'Cairo', price: 'Free', imageUrl: '../../../assets/events3.jpg', category: 'business' },
+      { title: 'Digital Marketing Mastery', date: 'pick', location: 'Cairo', price: 'paid', imageUrl: '../../../assets/events4.jpg', category: 'business' },
+
+      { title: 'Art and Design Gala', date: 'today', location: 'Cairo', price: 'Free', imageUrl: '../../../assets/https___cdn.evbuc.com_images_752316119_290108908841_1_original.jfif', category: 'food' },
+      { title: 'Health and Wellness Expo', date: 'today', location: 'Alex', price: 'Paid', imageUrl: '../../../assets/https___cdn.evbuc.com_images_846815099_85600736879_1_original.jfif', category: 'food' },
+      { title: 'Cultural Heritage Festival', date: 'tomorrow', location: 'Alex', price: 'Free', imageUrl: '../../../assets/https___cdn.evbuc.com_images_858538979_563478348933_1_original.jfif', category: 'food' },
+      { title: 'Photography Symposium', date: 'tomorrow', location: 'Alex', price: 'Paid', imageUrl: '../../../assets/jason-goodman-Oalh2MojUuk-unsplash-1-1.jpg', category: 'food' },
+      { title: 'Travel & Adventure Expo', date: 'weekend', location: 'Alex', price: 'Free', imageUrl: '../../../assets/slide2.jpg', category: 'food' },
+      { title: 'Business Leaders Forum', date: 'weekend', location: 'Alex', price: 'Paid', imageUrl: '../../../assets/slide3.jpg', category: 'food' },
+      { title: 'Eco-Friendly Future Summit', date: 'pick', location: 'Alex', price: 'Free', imageUrl: '../../../assets/slide1.jpg', category: 'food' },
+      { title: 'Fashion Forward', date: 'pick', location: 'Alex', price: 'Paid', imageUrl: '../../../assets/jason-goodman-Oalh2MojUuk-unsplash-1-1.jpg', category: 'food' },
+
+      { title: 'Sports and Fitness Convention', date: 'today', location: 'Giza', price: 'Free', imageUrl: 'https://civilisable.com/wp-content/uploads/2024/05/Abu-Simbel-at-Night-25.5.2024.jpg', category: 'health' },
+      { title: 'Gourmet Food Fest', date: 'today', location: 'Giza', price: 'Paid', imageUrl: 'https://images.squarespace-cdn.com/content/v1/5a5c896ab7411c8b282cbcce/1547582176280-6UZ1ATII0K11CEH5B3VI/PMI+Marlboro+Launch+byganz+2015', category: 'health' },
+      { title: 'Innovative Tech Solutions', date: 'tomorrow', location: 'Giza', price: 'Free', imageUrl: 'https://nmec.gov.eg/wp-content/uploads/2021/07/f438e926-1ac3-40a9-b430-c93cfca81fe4-768x575.jpg', category: 'health' },
+      { title: 'Charity Run 2024', date: 'tomorrow', location: 'Giza', price: 'Paid', imageUrl: 'https://iiotday.com/wp-content/uploads/IIoTDay-Events-in-2024.png', category: 'health' },
+      { title: 'Entrepreneurship Bootcamp', date: 'weekend', location: 'Giza', price: 'Free', imageUrl: 'https://neuroject.com/wp-content/uploads/2023/07/Top_21_Biggest_Tech_Events_in_the_World_for_2023_Neuroject_01.jpg', category: 'health' },
+      { title: 'Luxury Lifestyle Fair', date: 'weekend', location: 'Giza', price: 'Paid', imageUrl: 'https://i.ytimg.com/vi/49mfPFTZsHs/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLApGrwv6bI9LDbV3NmyxqAWOyX2ug', category: 'health' },
+      { title: 'Sustainability Conference', date: 'pick', location: 'Giza', price: 'Free', imageUrl: 'https://mhcsa.org.au/wp-content/uploads/2022/09/Cover-Art.png', category: 'health' },
+      { title: 'Outdoor Adventure Fair', date: 'pick', location: 'Giza', price: 'Paid', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsopcEqTRNlEKAbgssvZdABROVZNyXwY0yJJ3oNX9lq6TzkcrcNZSdMXxfadm8B0SkgpE&usqp=CAU', category: 'health' },
+
+      { title: 'Camping and Hiking Expo', date: 'today', location: 'Alex', price: 'Paid', imageUrl: 'https://wttc.org/LinkClick.aspx?fileticket=KPqO2JHIlEc%3D&portalid=0', category: 'camping' },
+      { title: 'Blockchain Summit', date: 'today', location: 'Alex', price: 'Paid', imageUrl: 'https://thatsallsport.com/wp-content/uploads/2022/08/Multiple-Athletes-From-Different-Sporting-Events.png', category: 'camping' },
+      { title: 'Mindfulness Retreat', date: 'tomorrow', location: 'Alex', price: 'Paid', imageUrl: 'https://wmhdofficial.com/wp-content/uploads/cover-top_events.jpg', category: 'camping' },
+      { title: 'Digital Creators Meetup', date: 'tomorrow', location: 'Alex', price: 'Paid', imageUrl: 'https://lh3.googleusercontent.com/proxy/nSrhynsLyJWTHRwRZL7lhKJClCbvYOja1pVSR3gfwyMtiTASVj5UbpObhGhcIvH1UKA9a_wcgcLLlEAQfNSnitwmF6afWjJP6D16vNNCZIL1NdkU9_Qtb7ZPvQ', category: 'camping' },
+      { title: 'Fitness Challenge', date: 'weekend', location: 'Alex', price: 'Paid', imageUrl: 'https://www.eventalways.com/blog/wp-content/uploads/2022/05/top-tech-conference.jpg', category: 'camping' },
+      { title: 'Creative Writing Workshop', date: 'weekend', location: 'Alex', price: 'Paid', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYyh4eeFxoV-rPHyk7l3zF71whf6T_uvetnAnJVNYPW3QrHMOqDbIi9D1WqtmW_zPCpDw&usqp=CAU', category: 'camping' },
+      { title: 'HealthTech Innovations', date: 'pick', location: 'Alex', price: 'Paid', imageUrl: 'https://www.iottechexpo.com/wp-content/uploads/2021/01/IOT-TECH-EXPO-WS-BLOG-SIZE.jpg', category: 'camping' },
+      { title: 'Smart Cities Expo', date: 'pick', location: 'Alex', price: 'Paid', imageUrl: 'https://cdn.asp.events/CLIENT_CloserSt_D86EA381_5056_B739_5482D50A1A831DDD/sites/DCWS-2023/media/libraries/techtalk/TELECOM-REVIEW-PR-Image.png/fit-in/700x9999/filters:no_upscale()', category: 'camping' },
+
+    ];
+  }
+
+  selectCategory(category: string) {
+    this.selectedCategory = category; 
     this.applyFilters();
-  });
-}
-applyFilters(): void {
-  const { category, date, price } = this.filtersGroup.value;
+  }
 
-  this.filteredEvents = this.events.filter(event => {
-    const categoryMatches = !category || event.category?.toLowerCase() === category.toLowerCase();
-    
-    const dateMatches = !date || event.date.toLowerCase().includes(date.toLowerCase());
-    
-    const priceMatches = !price || 
-      (price === 'free' ? Number(event.price.replace(/[^0-9.-]+/g, "")) === 0 : Number(event.price.replace(/[^0-9.-]+/g, "")) > 0);
+  
+  selectDate(date: string) {
+    this.selectedDate = date; 
+    this.applyFilters();
+  }
 
-    return categoryMatches && dateMatches && priceMatches;
-  });
-}
+  selectPrice(price: string) {
+    this.selectedPrice = price; 
+    this.applyFilters();
+  }
 
-
-
-
-  constructor(private fb: FormBuilder,private route:ActivatedRoute,private eventSearchService: EventSearchService) {
-    this.filtersGroup = this.fb.group({
-      category: [''],
-      date: [''],
-      price: ['']
+  applyFilters() {
+    this.filteredEvents = this.events.filter(event => {
+      const matchesCategory = this.selectedCategory === '' || event.category === this.selectedCategory;
+      const matchesDate = this.selectedDate === '' || event.date === this.selectedDate;
+      const matchesPrice = this.selectedPrice === '' || event.price.toLowerCase() === this.selectedPrice.toLowerCase();
+      return matchesCategory && matchesDate && matchesPrice;
     });
   }
- 
-  clearFilters(): void {
-    this.filtersGroup.reset();  // Reset the form, clearing all selected filters
-    this.filteredEvents = [...this.events]; // Reset to show all events
-  }
-  
-  
+
+
+  clearFilters() {
+    this.selectedCategory = '';
+    this.selectedDate = '';
+    this.selectedPrice = '';
+    this.filteredEvents = this.events.slice(0, 6); 
 }
+}
+
 

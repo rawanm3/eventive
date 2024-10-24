@@ -1,4 +1,3 @@
-<app-navbar></app-navbar>
 <div class="container" *ngIf="latestEvent" >
   <div class=" mx-auto">
     <div id="verd" class=" container">
@@ -28,25 +27,15 @@
         <div class="text p-3">
           <h4 class="mb-3">About this Event</h4>
           <p>{{ latestEvent.about }}</p>
-      </div>
+        </div>
       </div>
     </div>
-
-     
-
-
-      
-     
-
-
-
-   
-    <div class="col-md-3 col-12">
-      <div class="text-center border rounded-4 p-3">
-        <div class="my-2 fs-4 fw-medium">{{event.eventPrice}}</div>
+      <div class="col-md-3 col-12">
+        <div class="text-center border rounded-4 p-3">
+        <div class="my-2 fs-4 fw-medium">{{latestEvent.eventPrice}}</div>
         <button class="btn col-12" routerLink="/payment">Get Tickets</button>
       </div>
     </div>
   </div>
 </div>
-<app-footer></app-footer>
+
