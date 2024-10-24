@@ -1,5 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { DashboardDataService } from '../../services/dashboard-data.service';
+import { itCreateEvent } from '../../../interface/itCreateEvent';
  
 @Component({
   selector: 'app-create-an-event',
@@ -11,7 +13,7 @@ export class CreateAnEventComponent implements OnInit {
   currentStep = 1;
   todayDate: string;
  
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder , private dashboardService: DashboardDataService) {
     this.todayDate = new Date().toISOString().split('T')[0];
   }
  
@@ -84,14 +86,14 @@ export class CreateAnEventComponent implements OnInit {
  
   onSubmit() {
     if (this.createEventForm.valid) {
-      console.log(this.createEventForm.value);
-      // Here you would typically send the form data to your backend
-    } else {
-      Object.keys(this.createEventForm.controls).forEach(key => {
-        const control = this.createEventForm.get(key);
-        control?.markAsTouched();
+      const newEvent: itCreateEvent = this.createEventForm.value;
+      this.dashboardService.addEvent(newEvent).then(() => {
+        // Optionally, reset the form or redirect after submission
+        this.createEventForm.reset();
+        // Redirect to dashboard or show a success message
       });
     }
   }
+
 }
  

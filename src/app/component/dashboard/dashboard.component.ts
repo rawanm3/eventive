@@ -1,19 +1,41 @@
-
 import { Component, OnInit } from '@angular/core';
-import { DashboardDataService } from '../../services/dashboard-data.service';
 import { itDashboard } from '../../../interface/itDashboard';
+import { itCreateEvent } from '../../../interface/itCreateEvent';
+import { AuthService } from '../../services/auth.service';
+import { DashboardDataService } from '../../services/dashboard-data.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent  {
+export class DashboardComponent implements OnInit {
   onEvents: itDashboard[] = [];
   offEvents: itDashboard[] = [];
   errMsg: any;
 
-  constructor(private dashboardServices: DashboardDataService) {}
+  onlineEventList :itCreateEvent[] = [];
+  id : string ='';
+  eventName : string ='';
+  dateEvent : string ='';
+  eventPrice: string ='';
+  eventCapacity: string = '';
+
+  offlinePageEvents: itCreateEvent[] = [];
+  onlinePageEvents: itCreateEvent[] = [];
+
+  constructor(private dashboardService: DashboardDataService) {}
+
+
+  loadEvents() {
+    this.dashboardService.addAllevents().subscribe((events) => {
+      this.offlinePageEvents = events.filter((event: { offline: any; }) => !event.offline); // Adjust according to your event structure
+      this.onlinePageEvents = events.filter((event: { online: any; }) => event.online); // Adjust according to your event structure
+    });
+  }
+
+  
+  ngOnInit(): void {}
 
  
 
