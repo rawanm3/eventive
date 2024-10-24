@@ -22,7 +22,7 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
   {path: 'loginPage' ,component :LoginComponent},
-  {path: 'eventPage/:id' ,component :EventPageComponent},
+  {path: 'eventPage' ,component :EventPageComponent},
   {path: 'dashboard' ,component :DashboardComponent},
   { path: '**', component: NotFoundComponent }
 ];

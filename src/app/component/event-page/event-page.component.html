@@ -1,12 +1,11 @@
 <app-navbar></app-navbar>
-
-  <div class="row"  *ngIf="event">
-<div class="container my-5">
-  <div class="eventImg m-auto mb-5">
-    <img class="rounded"
-      src="event.eventImg"
-      alt="event image" width="100%">
-  </div>
+<div class="container" *ngFor="let event of events" >
+  <div class=" mx-auto">
+    <div class=" container">
+    <img class="d-flex p-2"
+      src="{{ event.eventImg }}"
+      alt="event image">
+    </div>
     <div class="text col-md-9 col-12">
       <h6>Saturday, October 19</h6>
       <h2 class="fw-bolder mb-4">{{ event.eventName }}</h2>
@@ -72,8 +71,6 @@
 
 
     </div>
-
-
     <div class="col-md-3 col-12">
       <div class="text-center border rounded-4 p-3">
         <div class="my-2 fs-4 fw-medium">{{event.eventPrice}}</div>

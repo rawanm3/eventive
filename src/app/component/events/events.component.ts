@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AfterViewInit } from '@angular/core';
+import { EventService } from '../../services/event.service';
 
 @Component({
   selector: 'app-events',
@@ -16,42 +17,51 @@ import { AfterViewInit } from '@angular/core';
 //   onLike() {
 //     this.eventService.likeEvent(this.event);
 //   }
-export class EventsComponent implements AfterViewInit {
-  ngAfterViewInit() {
-    const tabs = document.querySelectorAll('.tab');
-    const eventCards = document.querySelectorAll('.event-card');
-    const likeButtons = document.querySelectorAll('.like-button');
+export class EventsComponent implements OnInit {
+    events: any[] = [];
 
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        // Remove active class from all tabs
-        tabs.forEach(tab => tab.classList.remove('active'));
-        tab.classList.add('active'); // Add active class to clicked tab
+  constructor(private eventService: EventService) {}
 
-        // Get the selected category
-        const selectedCategory = tab.textContent;
-
-        // Show/Hide event cards based on category
-        eventCards.forEach(card => {
-          card.classList.remove('show');
-          if (selectedCategory === 'All') {
-            card.setAttribute('style', 'display: block');
-            setTimeout(() => card.classList.add('show'), 10);
-          } else if (card.getAttribute('data-category')?.includes(selectedCategory || '')) {
-            card.setAttribute('style', 'display: block');
-            setTimeout(() => card.classList.add('show'), 10);
-          } else {
-            setTimeout(() => card.setAttribute('style', 'display: none'), 300);
-          }
-        });
-      });
-    });
-
-    // Like button functionality
-    likeButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        button.classList.toggle('text-colored'); // Toggle text color on click
-      });
+  ngOnInit() {
+    this.eventService.getEvents().subscribe(events => {
+      this.events = events;
     });
   }
+  // ngAfterViewInit() {
+  //   const tabs = document.querySelectorAll('.tab');
+  //   const eventCards = document.querySelectorAll('.event-card');
+  //   const likeButtons = document.querySelectorAll('.like-button');
+
+    // tabs.forEach(tab => {
+    //   tab.addEventListener('click', () => {
+    //     // Remove active class from all tabs
+    //     tabs.forEach(tab => tab.classList.remove('active'));
+    //     tab.classList.add('active'); // Add active class to clicked tab
+
+    //     // Get the selected category
+    //     const selectedCategory = tab.textContent;
+
+    //     // Show/Hide event cards based on category
+    //     // eventCards.forEach(card => {
+    //     //   card.classList.remove('show');
+    //     //   if (selectedCategory === 'All') {
+    //     //     card.setAttribute('style', 'display: block');
+    //     //     setTimeout(() => card.classList.add('show'), 10);
+    //     //   } else if (card.getAttribute('data-category')?.includes(selectedCategory || '')) {
+    //     //     card.setAttribute('style', 'display: block');
+    //     //     setTimeout(() => card.classList.add('show'), 10);
+    //     //   } else {
+    //     //     setTimeout(() => card.setAttribute('style', 'display: none'), 300);
+    //     //   }
+    //     // });
+    //   });
+    // });
+
+  //   // Like button functionality
+  //   likeButtons.forEach(button => {
+  //     button.addEventListener('click', () => {
+  //       button.classList.toggle('text-colored'); // Toggle text color on click
+  //     });
+  //   });
+  // }
 }

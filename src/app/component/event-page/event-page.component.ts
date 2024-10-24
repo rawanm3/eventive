@@ -3,7 +3,7 @@ import { EventService } from '../../services/event.service';
 import { CustomEvent } from '../../interfaces/event.model'; 
 import { catchError, from } from 'rxjs';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-event-page',
@@ -11,27 +11,33 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './event-page.component.scss'
 })
 export class EventPageComponent implements OnInit{
-//  
-// 
-event: CustomEvent | undefined;
+   events: any[] = []; // Define the events property
 
-constructor(
-private route: ActivatedRoute,
-private eventService: EventService
-) {}
+  constructor(private eventService: EventService) {}
 
- ngOnInit(): void {
-        const eventId = this.route.snapshot.paramMap.get('id');
-        if (eventId) {
-        this.eventService.getEventById(eventId).subscribe((eventData) => {
-        if (eventData) {
-        this.event = eventData;
-        console.log('Retrieved event:', this.event);
-        } else {
-        console.warn('No event found for ID:', eventId);
-        }
-        });
-        }
-}
-}
+  ngOnInit() {
+    this.loadEvents();
+  }
+
+  loadEvents() {
+    this.eventService.getEvents().subscribe(events => {
+      this.events = events; // Assign the retrieved events to the property
+    });
+  }
+  }
+// events: CustomEvent[] = []; 
+//   constructor(
+//     private route: ActivatedRoute,
+//     private eventService: EventService,
+//     private router: Router
+//   ) {}
+
+//   ngOnInit() {
+//     this.eventService.getEvents().subscribe(data => {
+//       this.events = data ;
+//     });
+//   }
+
+ 
+
 

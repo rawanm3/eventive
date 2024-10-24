@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { NgForm } from '@angular/forms';
+import Swal from 'sweetalert2'
 
 @Injectable({
   providedIn: 'root'

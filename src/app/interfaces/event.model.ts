@@ -14,8 +14,7 @@
 //     }
 // }
 export interface CustomEvent {
-  id?:string;
-
+  eventId?:string;
   eventName: string;
   eventImg: string; // Make sure to define the type for uploaded image URL
   about: string;

@@ -46,7 +46,6 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     TicketsComponent,
     PopularCitiesComponent,
     LocationComponent,
-    CreateAnEventComponent,
     SearchEvevntComponent,
     NotFoundComponent,
     HomeComponent,
@@ -56,6 +55,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     PipesComponent,
     EventPageComponent,
     UsersComponent, 
+    CreateAnEventComponent
   ],
   imports: [
    BrowserModule,
