@@ -1,8 +1,54 @@
-<app-navbar></app-navbar>
 <div class="container p-4">
   <h3 class="mb-4" style="color: #2c0639; font-size: 34px;">Events In Egypt</h3>
-
   <div class="row">
+    <!-- قسم الفلاتر -->
+    <div class="col-sm-12 col-md-4 mb-3">
+      <h5 class="mb-3" style="color: rgb(2, 2, 56);">Filters</h5>
+      <form [formGroup]="filtersGroup">
+        <div class="mb-3">
+          <h6 style="color: rgb(2, 2, 56);">Category</h6>
+          <div class="row">
+            <div class="col-6" *ngFor="let category of categories">
+              <button type="button" class="btn btn-outline-primary w-100 mb-2" (click)="selectCategory(category)">
+                {{ category }}
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <h6 style="color: rgb(2, 2, 56);">Date</h6>
+          <div class="row">
+            <div class="col-6" *ngFor="let dateOption of dateOptions">
+              <button type="button" class="btn btn-outline-primary w-100 mb-2" (click)="selectDate(dateOption)">
+                {{ dateOption }}
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <h6 style="color: rgb(2, 2, 56);">Price</h6>
+          <div class="row">
+            <div class="col-6" *ngFor="let priceOption of priceOptions">
+              <button type="button" class="btn btn-outline-primary w-100 mb-2" (click)="selectPrice(priceOption)">
+                {{ priceOption }}
+              </button>
+            </div>
+          </div>
+        </div>
+        <button (click)="clearFilters()" type="button" style="background-color: #f85215; color: white;" class="btn mt-3">
+          Clear all filters
+        </button>
+      </form>
+    </div>
+
+    <!-- قسم عرض الأحداث -->
+    <div class="col-sm-12 col-md-8">
+      <div class="row">
+        <div class="col-sm-12 mb-3" *ngFor="let event of filteredEvents.slice(0, 4)">
+          <div class="card event-card">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <img [src]="event.imageUrl" class="card-img" alt="Event Image" width="100%" height="100%" >
     <!-- Filters Section -->
     <div class="col-sm-12 col-md-4 mb-3 d-md-block d-none">
       <h5 class="mb-3" style="color: rgb(2, 2, 56);">Filters</h5>
@@ -81,6 +127,8 @@
     </div>
   </div>
 </div>
+  </div>
+</div>
 
     
   <div class="trends container">
@@ -151,7 +199,6 @@
               <li><a href="#" class="text-decoration-none">International Conference on Environment and Natural
                   Science</a></li>
               <li><a href="#" class="text-decoration-none">Abu Simbel Sun Festival</a></li>
-
             </ul>
           </div>
         </div>
@@ -175,3 +222,4 @@
     </div>
   </div>
 <app-footer></app-footer>
+

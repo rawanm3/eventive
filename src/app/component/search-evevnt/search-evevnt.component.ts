@@ -32,10 +32,8 @@ export class SearchEvevntComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadEvents();
-    this.filteredEvents = this.events.slice(0, 6);
+    this.filteredEvents = this.events;
   }
-
-
   loadEvents() {
     this.events = [
       { title: 'Tech Innovators Summit', date: 'today', location: 'Cairo', price: 'Free', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3DNasCvfOLMIxJyQtbNq7EfLkWnMazHE9xw&s', category: 'business' },
@@ -97,12 +95,10 @@ export class SearchEvevntComponent implements OnInit {
     this.filteredEvents = this.events.filter(event => {
       const matchesCategory = this.selectedCategory === '' || event.category === this.selectedCategory;
       const matchesDate = this.selectedDate === '' || event.date === this.selectedDate;
-      const matchesPrice = this.selectedPrice === '' || event.price.toLowerCase() === this.selectedPrice.toLowerCase();
+      const matchesPrice = this.selectedPrice === '' || event.price.toLowerCase() === this.selectedPrice.toLowerCase()
       return matchesCategory && matchesDate && matchesPrice;
     });
   }
-
-
   clearFilters() {
     this.selectedCategory = '';
     this.selectedDate = '';
