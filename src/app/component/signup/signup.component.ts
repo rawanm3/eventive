@@ -10,6 +10,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { NgForm } from '@angular/forms';
 import firebase from 'firebase/compat/app';
 import { User } from 'firebase/auth';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -97,16 +98,24 @@ user: any;
       this.userModal.password
     );
     console.log('User registered:', userCredential);
-    
+    Swal.fire('Success', 'Registration successful! You can now log in.', 'success');
     this.router.navigate(['/login']);
   } catch (error: unknown) {
     // Type guard to ensure error is of type FirebaseError
     if (error instanceof Error) {
       console.error('Signup error:', error.message);
-      alert(error.message); // Show error message
+      Swal.fire({
+       icon: "error",
+        title: "Oops...",
+       text: error.message,
+       });
     } else {
       console.error('Signup error:', error);
-      alert('An unknown error occurred. Please try again.');
+      Swal.fire({
+       icon: "error",
+        title: "Oops...",
+       text: "An unknown error occurred. Please try again.",
+       });
     }
   }
 }
@@ -122,7 +131,11 @@ googleSignUp() {
     })
     .catch((error: { message: any; }) => {
       console.error('Google Sign-Up error:', error);
-      this.error = error.message; // Show error message
+      Swal.fire({
+       icon: "error",
+        title: "Oops...",
+       text:this.error = error.message ,
+       });
     });
 }
 

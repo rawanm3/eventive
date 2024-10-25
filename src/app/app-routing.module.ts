@@ -10,6 +10,7 @@ import { SignupComponent } from './component/signup/signup.component';
 import { HomeComponent } from './component/home/home.component';
 import { EventPageComponent } from './component/event-page/event-page.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { PaymentComponent } from './component/payment/payment.component';
 // import { AuthGuard } from './auth/auth/auth.guard';
 import { UsersComponent } from './component/users/users.component';
 import { Page1Component } from './component/events/page1/page1.component';
@@ -29,12 +30,13 @@ const routes: Routes = [
   {path:'home',component:HomeComponent},
   {path:'search-event',component:SearchEvevntComponent},
   {path:'like',component:LikeComponent},
-  {path:'tickets',component:TicketsComponent,},
+  {path:'tickets',component:TicketsComponent},
   {path:'create-an-event',component:CreateAnEventComponent},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
   {path: 'loginPage' ,component :LoginComponent},
   {path: 'dashboard' ,component :DashboardComponent},
+  {path: 'payment' ,component:PaymentComponent},
   {path: 'eventPage' ,component :EventPageComponent },
   {path: 'page1' ,component :Page1Component},
   {path: 'page2' ,component :Page2Component},
