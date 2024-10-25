@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
-<<<<<<< HEAD
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AngularFireStorage } from '@angular/fire/compat/storage'; // Import for Firebase Storage
 import { Router } from '@angular/router'; // Import Router
@@ -24,10 +23,10 @@ interface CustomEvent {
 
 // import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 // import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
-=======
-import { DashboardDataService } from '../../services/dashboard-data.service';
-import { itCreateEvent } from '../../../interface/itCreateEvent';
->>>>>>> 7e7aa8f6d66a6ddfb1bf3dd858ef0e2a0b02a704
+// =======
+// import { DashboardDataService } from '../../services/dashboard-data.service';
+// import { itCreateEvent } from '../../../interface/itCreateEvent';
+// >>>>>>> 7e7aa8f6d66a6ddfb1bf3dd858ef0e2a0b02a704
  
 @Component({
   selector: 'app-create-an-event',
@@ -37,8 +36,7 @@ import { itCreateEvent } from '../../../interface/itCreateEvent';
 export class CreateAnEventComponent implements OnInit {
   createEventForm!: FormGroup;
   currentStep = 1;
-  todayDate: string;
-<<<<<<< HEAD
+  todayDate:any;
   uploadedImageUrl: string | undefined; // URL for the uploaded image
   uploadedImage: File | null = null; // Store the file separately
 
@@ -65,11 +63,10 @@ eventData: CustomEvent = {
     private storage: AngularFireStorage,
      private eventService: EventService
   ) {
-=======
  
-  constructor(private fb: FormBuilder , private dashboardService: DashboardDataService) {
->>>>>>> 7e7aa8f6d66a6ddfb1bf3dd858ef0e2a0b02a704
-    this.todayDate = new Date().toISOString().split('T')[0];
+//   constructor(private fb: FormBuilder , private dashboardService: DashboardDataService) {
+// >>>>>>> 7e7aa8f6d66a6ddfb1bf3dd858ef0e2a0b02a704
+//     this.todayDate = new Date().toISOString().split('T')[0];
   }
 
  
@@ -117,64 +114,63 @@ eventData: CustomEvent = {
   }
 
   onFileSelected(event: Event) {
-<<<<<<< HEAD
-    const inputElement = event.target as HTMLInputElement;
-    const file = inputElement.files?.[0];
+// <<<<<<< HEAD
+//     const inputElement = event.target as HTMLInputElement;
+//     const file = inputElement.files?.[0];
 
-    if (file) {
-      this.uploadedImage = file; // Store the file in a separate variable
-    } else {
-      console.log('No file selected');
-    }
-  }
-  submitEvent() {
-  if (!this.eventData) {
-    console.error('Event data is not defined');
-    return;
-  }
+//     if (file) {
+//       this.uploadedImage = file; // Store the file in a separate variable
+//     } else {
+//       console.log('No file selected');
+//     }
+//   }
+//   submitEvent() {
+//   if (!this.eventData) {
+//     console.error('Event data is not defined');
+//     return;
+//   }
 
-  this.eventService.createEvent(this.eventData)
-    .then((eventRef) => {
-      console.log('Event created successfully!');
-      const eventId = eventRef.key; // Access the key from the eventRef
-      this.router.navigate(['/event-page', eventId]); // Navigate to the event page
-    })
-    .catch(error => {
-      console.error('Error creating event:', error);
-      alert('An error occurred while creating the event. Please try again.');
-    });
-=======
-    const input = event.target as HTMLInputElement;
-    if (input.files && input.files.length > 0) {
-      const file = input.files[0];
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const img = new Image();
-        img.src = e.target?.result as string;
-        img.onload = () => {
-          const ctx = this.canvas.nativeElement.getContext('2d');
-          this.canvas.nativeElement.width = img.width;
-          this.canvas.nativeElement.height = img.height;
-          ctx?.drawImage(img, 0, 0);
-        };
-      };
-      reader.readAsDataURL(file);
-    }
-  }
+//   this.eventService.createEvent(this.eventData)
+//     .then((eventRef) => {
+//       console.log('Event created successfully!');
+//       const eventId = eventRef.key; // Access the key from the eventRef
+//       this.router.navigate(['/event-page', eventId]); // Navigate to the event page
+//     })
+//     .catch(error => {
+//       console.error('Error creating event:', error);
+//       alert('An error occurred while creating the event. Please try again.');
+//     });
+// =======
+//     const input = event.target as HTMLInputElement;
+//     if (input.files && input.files.length > 0) {
+//       const file = input.files[0];
+//       const reader = new FileReader();
+//       reader.onload = (e) => {
+//         const img = new Image();
+//         img.src = e.target?.result as string;
+//         img.onload = () => {
+//           const ctx = this.canvas.nativeElement.getContext('2d');
+//           this.canvas.nativeElement.width = img.width;
+//           this.canvas.nativeElement.height = img.height;
+//           ctx?.drawImage(img, 0, 0);
+//         };
+//       };
+//       reader.readAsDataURL(file);
+//     }
+//   }
   
  
-  onSubmit() {
-    if (this.createEventForm.valid) {
-      const newEvent: itCreateEvent = this.createEventForm.value;
-      this.dashboardService.addEvent(newEvent).then(() => {
-        // Optionally, reset the form or redirect after submission
-        this.createEventForm.reset();
-        // Redirect to dashboard or show a success message
-      });
-    }
-  }
+  // onSubmit() {
+  //   if (this.createEventForm.valid) {
+  //     const newEvent: itCreateEvent = this.createEventForm.value;
+  //     this.dashboardService.addEvent(newEvent).then(() => {
+  //       // Optionally, reset the form or redirect after submission
+  //       this.createEventForm.reset();
+  //       // Redirect to dashboard or show a success message
+  //     });
+  //   }
+  // }
 
->>>>>>> 7e7aa8f6d66a6ddfb1bf3dd858ef0e2a0b02a704
 }
 
 
