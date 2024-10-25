@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SearchEvevntComponent } from './component/search-evevnt/search-evevnt.component';
-import { LikeComponent } from './component/like/like.component';
 import { TicketsComponent } from './component/tickets/tickets.component';
 import { NotFoundComponent } from './component/not-found/not-found.component';
 import { CreateAnEventComponent } from './component/create-an-event/create-an-event.component';
@@ -29,8 +28,8 @@ const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'home',component:HomeComponent},
   {path:'search-event',component:SearchEvevntComponent},
-  {path:'like',component:LikeComponent},
   {path:'tickets', component:TicketsComponent},
+  {path:'tickets',component:TicketsComponent},
   {path:'create-an-event',component:CreateAnEventComponent},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},

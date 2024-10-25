@@ -209,7 +209,6 @@ goToPage5() {
 goToPage6() {
   this.router.navigate(['/page6']);
 }
-
 goToPage7() {
   this.router.navigate(['/page7']);
 }
