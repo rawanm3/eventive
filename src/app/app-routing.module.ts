@@ -22,6 +22,7 @@ import { Page7Component } from './component/events/page7/page7.component';
 import { Page8Component } from './component/events/page8/page8.component';
 import { Page9Component } from './component/events/page9/page9.component';
 import { Page10Component } from './component/events/page10/page10.component';
+import { BookTicketComponent } from './component/book-ticket/book-ticket.component';
 
 
 const routes: Routes = [
@@ -29,7 +30,7 @@ const routes: Routes = [
   {path:'home',component:HomeComponent},
   {path:'search-event',component:SearchEvevntComponent},
   {path:'like',component:LikeComponent},
-  {path:'tickets',component:TicketsComponent},
+  {path:'tickets', component:TicketsComponent},
   {path:'create-an-event',component:CreateAnEventComponent},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
@@ -46,6 +47,7 @@ const routes: Routes = [
   {path: 'page8' ,component :Page8Component},
   {path: 'page9' ,component :Page9Component},
   {path: 'page10' ,component :Page10Component},
+  {path: 'bookTicket', component:BookTicketComponent},
   {path: '**', component: NotFoundComponent },
 ];
 
