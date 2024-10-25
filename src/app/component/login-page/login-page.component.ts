@@ -5,6 +5,7 @@ import { AuthService } from '../../auth/auth/auth.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login-page',
@@ -47,11 +48,16 @@ signIn() {
         email: userCredential.user?.email,
       };
       localStorage.setItem('user', JSON.stringify(userData))
+      Swal.fire('Success', 'You are now logged in!', 'success');
       this.router.navigate(['/home']);
     })
     .catch((error) => {
       console.error('Login error:', error);
-      alert(`Error: ${error.message}`);
+      Swal.fire({
+       icon: "error",
+        title: "Oops...",
+       text:error.message ,
+       });
     });
 }
 googleSignIn() {
@@ -74,7 +80,11 @@ googleSignIn() {
       })
       .catch(error => {
         console.error('Google Sign-In error:', error);
-        this.error = error.message; // Show error message
+        Swal.fire({
+       icon: "error",
+        title: "Oops...",
+       text:this.error = error.message ,
+       });
       });
   }
 }

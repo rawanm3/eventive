@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
-import { CreateEventService } from '../../services/create-event.service';
+import { DashboardDataService } from '../../services/dashboard-data.service';
 import { itCreateEvent } from '../../../interface/itCreateEvent';
  
 @Component({
@@ -12,8 +12,8 @@ export class CreateAnEventComponent implements OnInit {
   createEventForm!: FormGroup;
   currentStep = 1;
   todayDate: string;
-  itCreateEvent! :itCreateEvent;
-  constructor(private fb: FormBuilder , private createEventServices :CreateEventService) {
+ 
+  constructor(private fb: FormBuilder , private dashboardService: DashboardDataService) {
     this.todayDate = new Date().toISOString().split('T')[0];
   }
  
@@ -82,23 +82,18 @@ export class CreateAnEventComponent implements OnInit {
       reader.readAsDataURL(file);
     }
   }
+  
+ 
   onSubmit() {
     if (this.createEventForm.valid) {
-      console.log(this.createEventForm.value);
-      // Here you would typically send the form data to your backend
-    } else {
-      Object.keys(this.createEventForm.controls).forEach(key => {
-        const control = this.createEventForm.get(key);
-        control?.markAsTouched();
+      const newEvent: itCreateEvent = this.createEventForm.value;
+      this.dashboardService.addEvent(newEvent).then(() => {
+        // Optionally, reset the form or redirect after submission
+        this.createEventForm.reset();
+        // Redirect to dashboard or show a success message
       });
     }
-    this.createEventServices.uploadCreatingOnEvent(this.itCreateEvent).subscribe({
-      next :data => console.log(data),
-      error :err => console.log(err)
-     });
-     this.createEventServices.uploadCreatingOffEvent(this.itCreateEvent).subscribe({
-      next :data => console.log(data),
-      error :err => console.log(err)
-     })
   }
+
 }
+ 

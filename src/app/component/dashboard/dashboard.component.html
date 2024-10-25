@@ -1,5 +1,5 @@
 <!-- dashboard.component.html -->
- <app-navbar></app-navbar>
+
 <div class="container-fluid mb-4">
   <div class="row">
     <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar collapse" onsubmit="">
@@ -162,7 +162,7 @@
           <tbody>
             <tr *ngFor="let Event of offlinePaginatedEvents; let i = index">
               <td>{{ Event.name }}</td>
-              <td>{{ Event.date | date }}</td>
+              <td>{{ Event.date |date }}</td>
               <td>{{ Event.tickets }}</td>
               <td>{{ Event.totalTickets }}</td>
               <td class="Exit" style=" cursor: pointer;">
@@ -244,15 +244,7 @@
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="col-md-6 offset-3">
-  <div class="text-danger bg-white text-center">
-    {{errMsg}}
-  </div>
-  </div>
-</div>
   </main>
 </div>
 <!-- </div> -->
 <!-- ./container-fluid -->
- <app-footer></app-footer>

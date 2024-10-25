@@ -1,0 +1,71 @@
+ <!-- <div class="payment-container">
+    <div class="payment-header">
+      <h2>إتمام الدفع</h2>
+      <div class="card-icons">
+        <img src="https://static-00.iconduck.com/assets.00/visa-icon-256x164-ab1n23j3.png" alt="visa" id="visa-icon" />
+        <img
+          src="https://play-lh.googleusercontent.com/jMECkIn97zzMi1IoWlb9SYjtbYolSPmgdLmylwIwo3pbhQ_omkRMzM0bS-PnN461hg"
+          alt="mastercard" id="mastercard-icon" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/American_Express_logo_%282018%29.svg" alt="amex"
+          id="amex-icon" />
+      </div>
+    </div>
+    <form class="payment-form" id="paymentForm">
+      <div class="form-group">
+        <label>الاسم على البطاقة</label>
+        <input type="text" id="cardName" placeholder="مصطفى بكر">
+        <span class="error-message">يرجى إدخال اسم صحيح</span>
+      </div>
+      <div class="form-group">
+        <label>رقم البطاقة</label>
+        <div class="card-input-group">
+          <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+          <img src="" alt="" class="card-icon" id="dynamic-card-icon" style="display: none;">
+        </div>
+        <span class="error-message">يرجى إدخال رقم بطاقة صحيح</span>
+      </div>
+      <div class="card-details">
+        <div class="form-group">
+          <label>تاريخ الانتهاء</label>
+          <input type="text" id="expiry" placeholder="MM/YY" maxlength="5">
+          <span class="error-message">تاريخ غير صحيح</span>
+        </div>
+        <div class="form-group">
+          <label>CVV</label>
+          <input type="password" id="cvv" placeholder="123" maxlength="4">
+          <span class="error-message">رمز غير صحيح</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>المبلغ (دولار)</label>
+        <input type="number" id="amount" placeholder="100">
+        <span class="error-message">يرجى إدخال مبلغ صحيح</span>
+      </div>
+      <button type="submit" class="submit-btn">إتمام الدفع</button>
+    </form>
+    <div class="success-message">
+      تم الدفع بنجاح!
+    </div>
+  </div>
+
+  -->
+<div class="payment-container">
+  <h2>Get Your Ticket</h2>
+
+  <form id="payment-form">
+    <div class="form-row">
+      <label for="card-element">
+        Credit or debit card
+      </label>
+      <div id="card-element">
+        <!-- A Stripe Element will be inserted here. -->
+      </div>
+
+      <!-- Used to display form errors. -->
+      <div id="card-errors" role="alert"></div>
+    </div>
+
+    <button id="submit" >Get Ticket</button>
+    <p class="result-message" id="result-message"></p>
+  </form>
+</div>

@@ -37,10 +37,11 @@
             accept="image/*"
             class="form-control"
             [class.is-invalid]="createEventForm.get('eventImg')?.invalid && createEventForm.get('eventImg')?.touched">
+            <canvas #canvas  style="height: 280px; width: 280px;"></canvas>
           <div *ngIf="createEventForm.get('eventImg')?.invalid && createEventForm.get('eventImg')?.touched" class="text-danger">
             <small>Event photo is required.</small>
           </div>
-          <canvas #canvas style="height: 280px; width: 280px;"></canvas>
+ 
           <h2>Description:</h2>
           <textarea
             formControlName="about"
@@ -74,21 +75,41 @@
   </div>
  
   <h2>Start Time:</h2>
-  <input
-    formControlName="startTime"
-    type="time"
-    class="form-control"
-    [class.is-invalid]="createEventForm.get('startTime')?.invalid && createEventForm.get('startTime')?.touched">
+  <select
+  formControlName="startTime"
+  class="form-control"
+  [class.is-invalid]="createEventForm.get('startTime')?.invalid && createEventForm.get('startTime')?.touched">
+  <option value="" disabled selected>Select time</option>
+  <option value="09:00">09:00 AM</option>
+  <option value="10:00">10:00 AM</option>
+  <option value="11:00">11:00 AM</option>
+  <option value="12:00">12:00 PM</option>
+  <option value="13:00">01:00 PM</option>
+  <option value="14:00">02:00 PM</option>
+  <option value="15:00">03:00 PM</option>
+  <option value="16:00">04:00 PM</option>
+  <option value="17:00">05:00 PM</option>
+</select>
   <div *ngIf="createEventForm.get('startTime')?.invalid && createEventForm.get('startTime')?.touched" class="text-danger">
     <small>Start time is required.</small>
   </div>
- 
+
   <h2>End Time:</h2>
-  <input
-    formControlName="endTime"
-    type="time"
-    class="form-control"
-    [class.is-invalid]="createEventForm.get('endTime')?.invalid && createEventForm.get('endTime')?.touched">
+  <select
+  formControlName="endTime"
+  class="form-control"
+  [class.is-invalid]="createEventForm.get('endTime')?.invalid && createEventForm.get('endTime')?.touched">
+  <option value="" disabled selected>Select time</option>
+  <option value="09:00">09:00 AM</option>
+  <option value="10:00">10:00 AM</option>
+  <option value="11:00">11:00 AM</option>
+  <option value="12:00">12:00 PM</option>
+  <option value="13:00">01:00 PM</option>
+  <option value="14:00">02:00 PM</option>
+  <option value="15:00">03:00 PM</option>
+  <option value="16:00">04:00 PM</option>
+  <option value="17:00">05:00 PM</option>
+</select>
   <div *ngIf="createEventForm.get('endTime')?.invalid && createEventForm.get('endTime')?.touched" class="text-danger">
     <small>End time is required.</small>
   </div>
@@ -144,12 +165,13 @@
  
         <div *ngIf="currentStep === 5" class="form-step">
           <h2>Choose Event Type</h2>
-          <button type="button" class="btn btn-outline-primary" (click)="selectEventType('online')" [class.selected]="createEventForm.get('eventType.type')?.value === 'online'">Online</button>
-          <button type="button" class="btn btn-outline-primary" (click)="selectEventType('offline')" [class.selected]="createEventForm.get('eventType.type')?.value === 'offline'">Offline</button>
- 
+          <div class="d-flex justify-content-between mt-4">
+          <button type="button" class="btn btn-primary Online" (click)="selectEventType('online')" [class.selected]="createEventForm.get('eventType.type')?.value === 'online'">Online</button>
+          <button type="button" class="btn btn-primary Offline" (click)="selectEventType('offline')" [class.selected]="createEventForm.get('eventType.type')?.value === 'offline'">Offline</button>
+        </div>
           <div class="d-flex justify-content-between mt-4" *ngIf="createEventForm.get('eventType.type')?.value">
             <button type="button" class="btn btn-secondary" (click)="prevStep()">Back</button>
-            <button type="submit" class="btn btn-primary" [disabled]="createEventForm.invalid">Submit</button>
+            <button type="submit" class="btn btn-primary" [disabled]="createEventForm.invalid" >Submit</button>
  
           </div>
         </div>
