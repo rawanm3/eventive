@@ -31,6 +31,8 @@ import { FirestoreModule } from '@angular/fire/firestore';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore'; // Firestore (compat)
 import { UsersComponent } from './component/users/users.component';
 import {environment} from '../enviroments/enviroments';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { PaymentComponent } from './component/payment/payment.component';
 import { Page1Component } from './component/events/page1/page1.component';
 import { Page2Component } from './component/events/page2/page2.component';
 import { Page3Component } from './component/events/page3/page3.component';
@@ -42,6 +44,7 @@ import { Page8Component } from './component/events/page8/page8.component';
 import { Page9Component } from './component/events/page9/page9.component';
 import { Page10Component } from './component/events/page10/page10.component';
 import { BookTicketComponent } from './component/book-ticket/book-ticket.component';
+
 
 @NgModule({
   declarations: [
@@ -69,6 +72,8 @@ import { BookTicketComponent } from './component/book-ticket/book-ticket.compone
     UsersComponent,
     BookTicketComponent, 
     CreateAnEventComponent, Page1Component, Page2Component, Page3Component, Page4Component, Page5Component, Page6Component,Page7Component ,Page8Component,Page9Component,Page10Component, 
+    UsersComponent, 
+   PaymentComponent,
   ],
   imports: [
    BrowserModule,
@@ -78,10 +83,13 @@ import { BookTicketComponent } from './component/book-ticket/book-ticket.compone
      AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    AngularFireStorageModule,
     FirestoreModule,
     AngularFirestoreModule  
+
     ],
   providers: [
+
   ],
   //   FormsModule,
   //    AngularFireAuthModule,

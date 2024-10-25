@@ -10,6 +10,7 @@ import { SignupComponent } from './component/signup/signup.component';
 import { HomeComponent } from './component/home/home.component';
 import { EventPageComponent } from './component/event-page/event-page.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { PaymentComponent } from './component/payment/payment.component';
 // import { AuthGuard } from './auth/auth/auth.guard';
 import { UsersComponent } from './component/users/users.component';
 import { Page1Component } from './component/events/page1/page1.component';
@@ -24,7 +25,6 @@ import { Page9Component } from './component/events/page9/page9.component';
 import { Page10Component } from './component/events/page10/page10.component';
 import { BookTicketComponent } from './component/book-ticket/book-ticket.component';
 
-
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'home',component:HomeComponent},
@@ -36,6 +36,7 @@ const routes: Routes = [
   {path:'signup',component:SignupComponent},
   {path: 'loginPage' ,component :LoginComponent},
   {path: 'dashboard' ,component :DashboardComponent},
+  {path: 'payment' ,component:PaymentComponent},
   {path: 'eventPage' ,component :EventPageComponent },
   {path: 'page1' ,component :Page1Component},
   {path: 'page2' ,component :Page2Component},

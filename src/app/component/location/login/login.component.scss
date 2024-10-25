@@ -1,0 +1,56 @@
+#dead:f {
+  /* fallback for old browsers 
+  background: #fccb90;
+
+  Chrome 10-25, Safari 5.1-6 
+  background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+
+  /W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ 
+  background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);*/
+  background-image: url("/assets/images/alexandre-pellaes-6vajp0pscx0-unsplash-1-1.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  /* Ensure the div has height */
+  width: 50%;
+}
+
+.imges {
+  background-image: url("/eventive gh/eventive/src/assets/images/alexandre-pellaes-6vajp0pscx0-unsplash-1-1.jpg");
+}
+
+.righteous-regular {
+  font-family: "Righteous", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#btn {
+  width: 100%;
+  background-color: #d1410c;
+  border: 0;
+}
+
+#title {
+  font-family: "Righteous", system-ui;
+  font-weight: 300;
+  color: #f85215;
+}
+
+.text-white {
+  background-color: transparent;
+}
+
+
+@media (min-width: 768px) {
+  .gradient-form {
+    height: 100vh !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .gradient-custom-2 {
+    border-top-right-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+  }
+}

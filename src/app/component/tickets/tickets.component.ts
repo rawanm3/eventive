@@ -3,7 +3,7 @@ import { ticketBooking, TicketService } from '../../services/ticket-booking.serv
 
 @Component({
   selector: 'app-tickets',
-  templateUrl: './tickets.component.html',
+  templateUrl:'./tickets.component.html',
   styleUrl: './tickets.component.scss'
 })
 

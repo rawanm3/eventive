@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import Swal from 'sweetalert2'
 
 @Injectable({
   providedIn: 'root'
@@ -10,21 +10,9 @@ export class AuthService {
   authService: any;
   router: any;
 
-  // constructor(private afAuth: AngularFireAuth) {
-  //   this.afAuth.authState.subscribe(user => {
-  //     this.user = user; // Keep track of the current user
-  //   });
-  // }
   loggedIn:boolean =false;
   cuserModel: any;
-  // constructor(){}
-  
-  // login(){
-  //   this.loggedIn=true;
-  // }
-  // logout(){
-  //   this.loggedIn=false;
-  // }
+
    constructor(private afAuth: AngularFireAuth) {}
  async logout() {
     try {
@@ -45,21 +33,7 @@ export class AuthService {
     return userData ? JSON.parse(userData) : null; // Parse user data or return null
   }
 
-  // async login(email: string, password: string): Promise<void> {
-  //   const userCredential = await this.afAuth.signInWithEmailAndPassword(email, password);
-  //   const user = userCredential.user; // This may be null
-
-  //   if (user) {
-  //     const userData = {
-  //       uid: user.uid,
-  //       email: user.email,
-  //       displayName: user.displayName, // Use optional chaining if needed
-  //     };
-  //     localStorage.setItem('user', JSON.stringify(userData)); // Store user data in local storage
-  //   } else {
-  //     throw new Error('User credential is null');
-  //   }
-  // }
+ 
 async login(form: NgForm) {
   if (form.invalid) return;
 

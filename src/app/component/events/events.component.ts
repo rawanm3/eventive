@@ -63,7 +63,6 @@ toggleLike() {
   goToPage1() {
     this.router.navigate(['/page1']);
   }
-  
   goToPage2() {
     this.router.navigate(['/page2']);
 }
@@ -78,5 +77,17 @@ goToPage5() {
 }
 goToPage6() {
   this.router.navigate(['/page6']);
+}
+goToPage7() {
+  this.router.navigate(['/page7']);
+}
+goToPage8() {
+  this.router.navigate(['/page8']);
+}
+goToPage9() {
+  this.router.navigate(['/page9']);
+}
+goToPage10() {
+  this.router.navigate(['/page10']);
 }
 }
