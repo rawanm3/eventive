@@ -44,11 +44,6 @@
         <div id="myDropdown" [ngClass]="{'show': isDropdownOpen}" class="dropdown-content">
           <a *ngIf="isLoggedIn">{{ userEmail }}</a>
           <a routerLink="/tickets">Tickets</a>
-          <a routerLink="/like">Liked</a>
-
-          <a routerLink="/loginPage">Log out</a>
-          <a routerLink="/signup">Sign up</a>
-          <a routerLink="/dashboard">Dashboard</a>
           <a routerLink="/create-an-event">create event</a>
             <a *ngIf="!isLoggedIn" routerLink="/signup">sign up</a>
             <a *ngIf="!isLoggedIn" routerLink="/login">login</a>
@@ -71,16 +66,12 @@
       </form>
     </div>
     <div class="div4">
-      <ul class="navbar-nav d-flex justify-content-around">
+      <ul class="navbar-nav d-flex ">
         <li class="nav-item ">
           <!-- <img width="15" height="15" src="https://img.icons8.com/windows/20/8f8f8f/plus.png" alt="plus" /> -->
           <a class="nav-link" routerLink="/create-an-event" routerLinkActive="active">Create event</a>
         </li>
-        <li class="nav-item">
-          <!-- <img width="15" height="15" src="https://img.icons8.com/material-outlined/20/8f8f8f/love-circled.png"
-            alt="love-circled" /> -->
-          <a class="nav-link" routerLink="/like"  routerLinkActive="active">likes</a>
-        </li>
+        
         <li class="nav-item">
           <!-- <img width="15" height="15" src="https://img.icons8.com/ios/20/8f8f8f/ticket--v1.png" alt="ticket--v1" /> -->
           <a class="nav-link" routerLink="/tickets"  routerLinkActive="active">Tickets</a>
