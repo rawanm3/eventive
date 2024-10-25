@@ -29,7 +29,6 @@ const routes: Routes = [
   {path:'home',component:HomeComponent},
   {path:'search-event',component:SearchEvevntComponent},
   {path:'tickets', component:TicketsComponent},
-  {path:'tickets',component:TicketsComponent},
   {path:'create-an-event',component:CreateAnEventComponent},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},

@@ -44,6 +44,8 @@ import { Page8Component } from './component/events/page8/page8.component';
 import { Page9Component } from './component/events/page9/page9.component';
 import { Page10Component } from './component/events/page10/page10.component';
 import { BookTicketComponent } from './component/book-ticket/book-ticket.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -85,7 +87,8 @@ import { BookTicketComponent } from './component/book-ticket/book-ticket.compone
     AngularFireAuthModule,
     AngularFireStorageModule,
     FirestoreModule,
-    AngularFirestoreModule  
+    AngularFirestoreModule,
+    HttpClientModule  ,
 
     ],
   providers: [
