@@ -1,4 +1,19 @@
 
+// export interface AppEvent {
+//   liked: boolean;
+//    eventName: string;
+//     eventImg: string;
+//     about: string;
+//     dateEvent: string;
+//     startTime: string;
+//     endTime: string;
+//     eventCapacity: number;
+//     eventAddress: string;
+//     eventPrice: number;
+//     eventType: {
+//       type: string;
+//     }
+// }
 export interface CustomEvent {
   eventId?:string;
   eventName: string;
@@ -12,4 +27,16 @@ export interface CustomEvent {
   eventPrice: number;
   eventType: {
     type: string; // e.g., 'online' or 'offline'
-  };}
+  };
+}
+// export interface AppEvent {
+//   title: string;
+//   price: number;
+//   id: string;
+//   name: string;
+//   host:string;
+//   description: string;
+//   date: string; // Add any other properties you need
+//   liked: boolean;
+
+// }

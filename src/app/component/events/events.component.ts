@@ -1,3 +1,5 @@
+
+// import { Component, Input } from '@angular/core';
 // import { Component, Input, OnInit } from '@angular/core';
 // import { AfterViewInit } from '@angular/core';
 // import { EventService } from '../../services/event.service';
@@ -192,7 +194,6 @@ toggleLike() {
   goToPage1() {
     this.router.navigate(['/page1']);
   }
-  
   goToPage2() {
     this.router.navigate(['/page2']);
 }

@@ -13,6 +13,7 @@ event: any;
   // constructor(private eventService: EventService) {
   //   this.likedEvents = this.eventService.getLikedEvents();
   // }
+
 //  likedEvents: AppEvent[] = [];
 // event: any;
 

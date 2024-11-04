@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AngularFireStorage } from '@angular/fire/compat/storage'; // Import for Firebase Storage
@@ -63,7 +63,13 @@ eventData: CustomEvent = {
     private storage: AngularFireStorage,
      private eventService: EventService
   ) {
+// <<<<<<< HEAD
  
+// =======
+//   constructor(private fb: FormBuilder , private dashboardService: DashboardDataService) {
+// >>>>>>> 7e7aa8f6d66a6ddfb1bf3dd858ef0e2a0b02a704
+//     this.todayDate = new Date().toISOString().split('T')[0];
+// 
   }
 
  
@@ -106,11 +112,35 @@ eventData: CustomEvent = {
     await fileRef.put(file);
     return await fileRef.getDownloadURL().toPromise(); // Get the download URL after upload
   }
+ 
+  @ViewChild('canvas', { static: false })
+  canvas!: ElementRef<HTMLCanvasElement>;
 
   onFileSelected(event: Event) {
-   const inputElement = event.target as HTMLInputElement;
-    const file = inputElement.files?.[0];
+// <<<<<<< HEAD
+//    const inputElement = event.target as HTMLInputElement;
+//     const file = inputElement.files?.[0];
 }
+// =======
+//     const input = event.target as HTMLInputElement;
+//     if (input.files && input.files.length > 0) {
+//       const file = input.files[0];
+//       const reader = new FileReader();
+//       reader.onload = (e) => {
+//         const img = new Image();
+//         img.src = e.target?.result as string;
+//         img.onload = () => {
+//           const ctx = this.canvas.nativeElement.getContext('2d');
+//           this.canvas.nativeElement.width = img.width;
+//           this.canvas.nativeElement.height = img.height;
+//           ctx?.drawImage(img, 0, 0);
+//         };
+//       };
+//       reader.readAsDataURL(file);
+//     }
+//   }
+  
+// >>>>>>> 4ac8214fe5e2abb3d32c62deb1daa460da7a20d8
 
 
   async onSubmit() {
