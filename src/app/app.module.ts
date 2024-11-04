@@ -28,7 +28,6 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { FirestoreModule } from '@angular/fire/firestore';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore'; // Firestore (compat)
 import { UsersComponent } from './component/users/users.component';
 import {environment} from '../enviroments/enviroments';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
