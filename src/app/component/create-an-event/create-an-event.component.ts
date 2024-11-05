@@ -63,13 +63,10 @@ eventData: CustomEvent = {
     private storage: AngularFireStorage,
      private eventService: EventService
   ) {
-// <<<<<<< HEAD
  
-// =======
 //   constructor(private fb: FormBuilder , private dashboardService: DashboardDataService) {
 // >>>>>>> 7e7aa8f6d66a6ddfb1bf3dd858ef0e2a0b02a704
 //     this.todayDate = new Date().toISOString().split('T')[0];
-// 
   }
 
  
@@ -106,21 +103,41 @@ eventData: CustomEvent = {
   }
 
   // Upload image function
-  async uploadImage(file: File): Promise<string> {
-    const filePath = `eventPage/${file.name}`;
-    const fileRef = this.storage.ref(filePath);
+async uploadImage(file: File): Promise<string> {
+  const filePath = `eventPage/${file.name}`;
+  const fileRef = this.storage.ref(filePath);
+
+  // Check if file already exists, skip upload if it does
+  try {
+    const fileExists = await fileRef.getDownloadURL().toPromise();
+    return fileExists; // Return existing URL if file already uploaded
+  } catch (error) {
+    // If file doesn't exist, proceed with uploading it
     await fileRef.put(file);
-    return await fileRef.getDownloadURL().toPromise(); // Get the download URL after upload
+    return await fileRef.getDownloadURL().toPromise();
   }
+}
+
+
+
  
   @ViewChild('canvas', { static: false })
   canvas!: ElementRef<HTMLCanvasElement>;
 
-  onFileSelected(event: Event) {
+onFileSelected(event: Event) {
+  const inputElement = event.target as HTMLInputElement;
+  if (inputElement.files?.length) {
+    this.uploadedImage = inputElement.files[0]; // Save the selected file
+  } else {
+    this.uploadedImage = null; // Set to null if no file is selected
+  }
+}
+
+//   onFileSelected(event: Event) {
 // <<<<<<< HEAD
 //    const inputElement = event.target as HTMLInputElement;
 //     const file = inputElement.files?.[0];
-}
+// }
 // =======
 //     const input = event.target as HTMLInputElement;
 //     if (input.files && input.files.length > 0) {
@@ -143,16 +160,50 @@ eventData: CustomEvent = {
 // >>>>>>> 4ac8214fe5e2abb3d32c62deb1daa460da7a20d8
 
 
-  async onSubmit() {
-    if (this.createEventForm.valid) {
+  // async onSubmit() {
+  //   if (this.createEventForm.valid) {
+  //     // First, upload the image and get the URL
+  //     if (this.uploadedImage) {
+  //       this.uploadedImageUrl = await this.uploadImage(this.uploadedImage);
+  //     }
+
+  //     const newEvent: CustomEvent = {
+  //       eventName: this.createEventForm.value.eventName,
+  //       eventImg: this.uploadedImageUrl ?? '', // Make sure this URL is set correctly after image upload
+  //       about: this.createEventForm.value.about,
+  //       dateEvent: this.createEventForm.value.dateEvent,
+  //       startTime: this.createEventForm.value.startTime,
+  //       endTime: this.createEventForm.value.endTime,
+  //       eventCapacity: this.createEventForm.value.eventCapacity,
+  //       eventAddress: this.createEventForm.value.eventAddress,
+  //       eventPrice: this.createEventForm.value.eventPrice,
+  //       eventType: {
+  //         type: this.createEventForm.value.eventType.type
+  //       },
+  //     };
+
+  //     console.log(this.createEventForm.value);
+  //     this.firebaseDatabase.list('/eventPage').push(newEvent)
+  //       .then(() => {
+  //         console.log('Event created successfully!');
+  //         this.createEventForm.reset(); // Reset the form after submission
+  //         this.router.navigate(['/eventPage']); // Navigate to the events page
+  //       })
+  //       .catch((error: any) => {
+  //         console.error('Error creating event:', error);
+  //         alert('An error occurred while creating the event. Please try again.');
+  //       });
+  //     }
+  //   }
+async onSubmit() {
+  if (this.createEventForm.valid) {
+    if (this.uploadedImage) {
       // First, upload the image and get the URL
-      if (this.uploadedImage) {
-        this.uploadedImageUrl = await this.uploadImage(this.uploadedImage);
-      }
+      const uploadedImageUrl = await this.uploadImage(this.uploadedImage);
 
       const newEvent: CustomEvent = {
         eventName: this.createEventForm.value.eventName,
-        eventImg: this.uploadedImageUrl ?? '', // Make sure this URL is set correctly after image upload
+        eventImg: uploadedImageUrl, // Use the uploaded image URL
         about: this.createEventForm.value.about,
         dateEvent: this.createEventForm.value.dateEvent,
         startTime: this.createEventForm.value.startTime,
@@ -165,7 +216,7 @@ eventData: CustomEvent = {
         },
       };
 
-      console.log(this.createEventForm.value);
+      // Save the new event data in Firebase
       this.firebaseDatabase.list('/eventPage').push(newEvent)
         .then(() => {
           console.log('Event created successfully!');
@@ -176,6 +227,12 @@ eventData: CustomEvent = {
           console.error('Error creating event:', error);
           alert('An error occurred while creating the event. Please try again.');
         });
-      }
+    } else {
+      console.error('No image selected.');
+      alert('Please select an image for the event.');
     }
+  }
+}
+
+
 }

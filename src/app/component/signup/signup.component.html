@@ -9,20 +9,12 @@
     <div class="row g-0">
       <div class="col-lg-6">
         <div class="card-body p-md-5 mx-md-4">
-
-          <!-- <div class="">
-             <h3 id="title">eventive</h3> 
-            <h1 class="mt-1 mb-5 pb-1" style="font-size: 52px; font-weight:700;">Sign Up</h1>
-            {{registerPage.value | json}}
-          </div> -->
-
           <form #registerPage="ngForm" novalidate (ngSubmit)="onSubmit(registerPage)">
           <div class="">
             <!-- <h3 id="title">eventive</h3> -->
             <h1 class="mt-1 mb-5 pb-1" style="font-size: 52px; font-weight:700;">Sign Up</h1>
             <!-- {{registerPage.value | json}} -->
           </div>
-
             <div class="form-outline mb-4">
               <input type="text" id="name" class="form-control" placeholder="First Name"
                name="name"
@@ -31,7 +23,7 @@
               [class.is-invalid]="name.invalid && name.touched" />
               <small *ngIf="name.invalid && name.touched" class="text-danger">name is required</small>
             </div>
-
+            
             <div class="form-outline mb-4">
               <input type="text" id="name2" class="form-control" placeholder="LastName"
                name="lastName"
@@ -94,27 +86,22 @@
             </div> -->
           </form>
           <div class="or-divider">or</div>
-          
           <div #loginTemplate>
             <button class="btn btn-google" (click)="googleSignUp()"><img
                 src="https://cdn-icons-png.flaticon.com/512/300/300221.png" width="30" alt="Google icon"> Sign up with
               Google</button>
             <div *ngIf="error" class="text-danger">{{ error }}</div>
           </div>
-
           <span>Already have an account?
            <button class="btn btn-google"><a class="login-link text-left d-block mt-3 text-center" routerLink="/loginPage" style="list-style:none ;">Log in</a></button> 
            <!-- <button class="btn btn-google"><a href="#" class="login-link text-left d-block mt-3 text-center  ">Log in</a></button>  -->
           </span>
-
         </div>
       </div>
-
       <div class="col-lg-6 d-flex align-items-center gradient-custom-2" id="dead">
       <img
         src="https://media.licdn.com/dms/image/C4D12AQHbZcwEIPAiJw/article-cover_image-shrink_720_1280/0/1552242735605?e=2147483647&v=beta&t=OdrzR2Hebx8NGuiJsisfTnRA5AQRnZ-T2UPDjjDfUD0">
       </div>
-
     </div>
   </div>
 </section>

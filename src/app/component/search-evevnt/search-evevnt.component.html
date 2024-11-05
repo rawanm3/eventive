@@ -4,12 +4,12 @@
 
   <div class="row">
     <!-- Filters Section -->
-    <div class="col-sm-12 col-md-4 mb-3 d-md-block d-none">
+    <div class="col-sm-12 col-md-3 mb-2 d-md-block d-none">
       <h5 class="mb-3" style="color: rgb(2, 2, 56);">Filters</h5>
 
       <!-- Category Filter -->
       <h6 style="color: rgb(2, 2, 56);">Category</h6>
-      <div class="row">
+      <div class="">
         <div class="col-6" *ngFor="let category of categories">
           <button 
             type="button" 
@@ -23,7 +23,7 @@
 
       <!-- Date Filter -->
       <h6 style="color: rgb(2, 2, 56);">Date</h6>
-      <div class="row">
+      <div class="">
         <div class="col-6" *ngFor="let dateOption of dateOptions">
           <button 
             type="button" 
@@ -37,7 +37,7 @@
 
       <!-- Price Filter -->
       <h6 style="color: rgb(2, 2, 56);">Price</h6>
-      <div class="row">
+      <div class="">
         <div class="col-6" *ngFor="let priceOption of priceOptions">
           <button 
             type="button" 
@@ -56,9 +56,9 @@
     </div>
 
     <!-- Events Display Section -->
-    <div class="col-sm-12 col-md-8">
+    <div class="col-sm-12 col-md-9">
       <div class="row">
-        <div class="col-sm-12 mb-3" *ngFor="let event of filteredEvents">
+        <div class="col-sm-12 mb-2" *ngFor="let event of filteredEvents">
           <div class="card event-card">
             <div class="row no-gutters">
               <div class="col-md-4">

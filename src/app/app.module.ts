@@ -42,6 +42,7 @@ import { Page7Component } from './component/events/page7/page7.component';
 import { Page8Component } from './component/events/page8/page8.component';
 import { Page9Component } from './component/events/page9/page9.component';
 import { Page10Component } from './component/events/page10/page10.component';
+import { HttpClientModule } from '@angular/common/http';
 // <<<<<<< HEAD
 // import { HttpClientModule } from '@angular/common/http';
 // =======
@@ -89,6 +90,7 @@ import { Page10Component } from './component/events/page10/page10.component';
     AngularFireAuthModule,
     AngularFireStorageModule,
     FirestoreModule,
+    HttpClientModule 
 // <<<<<<< HEAD
 //     AngularFirestoreModule ,
 //     HttpClientModule 
